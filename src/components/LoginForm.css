@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
+button  {
+  background-color: white;
+  border: solid white;
+  border-radius: 3px;
+}
+
+.loginForm {
+  background-color: #bbb;
+  padding: 1%;
+}
+
+h3 {
+  text-align: center;
+}
