@@ -1,0 +1,20 @@
+.quote-expanded {
+  background-color: #ddd;
+}
+
+.quote-expanded h4 {
+  font-style: italic;
+}
+
+.firstQuote {
+  background-color: #bbb;
+  padding: 5%;
+  margin-bottom: 4px;
+
+}
+
+.secondQuote {
+  padding: 5%;
+  background-color: #ddd;
+  margin-bottom: 4px;
+}
