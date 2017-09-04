@@ -2,6 +2,7 @@
   box-sizing: border-box;
 }
 
-div {
-  padding: 3%;
+.searchAreaHeader {
+  text-align: center;
+  padding-top: 5%;
 }

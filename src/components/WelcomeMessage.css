@@ -2,8 +2,16 @@
   box-sizing: border-box;
 }
 
-h1, h2 {
+.welcomeMSG, .welcomeParagraph {
   text-align: center;
+}
+
+.welcomeMSG {
+  padding: 5%;
+}
+
+.welcomeParagraph {
+  padding: 0 5% 0 5%;
 }
 
 

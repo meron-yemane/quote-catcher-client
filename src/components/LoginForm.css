@@ -2,17 +2,25 @@
   box-sizing: border-box;
 }
 
-button  {
+ .loginFormButton {
   background-color: white;
   border: solid white;
   border-radius: 3px;
 }
 
-.loginForm {
+.loginSection {
   background-color: #bbb;
   padding: 1%;
 }
 
-h3 {
+.loginFormHeader {
   text-align: center;
+}
+
+.loginForm {
+  padding: 3% 5% 5% 5%;
+}
+
+.loginFormInputs {
+  padding-bottom: 2%;
 }

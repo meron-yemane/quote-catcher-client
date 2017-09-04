@@ -2,34 +2,38 @@
   box-sizing: border-box;
 }
 
-.searchAreaForm {
+#addQuoteForm {
   padding: 10%;
   background-color: #bbb;
   left: 0;
   right: 0;
 }
 
-.searchAreaThemes {
+.addQuoteThemes {
   width: 75%;
   max-width: 350px;
 }
 
-.searchAreaInputs {
+.addQuoteTextarea {
   width: 100%;
   max-width: 500px;
 }
 
-.searchAreaIndividualButtons {
+.form-section {
+  padding-bottom: 5%;
+}
+
+.addTheme {
+  padding-top: 3%;
+}
+
+.addQuoteIndividualButtons {
   background-color: white;
   border: solid white;
   border-radius: 3px;
   margin-right: 5%;
 }
 
-.searchAreaButtons {
-  padding-top: 4%;
-}
-
-.form-section {
-  padding-bottom: 2%;
+.addQuoteButtons {
+  padding-top: 5%;
 }

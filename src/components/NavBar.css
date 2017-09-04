@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-nav {
+.navigationBar {
   background-color: #aaa;
   text-align: center;
   position: fixed;
@@ -12,7 +12,11 @@ nav {
   padding: 2% 0;
 }
 
-nav div {
+.navigationLinks {
   display: inline-block;
   padding: 0 2%;
+}
+
+.navigationLinkLogout {
+  font-size: .75em;
 }

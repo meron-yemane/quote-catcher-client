@@ -9,7 +9,7 @@ export default class Quotes extends React.Component {
     return (
       <div>
         <NavBar />
-        <h1>Search Quotes</h1>
+        <h1 className="searchAreaHeader">Search Quotes</h1>
         <SearchArea themes={["Relationships", "Finances", "Me", "Dating", "Fear", "Career", "Perseverance"]} />
         <SearchResults />
       </div>

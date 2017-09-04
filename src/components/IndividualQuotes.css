@@ -1,0 +1,28 @@
+.quote-expanded {
+  background-color: #ddd;
+  padding: 5%;
+}
+
+.searchResultsAuthor {
+  font-style: italic;
+}
+
+.firstQuote {
+  background-color: #bbb;
+  padding: 5%;
+  margin-bottom: 4px;
+
+}
+
+.secondQuote {
+  padding: 5%;
+  background-color: #ddd;
+  margin-bottom: 4px;
+}
+
+.expandButton {
+  background-color: white;
+  border: solid white;
+  border-radius: 3px;
+  margin-right: 5%;
+}
