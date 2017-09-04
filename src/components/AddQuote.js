@@ -1,7 +1,8 @@
 import React from 'react';
 import NavBar from './NavBar';
-import './AddQuote.css';
 import AddQuoteForm from './AddQuoteForm';
+import './AddQuote.css';
+
 
 export default class AddQuote extends React.Component {
   render() {
