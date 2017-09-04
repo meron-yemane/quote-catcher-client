@@ -26,7 +26,7 @@ export default class AddQuoteForm extends React.Component {
             </select>
           </div>
         </div>
-          <span>+&nbsp;</span><a href="#">add theme</a>
+          <span>+&nbsp;</span><a>add theme</a>
         <div className="addQuoteButtons">
           <button className="addQuoteIndividualButtons" form="parentForm" type="submit">Submit</button>
           <button className="addQuoteIndividualButtons" form="parentForm" type="reset">Reset</button>
