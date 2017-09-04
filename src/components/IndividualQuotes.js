@@ -6,11 +6,10 @@ export default class IndividualQuotes extends React.Component {
     return (
       <div>
         <section className="quote-expanded">
-          <h2>"Please accept my resignation. I don't care to belong to any club that would have me as a member."</h2>
-          <h4 className="searchResultsAuthor">- Groucho Marx</h4>
+          <h2 className="quoteText"><span>"</span>{this.props.quote.quoteText}<span>"</span></h2>
+          <h4 className="searchResultsAuthor"><span>- </span>{this.props.quote.author}</h4>
           <div>
-            <h3>Theme(s): Career</h3>
-            <h3>Book or Source: Groucho and Me</h3>
+            <h3>Theme(s): {this.props.quote.theme}</h3>
           </div>
         </section>
         <section>
@@ -24,6 +23,6 @@ export default class IndividualQuotes extends React.Component {
           </div>
         </section>
       </div>
-    )
+    );
   }
 }
