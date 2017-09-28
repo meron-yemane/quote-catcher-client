@@ -18,10 +18,12 @@ export default class SearchArea extends React.Component {
         </div>
         <div className="form-section">
           <label htmlFor="quoteSearch">Search Quote</label>
+          <br />
           <input className="searchAreaInputs" type="text" name="quoteSearch" />
         </div>
         <div className="form-section">
           <label htmlFor="authorSearch">Search by author</label>
+          <br />
           <input className="searchAreaInputs" type="text" name="authorSearch" />
         </div>
         <div className="searchAreaButtons">

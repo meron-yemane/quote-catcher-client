@@ -1,17 +1,32 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 import NavBar from './NavBar';
 import WelcomeMessage from './WelcomeMessage';
 import LoginForm from './LoginForm';
 
-export default class LandingPage extends React.Component {
+export class LandingPage extends React.Component {
   render() {
-    return (
-      <div>
-        <NavBar />
-        <WelcomeMessage />
-        <LoginForm />
-      </div> 
-    );
+    if (this.props.showLandingPage) {
+      return (
+        <div>
+          <NavBar />
+          <WelcomeMessage />
+          <LoginForm />
+        </div> 
+      );
+    } else {
+      return (
+        <div>
+          <NavBar />
+        </div> 
+      );
+    }
   }
 }
+
+const mapStateToProps = state => ({
+  showLandingPage: state.showLandingPage
+});
+
+export default connect(mapStateToProps)(LandingPage);
