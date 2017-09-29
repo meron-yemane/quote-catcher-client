@@ -2,11 +2,53 @@ import React from 'react';
 import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
 import Input from './input';
 import {required, nonEmpty} from '../validators';
+import {API_BASE_URL} from '../config';
 import './AddQuoteForm.css';
 
 export class AddQuoteForm extends React.Component {
   onSubmit(values) {
-  
+    return fetch(`${API_BASE_URL}/api/quotes/create`, {
+      method: 'POST',
+      body: JSON.stringify(values),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+      }
+    })
+      .then(res => {
+        console.log("created successfully")
+        if (!res.ok) {
+          if (
+            res.headers.has('content-type') &&
+            res.headers
+              .get('content-type')
+              .startsWith('application/json')
+          ) {
+            return res.json().then(err => Promise.reject(err));
+          }
+          return Promise.reject({
+            code: res.status,
+            message: res.statusText
+          });
+        }
+        return;
+      })
+      .then(() => console.log('Submitted with values', values))
+      .catch(err => {
+        const {reason, message, location} = err;
+        if (reason === 'ValidationError') {
+          return Promise.reject(
+            new SubmissionError({
+              [location]: message
+            })
+          );
+        }
+        return Promise.reject(
+          new SubmissionError({
+            _error: 'Error creating quote'
+          })
+        );
+      });
   }
   render() {
     let successMessage;
@@ -26,7 +68,7 @@ export class AddQuoteForm extends React.Component {
     }
 
     const themeList = this.props.themes.map((theme, index) => 
-      <option key={index} value={theme}>{theme}</option>
+      <option name="theme" key={index} value={theme}>{theme}</option>
     );
     return (
       <form 
@@ -36,7 +78,7 @@ export class AddQuoteForm extends React.Component {
         {successMessage}
         {errorMessage}
         <Field
-          name="quote"
+          name="quoteString"
           type="textarea"
           component={Input}
           label="Quote"
@@ -48,14 +90,26 @@ export class AddQuoteForm extends React.Component {
           component={Input}
           label="Author"
         />
-        <div className="form-section">
-          <label htmlFor="theme">Pick 1 or more themes</label>
-          <div>
-            <select className="addQuoteThemes" multiple size="5">
-                {themeList}
-            </select>
-          </div>
+         {//<Field
+        //   name="theme"
+        //   label="Pick 1 or more themes"
+        //   type="select"
+        // >
+        //   <select name="theme" className="addQuoteThemes" multiple size="5">
+        //       {themeList}
+        //   </select>
+        // </Field>}
+        }
+        <label>Pick 1 or more themes</label>
+        <div>
+          <Field name="theme" component='select'>
+            
+              <option />
+              {themeList}
+          
+          </Field>
         </div>
+
         <button 
           type="submit"
           disabled={this.props.pristine || this.props.submitting}>
