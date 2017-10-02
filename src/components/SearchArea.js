@@ -4,6 +4,8 @@ import Input from './input';
 import {required, nonEmpty} from '../validators';
 import {API_BASE_URL} from '../config';
 import SearchByAuthor from './SearchByAuthor';
+import SearchByTheme from './SearchByTheme';
+import SearchByQuoteString from './SearchByQuoteString';
 import './SearchArea.css';
 
 export default class SearchArea extends React.Component {
@@ -18,6 +20,8 @@ export default class SearchArea extends React.Component {
     return (
       <div>
         <SearchByAuthor />
+        <SearchByTheme />
+        <SearchByQuoteString />
       </div>
 
 
