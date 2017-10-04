@@ -2,6 +2,7 @@ import React from 'react';
 import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
 import Input from './input';
 import {API_BASE_URL} from '../config';
+import SearchResults from './SearchResults';
 import './SearchByAuthor.css';
 
 export class SearchByAuthor extends React.Component {
@@ -29,9 +30,19 @@ export class SearchByAuthor extends React.Component {
             message: res.statusText
           });
         }
-        return;
+        return res
       })
-      .then(() => console.log('Submitted with values', values))
+      .then(response => {
+        return response.json()
+        //response.json()
+      })
+      .then(responses => {
+        return responses
+      })
+      .then(res => {
+        return <SearchResults quotes={res} />
+      })
+      .then(() => console.log('Submitted with values', values))     
       .catch(err => {
         const {reason, message, location} = err;
         if (reason === 'ValidationError') {
@@ -49,7 +60,7 @@ export class SearchByAuthor extends React.Component {
     if (this.props.submitSucceeded) {
       successMessage = (
         <div className='searchByAuthorSuccessMessage'>
-          Quotes successfully sorted by author 
+          Quotes successfully sorted by author.
         </div>
       );
     }
