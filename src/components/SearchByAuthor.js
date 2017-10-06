@@ -1,11 +1,17 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
 import Input from './input';
 import {API_BASE_URL} from '../config';
 import SearchResults from './SearchResults';
+import {addQuoteToSearchResults} from '../actions/index';
 import './SearchByAuthor.css';
 
 export class SearchByAuthor extends React.Component {
+  addQuoteToSearchResults(quotes) {
+    this.props.dispatch(addQuoteToSearchResults(quotes))
+  }
+
   onSubmit(values) {
     return fetch(`${API_BASE_URL}/api/quotes/searchbyauthor`, {
       method: 'POST',
@@ -40,7 +46,8 @@ export class SearchByAuthor extends React.Component {
         return responses
       })
       .then(res => {
-        return <SearchResults quotes={res} />
+        return this.addQuoteToSearchResults(res)
+        //return <SearchResults onSearch={res => this.addQuoteToSearchResults(res)} />
       })
       .then(() => console.log('Submitted with values', values))     
       .catch(err => {
@@ -90,11 +97,17 @@ export class SearchByAuthor extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  quotesToDisplay: state.quotesToDisplay
+});
+
+const SearchByAuthorConnect = connect(mapStateToProps)(SearchByAuthor);
+
 export default reduxForm({
   form: 'searchByAuthor',
   onSubmitFail: (errors, dispatch) =>
     dispatch(focus('searchByAuthor', Object.keys(errors)[0]))
-})(SearchByAuthor);
+})(SearchByAuthorConnect);
 
 
 

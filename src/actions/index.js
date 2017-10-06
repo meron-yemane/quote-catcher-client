@@ -12,4 +12,8 @@ export const addQuote = (quoteString, author, theme) => ({
   theme
 });
 
-export const ADD_QUOTE_TO_SEARCH_RESULT_PAGE = 'ADD_QUOTE_TO_SEARCH_RESULT_PAGE';
+export const ADD_QUOTE_TO_SEARCH_RESULTS = 'ADD_QUOTE_TO_SEARCH_RESULTS';
+export const addQuoteToSearchResults = (quotes) => ({
+  type: ADD_QUOTE_TO_SEARCH_RESULTS,
+  quotes
+});
