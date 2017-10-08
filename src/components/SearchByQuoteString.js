@@ -1,10 +1,17 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
 import Input from './input';
 import {API_BASE_URL} from '../config';
+import SearchResults from './SearchResults';
+import {addQuoteToSearchResults} from '../actions/index';
 import './SearchByQuoteString.css';
 
 export class SearchByQuoteString extends React.Component {
+  addQuoteToSearchResults(quotes) {
+    this.props.dispatch(addQuoteToSearchResults(quotes))
+  }
+
   onSubmit(values) {
     return fetch(`${API_BASE_URL}/api/quotes/searchbyquotestring`, {
       method: 'POST',
@@ -29,7 +36,16 @@ export class SearchByQuoteString extends React.Component {
             message: res.statusText
           });
         }
-        return;
+        return res;
+      })
+      .then(response => {
+        return response.json()
+      })
+      .then(responses => {
+        return responses
+      })
+      .then(res => {
+        return this.addQuoteToSearchResults(res)
       })
       .then(() => console.log('Submitted with values', values))
       .catch(err => {
@@ -79,10 +95,16 @@ export class SearchByQuoteString extends React.Component {
   }  
 }
 
+const mapStateToProps = state => ({
+  quotesToDisplay: state.quotesToDisplay
+});
+
+const SearchByQuoteStringConnect = connect(mapStateToProps)(SearchByQuoteString);
+
 export default reduxForm({
   form: 'searchByQuoteString',
   onSubmitFail: (errors, dispatch) =>
     dispatch(focus('searchByQuoteString', Object.keys(errors)[0]))
-})(SearchByQuoteString);
+})(SearchByQuoteStringConnect);
 
 

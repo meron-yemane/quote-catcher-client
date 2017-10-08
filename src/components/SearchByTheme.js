@@ -1,10 +1,17 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
 import Input from './input';
 import {API_BASE_URL} from '../config';
+import SearchResults from './SearchResults';
+import {addQuoteToSearchResults} from '../actions/index';
 import './SearchByTheme.css';
 
 export class SearchByTheme extends React.Component {
+  addQuoteToSearchResults(quotes) {
+    this.props.dispatch(addQuoteToSearchResults(quotes))
+  }
+
   onSubmit(values) {
     return fetch(`${API_BASE_URL}/api/quotes/searchbytheme`, {
       method: 'POST',
@@ -29,7 +36,16 @@ export class SearchByTheme extends React.Component {
             message: res.statusText
           });
         }
-        return;
+        return res;
+      })
+      .then(response => {
+        return response.json()
+      })
+      .then(responses => {
+        return responses
+      })
+      .then(res => {
+        return this.addQuoteToSearchResults(res)
       })
       .then(() => console.log('Submitted with values', values))
       .catch(err => {
@@ -57,7 +73,7 @@ export class SearchByTheme extends React.Component {
     let errorMessage;
     if (this.props.error) {
       errorMessage = (
-        <div className='searchByAuthorErrorMessage'>{this.props.error}</div>
+        <div className='searchByThemeErrorMessage'>{this.props.error}</div>
       );
     }
 
@@ -79,11 +95,17 @@ export class SearchByTheme extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  quotesToDisplay: state.quotesToDisplay
+});
+
+const SearchByThemeConnect = connect(mapStateToProps)(SearchByTheme);
+
 export default reduxForm({
   form: 'searchByTheme',
   onSubmitFail: (errors, dispatch) =>
     dispatch(focus('searchByTheme', Object.keys(errors)[0]))
-})(SearchByTheme);
+})(SearchByThemeConnect);
 
 
 
