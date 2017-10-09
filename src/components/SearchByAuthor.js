@@ -40,14 +40,12 @@ export class SearchByAuthor extends React.Component {
       })
       .then(response => {
         return response.json()
-        //response.json()
       })
       .then(responses => {
         return responses
       })
       .then(res => {
         return this.addQuoteToSearchResults(res)
-        //return <SearchResults onSearch={res => this.addQuoteToSearchResults(res)} />
       })
       .then(() => console.log('Submitted with values', values))     
       .catch(err => {

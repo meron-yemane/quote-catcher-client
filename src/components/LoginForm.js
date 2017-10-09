@@ -22,7 +22,8 @@ export class LoginForm extends React.Component {
       }
     })
     .then(res => {
-      displayLandingPage(!(this.props.showLandingPage));
+      this.displayLandingPage(!this.props.showLandingPage);
+      console.log(this.props.showLandingPage);
       if (!res.ok) {
         if (
           res.headers.has('content-type') &&
@@ -104,7 +105,7 @@ export class LoginForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    showLandingPage: state.showLandingPage
+  showLandingPage: state.quoteCatcherReducer.showLandingPage
 });
 
 const LoginFormConnect = connect(mapStateToProps)(LoginForm);

@@ -26,7 +26,7 @@ export class LandingPage extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  showLandingPage: state.showLandingPage
+  showLandingPage: state.quoteCatcherReducer.showLandingPage
 });
 
 export default connect(mapStateToProps)(LandingPage);
