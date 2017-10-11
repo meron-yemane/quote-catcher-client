@@ -4,12 +4,10 @@ export const displayLandingPage =  showLandingPage => ({
   showLandingPage
 });
 
-export const ADD_QUOTE = 'ADD_QUOTE';
-export const addQuote = (quoteString, author, theme) => ({
-  type: ADD_QUOTE, 
-  quoteString,
-  author,
-  theme
+export const ADD_QUOTES = 'ADD_QUOTES';
+export const addQuote = (quotes) => ({
+  type: ADD_QUOTES, 
+  quotes
 });
 
 export const ADD_QUOTE_TO_SEARCH_RESULTS = 'ADD_QUOTE_TO_SEARCH_RESULTS';

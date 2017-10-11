@@ -13,13 +13,9 @@ export const quoteCatcherReducer = (state=initialState, action) => {
     });
   }
 
-  if (action.type === actions.ADD_QUOTE) {
+  if (action.type === actions.ADD_QUOTES) {
     return Object.assign({}, state, {
-      quotes: [...state.quotes, {
-        quotesString: action.quoteString,
-        theme: action.theme || "None",
-        author: action.author || "Unknown"
-      }]
+      quotes: [action.quotes]
     });
   }
 
