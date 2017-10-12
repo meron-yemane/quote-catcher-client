@@ -83,7 +83,7 @@ export class LoginForm extends React.Component {
           <div className="loginFormInputs">
             <label htmlFor="password">Password </label>
             <Field 
-              type="text" 
+              type="password" 
               name="password" 
               placeholder="Password" 
               component={Input} 

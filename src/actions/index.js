@@ -4,9 +4,9 @@ export const displayLandingPage =  showLandingPage => ({
   showLandingPage
 });
 
-export const ADD_QUOTES = 'ADD_QUOTES';
-export const addQuote = (quotes) => ({
-  type: ADD_QUOTES, 
+export const ADD_QUOTES_TO_LANDING_PAGE = 'ADD_QUOTES_TO_LANDING_PAGE';
+export const addQuotesToLandingPage = (quotes) => ({
+  type: ADD_QUOTES_TO_LANDING_PAGE, 
   quotes
 });
 

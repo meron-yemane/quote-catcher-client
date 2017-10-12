@@ -13,7 +13,7 @@ export const quoteCatcherReducer = (state=initialState, action) => {
     });
   }
 
-  if (action.type === actions.ADD_QUOTES) {
+  if (action.type === actions.ADD_QUOTES_TO_LANDING_PAGE) {
     return Object.assign({}, state, {
       quotes: [action.quotes]
     });
