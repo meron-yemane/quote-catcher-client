@@ -1,5 +1,5 @@
 import React from 'react';
-import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
+import {reduxForm, Field, SubmissionError, focus, reset} from 'redux-form';
 import Input from './input';
 import {required, nonEmpty} from '../validators';
 import {API_BASE_URL} from '../config';
@@ -34,6 +34,9 @@ export class AddQuoteForm extends React.Component {
         return;
       })
       .then(() => console.log('Submitted with values', values))
+      .then(() => {
+        this.props.dispatch(reset('addQuote'))
+      })
       .catch(err => {
         const {reason, message, location} = err;
         if (reason === 'ValidationError') {
@@ -90,26 +93,13 @@ export class AddQuoteForm extends React.Component {
           component={Input}
           label="Author"
         />
-         {//<Field
-        //   name="theme"
-        //   label="Pick 1 or more themes"
-        //   type="select"
-        // >
-        //   <select name="theme" className="addQuoteThemes" multiple size="5">
-        //       {themeList}
-        //   </select>
-        // </Field>}
-        }
         <label>Pick 1 or more themes</label>
         <div>
-          <Field name="theme" component='select'>
-            
-              <option />
-              {themeList}
-          
+          <Field name="theme" component='select'>           
+            <option />
+            {themeList}         
           </Field>
         </div>
-
         <button 
           type="submit"
           disabled={this.props.pristine || this.props.submitting}>
@@ -119,32 +109,6 @@ export class AddQuoteForm extends React.Component {
           type="reset">
           Reset
         </button>
-
-     { // <form id="addQuoteForm">
-      //   <div className="form-section">
-      //     <label htmlFor="quote">New Quote</label>
-      //     <div>
-      //       <textarea className="addQuoteTextarea" name="quote" rows="15" required></textarea>
-      //     </div>
-      //   </div>
-      //   <div className="form-section">
-      //       <label htmlFor="author">Author </label>
-      //       <input type="text" name="author" />
-      //   </div>
-      //   <div className="form-section">
-      //     <label htmlFor="theme">Pick 1 or more themes</label>
-      //     <div>
-      //       <select className="addQuoteThemes" multiple size="5">
-      //           {themeList}
-      //       </select>
-      //     </div>
-      //   </div>
-      //     <span>+&nbsp;</span><a>add theme</a>
-      //   <div className="addQuoteButtons">
-      //     <button className="addQuoteIndividualButtons" form="parentForm" type="submit">Submit</button>
-      //     <button className="addQuoteIndividualButtons" form="parentForm" type="reset">Reset</button>
-      //   </div>
-    }
       </form>
     );
   }
