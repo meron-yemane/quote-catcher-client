@@ -9,7 +9,7 @@ const initialState = {
 export const quoteCatcherReducer = (state=initialState, action) => {
   if (action.type === actions.DISPLAY_LANDING_PAGE) {
     return Object.assign({}, state, {
-      showLandingPage: !state.showLandingPage
+      showLandingPage: action.showLandingPage
     });
   }
 

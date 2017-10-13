@@ -51,7 +51,7 @@ export class LandingPage extends React.Component {
 
   render() {
     var landingPage;
-    if (this.props.showLandingPage) {
+    if (!this.props.showLandingPage) {
       landingPage = <LoginForm />;
     } else {
       //handleLoad()

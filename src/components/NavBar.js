@@ -13,7 +13,7 @@ export class NavBar extends React.Component {
 
   handleClick() {
     localStorage.removeItem('access_token');
-    return this.displayLandingPage(!this.props.showLandingPage)
+    return this.displayLandingPage(false)
   }
   
   render () {

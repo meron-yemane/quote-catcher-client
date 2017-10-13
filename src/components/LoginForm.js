@@ -22,8 +22,9 @@ export class LoginForm extends React.Component {
       }
     })
     .then(res => {
-      this.displayLandingPage(!this.props.showLandingPage);
-      console.log(this.props.showLandingPage);
+      console.log(this.props.showLandingPage)
+      this.displayLandingPage(true);
+      console.log(this.props.showLandingPage)
       if (!res.ok) {
         if (
           res.headers.has('content-type') &&

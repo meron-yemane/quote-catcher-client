@@ -10,7 +10,7 @@ export default class AddQuote extends React.Component {
       <div>
         <NavBar />
         <h1 className="addQuotesHeader">Add Quote</h1>
-        <AddQuoteForm themes={["Relationships", "Finances", "Me", "Dating", "Fear", "Career", "Perseverance"]} />
+        <AddQuoteForm themes={["Relationships", "Finances", "Identity", "Fear", "Career", "Motivation", "Adventure", "Spirituality", "Loss", "Failure", "Happiness", "Discipline"]} />
       </div>
     );
   }
