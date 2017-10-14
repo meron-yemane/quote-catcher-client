@@ -7,13 +7,13 @@ export class HomePageQuotesDisplay extends React.Component {
     console.log("quotes store: " + this.props.quotes);
     return (
       <div>
-       
+       {JSON.stringify(this.props.quotes)}
       </div>
     )
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => console.log("state:", state) || ({ 
   quotes: state.quoteCatcherReducer.quotesToDisplay
 });
 
