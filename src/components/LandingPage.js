@@ -6,7 +6,7 @@ import WelcomeMessage from './WelcomeMessage';
 import LoginForm from './LoginForm';
 import {addQuotesToLandingPage} from '../actions/index';
 import {API_BASE_URL} from '../config';
-import {HomePageQuotesDisplay} from './HomePageQuotesDisplay';
+import HomePageQuotesDisplay from './HomePageQuotesDisplay';
 
 export class LandingPage extends React.Component {
   addQuotesToLandingPage(quotes) {
@@ -14,11 +14,12 @@ export class LandingPage extends React.Component {
   }
 
   handleLoad() {
+    console.log("Inside handleload")
     return fetch(`${API_BASE_URL}/api/quotes/all`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Basic ' + localStorage.getItem('access_token')
+        'Authorization': 'Bearer ' + localStorage.getItem('access_token')
       }
     })
     .then(res => {
@@ -54,9 +55,7 @@ export class LandingPage extends React.Component {
     if (!this.props.showLandingPage) {
       landingPage = <LoginForm />;
     } else {
-      //handleLoad()
-      landingPage = <HomePageQuotesDisplay //onload={() => this.handleLoad()} 
-      />;
+      landingPage = <HomePageQuotesDisplay onpageshow={() => this.handleLoad()} />;
     }
     return (
       <div>

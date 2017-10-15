@@ -13,6 +13,7 @@ export class LoginForm extends React.Component {
   }
 
   onSubmit(values) {
+    console.log("inside login")
     return fetch(`${API_BASE_URL}/api/auth/login`, {
       method: 'POST',
       body: JSON.stringify(values),
@@ -22,9 +23,10 @@ export class LoginForm extends React.Component {
       }
     })
     .then(res => {
-      console.log(this.props.showLandingPage)
-      this.displayLandingPage(true);
-      console.log(this.props.showLandingPage)
+      // console.log(this.props.showLandingPage)
+      // this.displayLandingPage(true);
+      // console.log(this.props.showLandingPage)
+      return res 
       if (!res.ok) {
         if (
           res.headers.has('content-type') &&
@@ -69,7 +71,7 @@ export class LoginForm extends React.Component {
       <div className="loginSection">
         <h3 className="loginFormHeader">Login</h3>
         <form className="loginForm" onSubmit={this.props.handleSubmit(values => 
-            this.onSubmit(values)
+            this.onSubmit(values) onSubmit={() => this.displayLandingPage(true)}
         )}>
           <div className="loginFormInputs">
             <label htmlFor="username">Username </label>

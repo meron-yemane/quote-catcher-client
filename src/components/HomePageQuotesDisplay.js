@@ -4,17 +4,17 @@ import './HomePageQuotesDisplay.css';
 
 export class HomePageQuotesDisplay extends React.Component {
   render() {
-    console.log("quotes store: " + this.props.quotes);
+    console.log("quotes store: " + this.props.quotes[0][0]);
     return (
       <div>
-       {JSON.stringify(this.props.quotes)}
+
       </div>
     )
   }
 }
 
-const mapStateToProps = state => console.log("state:", state) || ({ 
-  quotes: state.quoteCatcherReducer.quotesToDisplay
+const mapStateToProps = state => ({ 
+  quotes: state.quoteCatcherReducer.quotes
 });
 
 export default connect(mapStateToProps)(HomePageQuotesDisplay);
