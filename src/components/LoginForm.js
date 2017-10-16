@@ -23,10 +23,9 @@ export class LoginForm extends React.Component {
       }
     })
     .then(res => {
-      // console.log(this.props.showLandingPage)
-      // this.displayLandingPage(true);
-      // console.log(this.props.showLandingPage)
-      return res 
+      console.log(this.props.showLandingPage)
+      this.displayLandingPage(true);
+      console.log(this.props.showLandingPage) 
       if (!res.ok) {
         if (
           res.headers.has('content-type') &&
@@ -71,7 +70,7 @@ export class LoginForm extends React.Component {
       <div className="loginSection">
         <h3 className="loginFormHeader">Login</h3>
         <form className="loginForm" onSubmit={this.props.handleSubmit(values => 
-            this.onSubmit(values) onSubmit={() => this.displayLandingPage(true)}
+            this.onSubmit(values) //onSubmit={() => this.displayLandingPage(true)}
         )}>
           <div className="loginFormInputs">
             <label htmlFor="username">Username </label>
