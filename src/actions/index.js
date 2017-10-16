@@ -1,3 +1,90 @@
+import jwtDecode from 'jwtDecode';
+import {SubmissionError} from 'redux-form';
+import {API_BASE_URL} from '../config';
+import {saveAuthToken, clearAuthToken} from '../local-storage';
+
+const normalizeResponseErrors = res => {
+  if (!res.ok) {
+    if (
+      res.headers.has('content-type') &&
+      res.headers.get('content-type').startsWith('application/json')
+    ) {
+      return res.json().then(err => Promise.reject(err));
+    }
+    return Promise.reject({
+      code: res.status,
+      message: res.statusText
+    });
+  }
+  return res;
+}
+
+const storeAuthInfo = (authToken, dispatch) => {
+  const decodedToken = jwtDecode(authToken);
+  dispatch(setAuthToken(authtoken));
+  dispatch(setCurrentUser(decodedToken.user));
+  saveAuthToken(authToken);
+}
+
+export const login = (username, password) => {
+    
+    return (fetch(`${API_BASE_URL}/api/auth/login`, {
+      method: 'POST',
+      body: JSON.stringify(values),
+      headers: {
+        'Authorization': 'Basic ' + btoa(values.username + ':' + values.password),
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(({authToken}) => storeAuthInfo(authToken, dispatch))
+    .catch(err => {
+      if (code === 401) {
+        return Promise.reject(
+          new SubmissionError({
+            _error: 'Incorrect username or password'
+          })
+        );
+      }
+    })
+  );
+};
+
+export const registerUser = user => dispatch => {
+  return fetch(`${API_BASE_URL}/api/users`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(user)
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .catch(err => {
+      const {reason, message, location} = err;
+      if (reason === 'ValidationError') {
+        return Promise.reject(
+          new SubmissionError({
+            [location]: message
+          })
+        );
+      }
+    });
+};
+
+export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
+export const setAuthToken = authToken => ({
+  type: SET_AUTH_TOKEN,
+  authToken
+});
+
+export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+export const setCurrentUser = currentUser => ({
+  type: SET_CURRENT_USER,
+  currentUser
+});
+ 
 export const DISPLAY_LANDING_PAGE = 'DISPLAY_LANDING_PAGE';
 export const displayLandingPage =  showLandingPage => ({
   type: DISPLAY_LANDING_PAGE,
