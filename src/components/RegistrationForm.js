@@ -1,17 +1,25 @@
 import React from 'react';
-import {Field, reduxForm, focus} from 'redux-form';
-import {registerUser, login} from '../actions';
+import {Field, reduxForm, focus, SubmissionError} from 'redux-form';
+import {registerUser, login} from '../actions/index';
 import Input from './input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
 
 export class RegistrationForm extends React.Component {
   onSubmit(values) {
+    console.log(values);
     const {username, password, firstName, lastName} = values;
     const user = {username, password, firstName, lastName};
+    console.log(user)
+    console.log(this.props.dispatch)
+    console.log(username)
+    console.log(password)
     return this.props
       .dispatch(registerUser(user))
-      .then(() => this.props.dispatch(login(username, password)));
-  }
+      .then(() => {
+        console.log("inside login portion")
+        this.props.dispatch(login(username, password))
+      });
+  };
 
   render() {
     return (
@@ -44,7 +52,7 @@ export class RegistrationForm extends React.Component {
           component={Input}
           type="password"
           name="password"
-          validate={[required, length({min: 10, max: 72}), isTrimmed]}
+          validate={[required, length({min: 8, max: 72}), isTrimmed]}
         />
         <label htmlFor="passwordConfirm">Confirm password</label>
         <Field 
@@ -62,3 +70,11 @@ export class RegistrationForm extends React.Component {
     );
   }
 }
+
+export default reduxForm({
+  form: 'registration',
+  onSubmitFail: (errors, dispatch) => {
+    console.log(errors)
+    dispatch(focus('registration', Object.keys(errors)[0]))
+  }
+})(RegistrationForm);

@@ -5,10 +5,25 @@ const initialState = {
   quotes: [],
   quotesToDisplay: [],
   authToken: null,
-  currentUser: null
-}
+  currentUser: null,
+  error: null,
+  data: ''
+};
 
 export const quoteCatcherReducer = (state=initialState, action) => {
+  if (action.type === actions.FETCH_PROTECTED_DATA_SUCCESS) {
+    return Object.assign({}, state, {
+      data: action.data,
+      error: null
+    });
+  }
+
+  if (action.type === actions.FETCH_PROTECTED_DATA_ERROR) {
+    return Object.assign({}, state, {
+      error: action.error
+    });
+  }
+
   if (action.type === actions.SET_AUTH_TOKEN) {
     return Object.assign({}, state, {
       authToken: action.authToken

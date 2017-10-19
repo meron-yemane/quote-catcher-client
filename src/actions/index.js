@@ -1,7 +1,8 @@
-import jwtDecode from 'jwtDecode';
+import jwtDecode from 'jwt-decode';
 import {SubmissionError} from 'redux-form';
 import {API_BASE_URL} from '../config';
 import {saveAuthToken, clearAuthToken} from '../local-storage';
+
 
 const normalizeResponseErrors = res => {
   if (!res.ok) {
@@ -21,18 +22,16 @@ const normalizeResponseErrors = res => {
 
 const storeAuthInfo = (authToken, dispatch) => {
   const decodedToken = jwtDecode(authToken);
-  dispatch(setAuthToken(authtoken));
+  dispatch(setAuthToken(authToken));
   dispatch(setCurrentUser(decodedToken.user));
   saveAuthToken(authToken);
-}
+};
 
-export const login = (username, password) => {
-    
+export const login = (username, password) => dispatch => {    
     return (fetch(`${API_BASE_URL}/api/auth/login`, {
       method: 'POST',
-      body: JSON.stringify(values),
       headers: {
-        'Authorization': 'Basic ' + btoa(values.username + ':' + values.password),
+        'Authorization': 'Basic ' + btoa(`${username}:${password}`),
         'Content-Type': 'application/json'
       }
     })
@@ -40,6 +39,7 @@ export const login = (username, password) => {
     .then(res => res.json())
     .then(({authToken}) => storeAuthInfo(authToken, dispatch))
     .catch(err => {
+      const {code} = err;
       if (code === 401) {
         return Promise.reject(
           new SubmissionError({
@@ -52,6 +52,7 @@ export const login = (username, password) => {
 };
 
 export const registerUser = user => dispatch => {
+  console.log("Hey There");
   return fetch(`${API_BASE_URL}/api/users`, {
     method: 'POST',
     headers: {
@@ -72,6 +73,34 @@ export const registerUser = user => dispatch => {
       }
     });
 };
+
+export const fetchProtectedData = () => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/api/users/protected`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+  .then(res => normalizeResponseErrors(res))
+  .then(res => res.json())
+  .then(({data}) => dispatch(fetchProtectedDataSuccess(data)))
+  .catch(err => {
+    dispatch(fetchProtectedDataError(err));
+  });
+};
+
+export const FETCH_PROTECTED_DATA_SUCCESS = 'FETCH_PROTECTED_DATA_SUCCESS';
+export const fetchProtectedDataSuccess = data => ({
+  type: FETCH_PROTECTED_DATA_SUCCESS,
+  data
+});
+
+export const FETCH_PROTECTED_DATA_ERROR = 'FETCH_PROTECTED_DATA_ERROR';
+export const fetchProtectedDataError = error => ({
+  type: FETCH_PROTECTED_DATA_ERROR,
+  error
+});
 
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
 export const setAuthToken = authToken => ({
