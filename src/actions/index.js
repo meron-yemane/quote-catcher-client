@@ -90,6 +90,28 @@ export const fetchProtectedData = () => (dispatch, getState) => {
   });
 };
 
+export const refreshAuthToken = () => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/api/auth/refresh`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+  .then(res => normalizeResponseErrors(res))
+  .then(res => res.json())
+  .then(({authToken}) => storeAuthInfo(authToken, dispatch))
+  .catch(err => {
+    const {code} = err;
+    if (code === 401) {
+      //Invalid credentials scenario
+      dispatch(setCurrentUser(null));
+      dispatch(setAuthToken(null));
+      clearAuthToken(authToken)
+    }
+  });
+};
+
 export const FETCH_PROTECTED_DATA_SUCCESS = 'FETCH_PROTECTED_DATA_SUCCESS';
 export const fetchProtectedDataSuccess = data => ({
   type: FETCH_PROTECTED_DATA_SUCCESS,
