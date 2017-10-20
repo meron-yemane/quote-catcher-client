@@ -5,7 +5,6 @@ import IndividualQuotes from './IndividualQuotes';
 
 export class SearchResults extends React.Component {
   render() {
-    console.log(this.props.quotesToDisplay)
     if (this.props.quotesToDisplay.length > 0) {
       const quotesToDisplay = this.props.quotesToDisplay[0].map((quote, index) =>
         <section key={index} className="quote-expanded">

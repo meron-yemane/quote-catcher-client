@@ -1,7 +1,6 @@
 import * as actions from '../actions';
 
 const initialState = {
-  showLandingPage: false,
   quotes: [],
   quotesToDisplay: [],
   authToken: null,

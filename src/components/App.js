@@ -10,6 +10,7 @@ import LoginPage from './LoginPage';
 import {refreshAuthToken} from '../actions/index';
 
 export class App extends React.Component {
+
   componentDidMount() {
     if (this.props.hasAuthToken) {
       //get new auth token if had existing one in localStorage

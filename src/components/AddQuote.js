@@ -1,11 +1,16 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {Redirect} from "react-router-dom";
 import NavBar from './NavBar';
 import AddQuoteForm from './AddQuoteForm';
 import './AddQuote.css';
 
 
-export default class AddQuote extends React.Component {
+export class AddQuote extends React.Component {
   render() {
+    if (!this.props.loggedIn) {
+      return <Redirect to="/login" />;
+    }
     return (
       <div>
         <NavBar />
@@ -15,3 +20,9 @@ export default class AddQuote extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => ({ 
+  loggedIn: state.quoteCatcherReducer.currentUser !== null
+});
+
+export default connect(mapStateToProps)(AddQuote);

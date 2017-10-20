@@ -16,7 +16,6 @@ export class AddQuoteForm extends React.Component {
       }
     })
       .then(res => {
-        console.log("created successfully")
         if (!res.ok) {
           if (
             res.headers.has('content-type') &&

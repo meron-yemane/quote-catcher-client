@@ -1,6 +1,8 @@
 import React from 'react';
 import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
 import Input from './input';
+import {connect} from 'react-redux';
+import {Redirect} from "react-router-dom";
 import {required, nonEmpty} from '../validators';
 import {API_BASE_URL} from '../config';
 import SearchByAuthor from './SearchByAuthor';
@@ -8,12 +10,14 @@ import SearchByTheme from './SearchByTheme';
 import SearchByQuoteString from './SearchByQuoteString';
 import './SearchArea.css';
 
-export default class SearchArea extends React.Component {
+export class SearchArea extends React.Component {
   onSubmit(values) {
     return fetch(`${API_BASE_URL}/api/quotes/`)
   }
-
   render () {
+    if (!this.props.loggedIn) {
+      return <Redirect to="/login" />;
+    }
     const themeList = this.props.themes.map((theme, index) => 
       <option key={index} value={theme}>{theme}</option>
     );
@@ -23,32 +27,12 @@ export default class SearchArea extends React.Component {
         <SearchByTheme />
         <SearchByQuoteString />
       </div>
-
-
-      // <form className="searchAreaForm">
-      //   <div className="form-section">
-      //     <label htmlFor="themeSearch">Search by theme</label>
-      //     <div>
-      //       <select className="searchAreaThemes" multiple size="5">
-      //         {themeList}
-      //       </select>
-      //     </div>
-      //   </div>
-      //   <div className="form-section">
-      //     <label htmlFor="quoteSearch">Search Quote</label>
-      //     <br />
-      //     <input className="searchAreaInputs" type="text" name="quoteSearch" />
-      //   </div>
-      //   <div className="form-section">
-      //     <label htmlFor="authorSearch">Search by author</label>
-      //     <br />
-      //     <input className="searchAreaInputs" type="text" name="authorSearch" />
-      //   </div>
-      //   <div className="searchAreaButtons">
-      //     <button className="searchAreaIndividualButtons" type="submit">Search</button>
-      //     <button className="searchAreaIndividualButtons" type="reset">Reset</button>
-      //   </div>
-      // </form>
     );
   }
 }
+
+const mapStateToProps = state => ({ 
+  loggedIn: state.quoteCatcherReducer.currentUser !== null
+});
+
+export default connect(mapStateToProps)(SearchArea);

@@ -15,9 +15,13 @@ const store = createStore(
 );
 
 //reloading authtoken when application loads
-const authToken = loadAuthToken();
-if (authToken) {
-  store.dispatch(setAuthToken(authToken))
-}
+// const authToken = loadAuthToken();
+// console.log("authToken: " + authToken)
+// if (authToken) {
+//   const token = authToken;
+//   console.log(store.dispatch)
+//   store.dispatch(setAuthToken(token));
+// }
+
 
 export default store;

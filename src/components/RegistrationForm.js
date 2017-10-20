@@ -6,17 +6,11 @@ import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
 
 export class RegistrationForm extends React.Component {
   onSubmit(values) {
-    console.log(values);
     const {username, password, firstName, lastName} = values;
     const user = {username, password, firstName, lastName};
-    console.log(user)
-    console.log(this.props.dispatch)
-    console.log(username)
-    console.log(password)
     return this.props
       .dispatch(registerUser(user))
       .then(() => {
-        console.log("inside login portion")
         this.props.dispatch(login(username, password))
       });
   };

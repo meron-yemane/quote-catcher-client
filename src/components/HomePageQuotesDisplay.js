@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import {fetchProtectedData} from '../actions/index'
 import './HomePageQuotesDisplay.css';
+import NavBar from './NavBar'
 
 export class HomePageQuotesDisplay extends React.Component {
   componentDidMount() {
@@ -17,15 +18,16 @@ export class HomePageQuotesDisplay extends React.Component {
       return <Redirect to="/login" />;
     }
     return (
-      <div className="home-page-quotes">
-
+      <div>
+        <NavBar />
+        <h2>HomePage</h2>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({ 
-  quotes: state.quoteCatcherReducer.quotes
+  loggedIn: state.quoteCatcherReducer.currentUser !== null
 });
 
 export default connect(mapStateToProps)(HomePageQuotesDisplay);

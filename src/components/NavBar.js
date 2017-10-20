@@ -1,35 +1,40 @@
 import React from 'react';
 import {connect} from 'react-redux';
-
-import {Link} from 'react-router-dom';
+import {setCurrentUser, setAuthToken} from '../actions/index';
+import {clearAuthToken} from '../local-storage';
+import {Link, Redirect} from 'react-router-dom';
 import './NavBar.css';
 import {displayLandingPage} from '../actions/index';
 import {API_BASE_URL} from '../config';
+import store from '../store';
 
 export class NavBar extends React.Component {
-  displayLandingPage(showLandingPage) {
-    this.props.dispatch(displayLandingPage(showLandingPage));
-  }
-
-  handleClick() {
-    localStorage.removeItem('access_token');
-    return this.displayLandingPage(false)
+  logOut() {
+    this.props.dispatch(setCurrentUser(null));
+    this.props.dispatch(setAuthToken(null));
+    clearAuthToken(); 
   }
   
   render () {
+    let logOutButton;
+    if (this.props.loggedIn) {
+      logOutButton = (
+        <button onClick={() => this.logOut()}>Log out</button>
+      );
+    }
     return (
       <nav className="navigationBar">
         <div className="navigationLinks"><Link to='/'><span className="fa fa-home"></span></Link></div>
         <div className="navigationLinks"><Link to='/addquote'>Add Quote</Link></div>
         <div className="navigationLinks"><Link to='/quotes'><span className="fa fa-search"></span>&nbsp;Search</Link></div>
-        <div className="navigationLinks navigationLinkLogout"><Link onClick={() => this.handleClick()} to='/'>Logout</Link></div>
+        <div className="navigationLinks navigationLinkLogout">{logOutButton}</div>
       </nav>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  showLandingPage: state.quoteCatcherReducer.showLandingPage
+  loggedIn: state.quoteCatcherReducer.currentUser !== null
 });
 
 export default connect(mapStateToProps)(NavBar);

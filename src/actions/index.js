@@ -2,6 +2,7 @@ import jwtDecode from 'jwt-decode';
 import {SubmissionError} from 'redux-form';
 import {API_BASE_URL} from '../config';
 import {saveAuthToken, clearAuthToken} from '../local-storage';
+import store from '../store';
 
 
 const normalizeResponseErrors = res => {
@@ -23,8 +24,8 @@ const normalizeResponseErrors = res => {
 const storeAuthInfo = (authToken, dispatch) => {
   const decodedToken = jwtDecode(authToken);
   dispatch(setAuthToken(authToken));
-  dispatch(setCurrentUser(decodedToken.user));
   saveAuthToken(authToken);
+  dispatch(setCurrentUser(decodedToken.user));
 };
 
 export const login = (username, password) => dispatch => {    
@@ -37,7 +38,9 @@ export const login = (username, password) => dispatch => {
     })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then(({authToken}) => storeAuthInfo(authToken, dispatch))
+    .then(({authToken}) => {
+      return storeAuthInfo(authToken, dispatch)
+    })
     .catch(err => {
       const {code} = err;
       if (code === 401) {
@@ -52,7 +55,6 @@ export const login = (username, password) => dispatch => {
 };
 
 export const registerUser = user => dispatch => {
-  console.log("Hey There");
   return fetch(`${API_BASE_URL}/api/users`, {
     method: 'POST',
     headers: {
@@ -75,7 +77,7 @@ export const registerUser = user => dispatch => {
 };
 
 export const fetchProtectedData = () => (dispatch, getState) => {
-  const authToken = getState().auth.authToken;
+  const authToken = getState().quoteCatcherReducer.authToken;
   return fetch(`${API_BASE_URL}/api/users/protected`, {
     method: 'GET',
     headers: {
@@ -91,7 +93,7 @@ export const fetchProtectedData = () => (dispatch, getState) => {
 };
 
 export const refreshAuthToken = () => (dispatch, getState) => {
-  const authToken = getState().auth.authToken;
+  const authToken = getState().quoteCatcherReducer.authToken;
   return fetch(`${API_BASE_URL}/api/auth/refresh`, {
     method: 'POST',
     headers: {

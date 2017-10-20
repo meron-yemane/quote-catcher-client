@@ -1,11 +1,16 @@
 import React from 'react';
 import NavBar from './NavBar';
+import {connect} from 'react-redux';
+import {Redirect} from "react-router-dom";
 import SearchArea from './SearchArea';
 import SearchResults from './SearchResults';
 import './Quotes.css';
 
-export default class Quotes extends React.Component {
+export class Quotes extends React.Component {
   render() {
+    if (!this.props.loggedIn) {
+      return <Redirect to="/login" />;
+    }
     return (
       <div>
         <NavBar />
@@ -16,3 +21,9 @@ export default class Quotes extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => ({ 
+  loggedIn: state.quoteCatcherReducer.currentUser !== null
+});
+
+export default connect(mapStateToProps)(Quotes);
