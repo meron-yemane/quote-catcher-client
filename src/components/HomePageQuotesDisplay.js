@@ -15,21 +15,34 @@ export class HomePageQuotesDisplay extends React.Component {
   }
 
   render() {
-    console.log(store.getState())
+    // if (store.getState().quoteCatcherReducer.quotesToDisplay.length === 0) {
+    //   console.log("Inside the first if statement")
+    //   const quoteToDisplay = <h1>Visit the addQuote tab to start using the site</h1>
+    //   console.log(quoteToDisplay)
+    // } else {
+    //   const quoteToDisplay = this.props.quotesToDisplay.map((quote, index) => 
+    //     <section key={index} className="quote-expanded">
+    //       <h2 className="quoteText"><span>"</span>{quote.quoteString}<span>"</span></h2>
+    //       <h4 className="searchResultsAuthor"><span>- </span>{quote.author}</h4>
+    //     </section>
+    //   );
+    // }
+    // //const quotesToDisplayInSetIntervals =
+    // console.log(quoteToDisplay); 
     if (!this.props.loggedIn) {
       return <Redirect to="/login" />;
     }
     return (
       <div>
         <NavBar />
-        <h2>HomePage</h2>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({ 
-  loggedIn: state.quoteCatcherReducer.currentUser !== null
+  loggedIn: state.quoteCatcherReducer.currentUser !== null,
+  quotesToDisplay: state.quoteCatcherReducer.quoteToDisplay
 });
 
 export default connect(mapStateToProps)(HomePageQuotesDisplay);

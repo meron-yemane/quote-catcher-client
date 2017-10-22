@@ -6,7 +6,7 @@ import RegistrationForm from './RegistrationForm';
 
 export function RegistrationPage(props) {
   if (props.loggedIn) {
-    return <Redirect to="/" />;
+    return <Redirect to="/addQuote" />;
   }
   return (
     <div className="home">
