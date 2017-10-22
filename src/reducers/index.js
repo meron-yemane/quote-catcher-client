@@ -10,6 +10,12 @@ const initialState = {
 };
 
 export const quoteCatcherReducer = (state=initialState, action) => {
+  if (action.type === actions.SET_QUOTES_TO_DISPLAY) {
+    return Object.assign({}, state, {
+      quotesToDisplay: action.quotes
+    });
+  }
+
   if (action.type === actions.FETCH_PROTECTED_DATA_SUCCESS) {
     return Object.assign({}, state, {
       data: action.data,

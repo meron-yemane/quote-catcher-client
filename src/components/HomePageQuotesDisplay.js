@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import {fetchProtectedData} from '../actions/index'
 import './HomePageQuotesDisplay.css';
-import NavBar from './NavBar'
+import NavBar from './NavBar';
+import store from '../store';
 
 export class HomePageQuotesDisplay extends React.Component {
   componentDidMount() {
@@ -14,6 +15,7 @@ export class HomePageQuotesDisplay extends React.Component {
   }
 
   render() {
+    console.log(store.getState())
     if (!this.props.loggedIn) {
       return <Redirect to="/login" />;
     }

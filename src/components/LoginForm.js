@@ -3,13 +3,20 @@ import {reduxForm, Field, focus} from 'redux-form';
 import {required, nonEmpty} from '../validators';
 import Input from './input';
 import {login} from '../actions/index';
+import {quotesForDisplay} from '../actions/index';
 import './LoginForm.css';
+import store from '../store';
 
 
 export class LoginForm extends React.Component {
   onSubmit(values) {
-    return this.props.dispatch(login(values.username, values.password));
-  }
+    return this.props
+    .dispatch(login(values.username, values.password))
+    .then(() => {
+      this.props.dispatch(quotesForDisplay())
+      console.log(store.getState())
+    });
+  };
 
   render() {
     let error;

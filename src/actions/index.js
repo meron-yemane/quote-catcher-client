@@ -114,6 +114,27 @@ export const refreshAuthToken = () => (dispatch, getState) => {
   });
 };
 
+export const quotesForDisplay = () => (dispatch, getState) => {
+   const authToken = getState().quoteCatcherReducer.authToken;
+   return fetch(`${API_BASE_URL}/api/quotes/all`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${authToken}`
+    }
+   })
+   .then(res => normalizeResponseErrors(res))
+   .then(res => res.json())
+   .then(quotes => {
+    dispatch(setQuotesToDisplay(quotes))
+   });
+};
+
+export const SET_QUOTES_TO_DISPLAY = 'SET_QUOTES_TO_DISPLAY';
+export const setQuotesToDisplay = quotes => ({
+  type: SET_QUOTES_TO_DISPLAY,
+  quotes
+});
+
 export const FETCH_PROTECTED_DATA_SUCCESS = 'FETCH_PROTECTED_DATA_SUCCESS';
 export const fetchProtectedDataSuccess = data => ({
   type: FETCH_PROTECTED_DATA_SUCCESS,

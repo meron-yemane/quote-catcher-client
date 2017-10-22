@@ -17,7 +17,7 @@ export class SearchByTheme extends React.Component {
       method: 'POST',
       body: JSON.stringify(values),
       headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+        'Authorization': 'Bearer ' + localStorage.getItem('authToken'),
         'Content-Type': 'application/json'
       }
     })

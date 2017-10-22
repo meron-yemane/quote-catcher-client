@@ -3,6 +3,7 @@ import {reduxForm, Field, SubmissionError, focus, reset} from 'redux-form';
 import Input from './input';
 import {required, nonEmpty} from '../validators';
 import {API_BASE_URL} from '../config';
+import {quotesForDisplay} from '../actions/index';
 import './AddQuoteForm.css';
 
 export class AddQuoteForm extends React.Component {
@@ -12,7 +13,7 @@ export class AddQuoteForm extends React.Component {
       body: JSON.stringify(values),
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+        'Authorization': 'Bearer ' + localStorage.getItem('authToken')
       }
     })
       .then(res => {
@@ -35,6 +36,9 @@ export class AddQuoteForm extends React.Component {
       .then(() => console.log('Submitted with values', values))
       .then(() => {
         this.props.dispatch(reset('addQuote'))
+      })
+      .then(() => {
+        this.props.dispatch(quotesForDisplay())
       })
       .catch(err => {
         const {reason, message, location} = err;
