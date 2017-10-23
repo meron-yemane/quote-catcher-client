@@ -4,6 +4,7 @@ import Input from './input';
 import {required, nonEmpty} from '../validators';
 import {API_BASE_URL} from '../config';
 import {quotesForDisplay} from '../actions/index';
+import {addQuoteDisplay} from '../actions/index';
 import './AddQuoteForm.css';
 
 export class AddQuoteForm extends React.Component {
@@ -31,9 +32,12 @@ export class AddQuoteForm extends React.Component {
             message: res.statusText
           });
         }
-        return;
+        return
       })
-      .then(() => console.log('Submitted with values', values))
+      .then(() => {
+        console.log("values: ", values)
+        this.props.dispatch(addQuoteDisplay(values))
+      })
       .then(() => {
         this.props.dispatch(reset('addQuote'))
       })
