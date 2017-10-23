@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
+import {reduxForm, Field, SubmissionError, focus, reset} from 'redux-form';
 import Input from './input';
 import {API_BASE_URL} from '../config';
 import SearchResults from './SearchResults';
@@ -48,6 +48,9 @@ export class SearchByTheme extends React.Component {
         return this.addQuoteToSearchResults(res)
       })
       .then(() => console.log('Submitted with values', values))
+      .then(() => {
+        this.props.dispatch(reset('searchByTheme'))
+      })
       .catch(err => {
         const {reason, message, location} = err;
         if (reason === 'ValidationError') {

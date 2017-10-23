@@ -47,7 +47,7 @@ export class SearchByQuoteString extends React.Component {
       .then(res => {
         return this.addQuoteToSearchResults(res)
       })
-      .then(() => console.log('Submitted with values', values))
+      .then(() => console.log('Submitted with values', values)) 
       .catch(err => {
         const {reason, message, location} = err;
         if (reason === 'ValidationError') {

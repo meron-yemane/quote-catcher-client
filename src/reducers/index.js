@@ -1,7 +1,7 @@
 import * as actions from '../actions';
 
 const initialState = {
-  quotes: [],
+  searchedQuotes: [],
   quotesToDisplay: [],
   authToken: null,
   currentUser: null,
@@ -55,7 +55,7 @@ export const quoteCatcherReducer = (state=initialState, action) => {
 
   if (action.type === actions.ADD_QUOTE_TO_SEARCH_RESULTS) {
     return Object.assign({}, state, {
-      quotesToDisplay: [action.quotes]
+      searchedQuotes: [action.quotes]
     });
   }
   return state;

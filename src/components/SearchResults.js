@@ -5,8 +5,8 @@ import IndividualQuotes from './IndividualQuotes';
 
 export class SearchResults extends React.Component {
   render() {
-    if (this.props.quotesToDisplay.length > 0) {
-      const quotesToDisplay = this.props.quotesToDisplay[0].map((quote, index) =>
+    if (this.props.searchedQuotes.length > 0) {
+      const searchedQuotes = this.props.searchedQuotes[0].map((quote, index) =>
         <section key={index} className="quote-expanded">
           <h2 className="quoteText"><span>"</span>{quote.quoteString}<span>"</span></h2>
           <h4 className="searchResultsAuthor"><span>- </span>{quote.author}</h4>
@@ -17,7 +17,7 @@ export class SearchResults extends React.Component {
       );
       return (
         <div>
-          {quotesToDisplay} 
+          {searchedQuotes} 
         </div>
       );
     }
@@ -29,7 +29,7 @@ export class SearchResults extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  quotesToDisplay: state.quoteCatcherReducer.quotesToDisplay
+  searchedQuotes: state.quoteCatcherReducer.searchedQuotes
 });
 
 export default connect(mapStateToProps)(SearchResults);
