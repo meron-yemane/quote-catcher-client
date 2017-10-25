@@ -5,6 +5,7 @@ import {clearAuthToken} from '../local-storage';
 import {Link, Redirect} from 'react-router-dom';
 import './NavBar.css';
 import {displayLandingPage} from '../actions/index';
+import {addQuoteDisplay} from '../actions/index';
 import {API_BASE_URL} from '../config';
 import store from '../store';
 
@@ -12,6 +13,7 @@ export class NavBar extends React.Component {
   logOut() {
     this.props.dispatch(setCurrentUser(null));
     this.props.dispatch(setAuthToken(null));
+    this.props.dispatch(addQuoteDisplay([]));
     clearAuthToken(); 
   }
   

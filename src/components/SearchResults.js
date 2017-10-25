@@ -2,8 +2,15 @@ import React from 'react';
 import {connect} from 'react-redux';
 import './SearchResults.css';
 import IndividualQuotes from './IndividualQuotes';
+import deleteQuote from '../actions/index';
 
 export class SearchResults extends React.Component {
+  onClick(values) {
+    console.log("values: " + values)
+    //return this.props
+    //.dispatch(deleteQuote(values.id))
+  }
+
   render() {
     if (this.props.searchedQuotes.length > 0) {
       const searchedQuotes = this.props.searchedQuotes[0].map((quote, index) =>
@@ -13,6 +20,12 @@ export class SearchResults extends React.Component {
           <div>
             <h3>Theme(s): {quote.theme}</h3>
           </div>
+          <div>
+           <a onClick={this.props.handleClick(values => 
+              this.onClick(values))} href="#"><span className='fa fa-trash-o' aria-hidden='true'></span></a>
+          </div>
+        
+
         </section>
       );
       return (

@@ -5,7 +5,6 @@ import './AddQuoteDisplay.css';
 export class AddQuoteDisplay extends React.Component {
   render() {
     if (this.props.addQuoteDisplay.length !== 0) {
-      console.log(this.props.addQuoteDisplay)
       return (
         <section>
           <h2 className="quoteText"><span>"</span>{this.props.addQuoteDisplay.quoteString}<span>"</span></h2>
