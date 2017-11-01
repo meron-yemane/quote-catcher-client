@@ -8,6 +8,7 @@ import HomePageQuotesDisplay from './HomePageQuotesDisplay';
 import RegistrationPage from './RegistrationPage';
 import LoginPage from './LoginPage';
 import {refreshAuthToken} from '../actions/index';
+import {loadAuthToken} from '../local-storage';
 
 export class App extends React.Component {
 
@@ -15,6 +16,14 @@ export class App extends React.Component {
     if (this.props.hasAuthToken) {
       //get new auth token if had existing one in localStorage
       this.props.dispatch(refreshAuthToken());
+    }
+    const authToken = loadAuthToken();
+    if (authToken) {
+      console.log("inside authToken")
+      this.props.dispatch({
+        type: 'SET_AUTH_TOKEN',
+        authToken
+      })
     }
   }
 
@@ -62,7 +71,7 @@ export class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  hasAuthToken: state.quoteCatcherReducer.authToken !== null,
+  hasAuthToken: state.quoteCatcherReducer.authToken,
   loggedIn: state.quoteCatcherReducer.currentUser !== null
 });
 

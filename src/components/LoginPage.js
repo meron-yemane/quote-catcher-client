@@ -9,7 +9,7 @@ import {API_BASE_URL} from '../config';
 import HomePageQuotesDisplay from './HomePageQuotesDisplay';
 
 export function LandingPage(props) {
-  if (props.logginIn) {
+  if (props.loggedIn) {
     return <Redirect to="/" />;
   }
 
@@ -23,7 +23,7 @@ export function LandingPage(props) {
 }
 
 const mapStateToProps = state => ({
-  logginIn: state.quoteCatcherReducer.currentUser !== null
+  loggedIn: state.quoteCatcherReducer.currentUser !== null
 });
 
 export default connect(mapStateToProps)(LandingPage);

@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import {Redirect} from "react-router-dom";
 import SearchArea from './SearchArea';
 import SearchResults from './SearchResults';
-
 import './Quotes.css';
 
 export class Quotes extends React.Component {

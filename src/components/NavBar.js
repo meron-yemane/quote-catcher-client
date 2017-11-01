@@ -36,7 +36,7 @@ export class NavBar extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  loggedIn: state.quoteCatcherReducer.currentUser !== null
+  loggedIn: state.quoteCatcherReducer.authToken
 });
 
 export default connect(mapStateToProps)(NavBar);

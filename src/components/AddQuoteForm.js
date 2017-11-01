@@ -3,11 +3,20 @@ import {reduxForm, Field, SubmissionError, focus, reset} from 'redux-form';
 import Input from './input';
 import {required, nonEmpty} from '../validators';
 import {API_BASE_URL} from '../config';
-import {quotesForDisplay} from '../actions/index';
 import {addQuoteDisplay} from '../actions/index';
+import {loadAuthToken} from '../local-storage';
 import './AddQuoteForm.css';
 
 export class AddQuoteForm extends React.Component {
+  // componentDidMount() {
+  //   const authToken = loadAuthToken();
+  //   if (authToken) {
+  //     this.props.dispatch({
+  //       type: 'SET_AUTH_TOKEN',
+  //       authToken
+  //     })
+  //   } 
+  // }
   onSubmit(values) {
     return fetch(`${API_BASE_URL}/api/quotes/create`, {
       method: 'POST',
@@ -41,9 +50,9 @@ export class AddQuoteForm extends React.Component {
       .then(() => {
         this.props.dispatch(reset('addQuote'))
       })
-      .then(() => {
-        this.props.dispatch(quotesForDisplay())
-      })
+      // .then(() => {
+      //   this.props.dispatch(quotesForDisplay())
+      // })
       .catch(err => {
         const {reason, message, location} = err;
         if (reason === 'ValidationError') {
