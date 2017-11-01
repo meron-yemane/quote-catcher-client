@@ -24,7 +24,10 @@ export class HomePageQuotesDisplay extends React.Component {
     if (!this.props.loggedIn) {
       return;
     }
-    this.props.dispatch(start());
+
+    if (this.props.quoteCounter === 0) {
+      this.props.dispatch(start());
+    }
     this.props.dispatch(fetchProtectedData());
 
   }
@@ -38,7 +41,7 @@ export class HomePageQuotesDisplay extends React.Component {
     }
     let quote;
     if (this.props.quotesToDisplay.length > 0) {
-      quote = <section>
+      quote = <section className="quotesSection">
           <h2 className="displayQuotesText"><span>"</span>{this.props.quotesToDisplay[this.props.quoteCounter % (this.props.quotesToDisplay.length)].quoteString}<span>"</span></h2>
           <h4 className="displayQuotesAuthor"><span>- </span>{this.props.quotesToDisplay[this.props.quoteCounter % (this.props.quotesToDisplay.length)].author}</h4>
           <div>
