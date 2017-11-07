@@ -2,13 +2,15 @@ import React from 'react';
 import {connect} from 'react-redux';
 import './SearchResults.css';
 import IndividualQuotes from './IndividualQuotes';
-import deleteQuote from '../actions/index';
+import {deleteQuote} from '../actions/index';
 
 export class SearchResults extends React.Component {
-  handleClick(quote) {
-    console.log(quote)
-    //return this.props
-    //.dispatch(deleteQuote(values.id))
+  handleDeleteClick(quote) {
+    return this.props
+    .dispatch(deleteQuote(quote._id))
+  }
+
+  handleEditClick(quote) {
   }
 
   render() {
@@ -22,13 +24,13 @@ export class SearchResults extends React.Component {
           </div>
           <div>
             <button onClick={() =>
-              this.handleClick(quote)}
+              this.handleDeleteClick(quote)}
               ><i className='fa fa-trash-o' aria-hidden='true'></i>
             </button>
           </div>
           <div>
             <button onClick={() => 
-              this.handleClick(quote)}
+              this.handleEditClick(quote)}
               ><i className='fa fa-pencil fa-fw' aria-hidden='true'></i>
             </button>
           </div>
