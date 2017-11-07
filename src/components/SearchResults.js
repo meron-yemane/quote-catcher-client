@@ -3,19 +3,23 @@ import {connect} from 'react-redux';
 import './SearchResults.css';
 import IndividualQuotes from './IndividualQuotes';
 import {deleteQuote} from '../actions/index';
-
+import {deleteQuoteFromSearchedQuotes} from '../actions/index';
 export class SearchResults extends React.Component {
   handleDeleteClick(quote) {
     return this.props
     .dispatch(deleteQuote(quote._id))
+    // .then(() => {
+    //   this.props.dispatch(deleteQuoteFromSearchedQuotes(quote._id))
+    // })
   }
 
   handleEditClick(quote) {
   }
 
   render() {
+    console.log("searched quotes length: ", this.props.searchedQuotes.length)
     if (this.props.searchedQuotes.length > 0) {
-      const searchedQuotes = this.props.searchedQuotes[0].map((quote, index) =>
+      const searchedQuotes = this.props.searchedQuotes.map((quote, index) =>
         <section key={index} className="quote-expanded">
           <h2 className="quoteText"><span>"</span>{quote.quoteString}<span>"</span></h2>
           <h4 className="searchResultsAuthor"><span>- </span>{quote.author}</h4>
