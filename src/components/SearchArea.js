@@ -8,6 +8,7 @@ import {API_BASE_URL} from '../config';
 import SearchByAuthor from './SearchByAuthor';
 import SearchByTheme from './SearchByTheme';
 import SearchByQuoteString from './SearchByQuoteString';
+import {loadAuthToken} from '../local-storage';
 import './SearchArea.css';
 
 export class SearchArea extends React.Component {
@@ -15,7 +16,7 @@ export class SearchArea extends React.Component {
     return fetch(`${API_BASE_URL}/api/quotes/`)
   }
   render () {
-    if (!this.props.loggedIn) {
+    if (!loadAuthToken()) {
       return <Redirect to="/login" />;
     }
     const themeList = this.props.themes.map((theme, index) => 

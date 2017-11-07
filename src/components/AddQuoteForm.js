@@ -5,6 +5,7 @@ import {required, nonEmpty} from '../validators';
 import {API_BASE_URL} from '../config';
 import {addQuoteDisplay} from '../actions/index';
 import {loadAuthToken} from '../local-storage';
+import {fetchQuotes} from '../actions/index';
 import './AddQuoteForm.css';
 
 export class AddQuoteForm extends React.Component {
@@ -44,15 +45,14 @@ export class AddQuoteForm extends React.Component {
         return
       })
       .then(() => {
-        console.log("values: ", values)
+        this.props.dispatch(fetchQuotes())
+      })
+      .then(() => {
         this.props.dispatch(addQuoteDisplay(values))
       })
       .then(() => {
         this.props.dispatch(reset('addQuote'))
       })
-      // .then(() => {
-      //   this.props.dispatch(quotesForDisplay())
-      // })
       .catch(err => {
         const {reason, message, location} = err;
         if (reason === 'ValidationError') {

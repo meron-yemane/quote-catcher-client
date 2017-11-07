@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Route, withRouter} from 'react-router-dom';
+import {Route, withRouter, Redirect} from 'react-router-dom';
 import './App.css';
 import Quotes from './Quotes';
 import AddQuote from './AddQuote';
@@ -58,6 +58,9 @@ export class App extends React.Component {
   }
 
   render() {
+    // if (!loadAuthToken()) {
+    //   return <Redirect to="/login" />;
+    // }
     return (
       <div>
         <Route exact path='/' component={HomePageQuotesDisplay} />

@@ -5,8 +5,8 @@ import IndividualQuotes from './IndividualQuotes';
 import deleteQuote from '../actions/index';
 
 export class SearchResults extends React.Component {
-  onClick(values) {
-    console.log("values: " + values)
+  handleClick(quote) {
+    console.log(quote)
     //return this.props
     //.dispatch(deleteQuote(values.id))
   }
@@ -21,11 +21,17 @@ export class SearchResults extends React.Component {
             <h3>Theme(s): {quote.theme}</h3>
           </div>
           <div>
-           <a onClick={this.props.handleClick(values => 
-              this.onClick(values))} href="#"><span className='fa fa-trash-o' aria-hidden='true'></span></a>
+            <button onClick={() =>
+              this.handleClick(quote)}
+              ><i className='fa fa-trash-o' aria-hidden='true'></i>
+            </button>
           </div>
-        
-
+          <div>
+            <button onClick={() => 
+              this.handleClick(quote)}
+              ><i className='fa fa-pencil fa-fw' aria-hidden='true'></i>
+            </button>
+          </div>
         </section>
       );
       return (

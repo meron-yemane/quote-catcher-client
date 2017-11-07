@@ -13,14 +13,14 @@ import {loadAuthToken} from '../local-storage';
 export class HomePageQuotesDisplay extends React.Component {
 
   componentDidMount() {
-  //   const authToken = loadAuthToken();
-  //   if (authToken) {
-  //     this.props.dispatch({
-  //       type: 'SET_AUTH_TOKEN',
-  //       authToken
-  //     })
-  //     this.props.dispatch(fetchQuotes());
-  //   }  
+    const authToken = loadAuthToken();
+    if (authToken) {
+      this.props.dispatch({
+        type: 'SET_AUTH_TOKEN',
+        authToken
+      })
+      this.props.dispatch(fetchQuotes());
+    }  
     if (!this.props.loggedIn) {
       return;
     }
@@ -36,7 +36,7 @@ export class HomePageQuotesDisplay extends React.Component {
   //rsmith slack name
 
   render() {
-    if (!this.props.loggedIn) {
+    if (!loadAuthToken()) {
        return <Redirect to="/login" />;
     }
     let quote;

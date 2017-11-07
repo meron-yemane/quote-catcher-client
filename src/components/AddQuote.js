@@ -21,7 +21,7 @@ export class AddQuote extends React.Component {
     } 
   }
   render() {
-    if (!this.props.loggedIn) {
+    if (!loadAuthToken()) {
       return <Redirect to="/login" />;
     }
     return (
