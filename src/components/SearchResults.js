@@ -32,7 +32,7 @@ export class SearchResults extends React.Component {
     let {open} = this.state || {};
     if (this.props.searchedQuotes.length > 0) {
       const searchedQuotes = this.props.searchedQuotes.map((quote, index) =>
-        <section key={index} className="quote-expanded">
+        <section key={quote._id} className="quote-expanded">
           <h2 className="quoteText"><span>"</span>{quote.quoteString}<span>"</span></h2>
           <h4 className="searchResultsAuthor"><span>- </span>{quote.author}</h4>
           <div>
