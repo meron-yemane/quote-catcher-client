@@ -42,10 +42,10 @@ export class SearchResults extends React.Component {
               </button>
             </div> 
             <Multiselect 
+              disabled={!(this.props.isOpen && this.props.AddThemeId === quote._id)}
               className="selectBox"
               open={this.props.isOpen && this.props.AddThemeId === quote._id}
               data={themes}
-              // onToggle={() => {this.handleAddThemeClick(quote)}}
             />
             <h3>Theme(s): {quote.theme}</h3>
           </div>
