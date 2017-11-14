@@ -11,15 +11,23 @@ const initialState = {
   quotesToDisplayAddThemeId: null,
   data: '',
   isFetching: false,
+  isOpen: false,
   quoteCounter: 0
 };
 
 export const quoteCatcherReducer = (state=initialState, action) => {
   if (action.type === actions.UPDATE_THEME_TO_ADD_BOX_ID) {
-    console.log("quoteID", action.quoteId)
+    if (state.quotesToDisplayAddThemeId === action.quoteId) {
+      return {
+        ...state,
+        quotesToDisplayAddThemeId: action.quoteId,
+        isOpen: !state.isOpen
+      }
+    }
     return {
       ...state,
-      quotesToDisplayAddThemeId: action.quoteId
+      quotesToDisplayAddThemeId: action.quoteId,
+      isOpen: true
     }
   }
 

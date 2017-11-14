@@ -24,17 +24,12 @@ export class SearchResults extends React.Component {
   }
 
   handleAddThemeClick(quote) {
-    console.log("quote", quote)
     return this.props
     .dispatch(updateThemeToAddBoxId(quote._id))
-    // .then(() => {
-    //   return this.setState({ open: !open })
-    // });
   }
 
   render() {
     let {open} = this.state || {};
-    let toggleWidget = () => this.setState({ open: !open })
     if (this.props.searchedQuotes.length > 0) {
       const searchedQuotes = this.props.searchedQuotes.map((quote, index) =>
         <section key={index} className="quote-expanded">
@@ -48,9 +43,9 @@ export class SearchResults extends React.Component {
             </div> 
             <Multiselect 
               className="selectBox"
-              open={open}
+              open={this.props.isOpen && this.props.AddThemeId === quote._id}
               data={themes}
-              onToggle={() => {this.handleAddThemeClick(quote)}}
+              // onToggle={() => {this.handleAddThemeClick(quote)}}
             />
             <h3>Theme(s): {quote.theme}</h3>
           </div>
@@ -76,6 +71,7 @@ export class SearchResults extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  isOpen: state.quoteCatcherReducer.isOpen,
   AddThemeId: state.quoteCatcherReducer.quotesToDisplayAddThemeId,
   searchedQuotes: state.quoteCatcherReducer.searchedQuotes
 });
