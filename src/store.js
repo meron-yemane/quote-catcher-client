@@ -10,18 +10,12 @@ const store = createStore(
   combineReducers({
     quoteCatcherReducer,
     form: formReducer
-  }),
+  }), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(thunk)
 );
 
 //reloading authtoken when application loads
-// const authToken = loadAuthToken();
-// console.log("authToken: " + authToken)
-// if (authToken) {
-//   const token = authToken;
-//   console.log(store.dispatch)
-//   store.dispatch(setAuthToken(token));
-// }
+
 
 
 export default store;

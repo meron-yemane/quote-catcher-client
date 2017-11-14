@@ -54,6 +54,13 @@ export const login = (username, password) => dispatch => {
   );
 };
 
+export const loginUserAndUpdateQuotesStore = (values) => dispatch => {
+  return dispatch(login(values.username, values.password))
+  .then(() => {
+    return dispatch(fetchQuotes())
+  }) 
+};
+
 export const registerUser = user => dispatch => {
   return fetch(`${API_BASE_URL}/api/users`, {
     method: 'POST',
@@ -114,25 +121,88 @@ export const refreshAuthToken = () => (dispatch, getState) => {
   });
 };
 
-export const quotesForDisplay = () => (dispatch, getState) => {
-   const authToken = getState().quoteCatcherReducer.authToken;
-   return fetch(`${API_BASE_URL}/api/quotes/all`, {
+export const deleteQuote = (quoteId) => (dispatch, getState) => {
+  const authToken = getState().quoteCatcherReducer.authToken;
+  return fetch(`${API_BASE_URL}/api/quotes/deletequote/${quoteId}`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+  .then(res => normalizeResponseErrors(res))
+  .then(() => {
+    dispatch(deleteQuoteFromSearchedQuotes(quoteId))
+  })
+  // .then(res => res.json())
+  // .then
+};
+
+export const fetchQuotes = () => (dispatch) => {
+  const authToken = localStorage.getItem('authToken');
+  dispatch(requestQuotesForHomepage());
+  return fetch(`${API_BASE_URL}/api/quotes/all`, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${authToken}`
     }
    })
-   .then(res => normalizeResponseErrors(res))
    .then(res => res.json())
    .then(quotes => {
-    dispatch(setQuotesToDisplay(quotes))
-   });
+    dispatch(requestQuotesForHomepageSuccess(quotes))
+    })
+   .catch(error => dispatch(requestQuotesForHomepageError(error)));
 };
 
-export const SET_QUOTES_TO_DISPLAY = 'SET_QUOTES_TO_DISPLAY';
-export const setQuotesToDisplay = quotes => ({
-  type: SET_QUOTES_TO_DISPLAY,
+let timer = null;
+export const start = () => (dispatch) => {
+  timer = setInterval(() => dispatch(timerTick()), 5000);
+  dispatch(timerStart());
+  dispatch(timerTick());
+};
+
+export const UPDATE_THEME_TO_ADD_BOX_ID = 'UPDATE_THEME_TO_ADD_BOX_ID';
+export const updateThemeToAddBoxId = quoteId => ({
+  type: UPDATE_THEME_TO_ADD_BOX_ID,
+  quoteId
+});
+
+export const TIMER_START = 'TIMER_START';
+export const timerStart = () => ({
+  type: TIMER_START
+});
+
+export const TIMER_TICK = 'TIMER_TICK';
+export const timerTick = () => ({
+  type: TIMER_TICK
+});
+
+export const REQUEST_QUOTES_FOR_HOMEPAGE = 'REQUEST_QUOTES_FOR_HOMEPAGE';
+export const requestQuotesForHomepage = () => ({
+  type: REQUEST_QUOTES_FOR_HOMEPAGE
+});
+
+export const REQUEST_QUOTES_FOR_HOMEPAGE_SUCCESS = 'REQUEST_QUOTES_FOR_HOMEPAGE_SUCCESS';
+export const requestQuotesForHomepageSuccess = quotes => ({
+  type: REQUEST_QUOTES_FOR_HOMEPAGE_SUCCESS,
   quotes
+});
+
+export const REQUEST_QUOTES_FOR_HOMEPAGE_ERROR = 'REQUEST_QUOTES_FOR_HOMEPAGE_ERROR';
+export const requestQuotesForHomepageError = error => ({
+  type: requestQuotesForHomepageError,
+  error
+})
+
+export const ADD_QUOTE_DISPLAY = 'ADD_QUOTE_DISPLAY';
+export const addQuoteDisplay = quote => ({
+  type: ADD_QUOTE_DISPLAY,
+  quote
+});
+
+export const DELETE_QUOTE_FROM_SEARCHED_QUOTES = 'DELETE_QUOTE_FROM_SEARCHED_QUOTES';
+export const deleteQuoteFromSearchedQuotes = quoteId => ({
+  type: DELETE_QUOTE_FROM_SEARCHED_QUOTES,
+  quoteId
 });
 
 export const FETCH_PROTECTED_DATA_SUCCESS = 'FETCH_PROTECTED_DATA_SUCCESS';

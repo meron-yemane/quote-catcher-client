@@ -3,18 +3,80 @@ import * as actions from '../actions';
 const initialState = {
   searchedQuotes: [],
   quotesToDisplay: [],
+  addQuoteDisplay: [],
   authToken: null,
   currentUser: null,
   error: null,
-  data: ''
+  timer: null,
+  quotesToDisplayAddThemeId: null,
+  data: '',
+  isFetching: false,
+  quoteCounter: 0
 };
 
 export const quoteCatcherReducer = (state=initialState, action) => {
-  if (action.type === actions.SET_QUOTES_TO_DISPLAY) {
+  if (action.type === actions.UPDATE_THEME_TO_ADD_BOX_ID) {
+    console.log("quoteID", action.quoteId)
+    return {
+      ...state,
+      quotesToDisplayAddThemeId: action.quoteId
+    }
+  }
+
+  if (action.type === actions.DELETE_QUOTE_FROM_SEARCHED_QUOTES) {
+    return {
+      ...state, 
+      searchedQuotes: state.searchedQuotes.filter(quote => quote._id !== action.quoteId)
+    }
+  }
+
+
+  if (action.type === actions.TIMER_START) {
     return Object.assign({}, state, {
-      quotesToDisplay: action.quotes
+      quoteCounter: 0
     });
   }
+
+  if (action.type === actions.TIMER_TICK) {
+    return Object.assign({}, state, {
+      quoteCounter: state.quoteCounter + 1
+    });
+  }
+
+  if (action.type === actions.REQUEST_QUOTES_FOR_HOMEPAGE) {
+    return Object.assign({}, state, {
+    isFetching: true, 
+    error: null      
+    });
+  }
+
+  if (action.type === actions.REQUEST_QUOTES_FOR_HOMEPAGE_SUCCESS) {
+    return {
+      ...state,
+      quotesToDisplay: action.quotes,
+      isFetching: false,
+      error: null
+    }
+  }
+
+  if (action.type === actions.REQUEST_QUOTES_FOR_HOMEPAGE_ERROR) {
+    return Object.assign({}, state, {
+      isFetching: false,
+      error: action.error
+    });
+  }
+
+  if (action.type === actions.ADD_QUOTE_DISPLAY) {
+    return Object.assign({}, state, {
+      addQuoteDisplay: action.quote
+    });
+  }
+
+  // if (action.type === actions.SET_QUOTES_TO_DISPLAY) {
+  //   return Object.assign({}, state, {
+  //     quotesToDisplay: action.quotes
+  //   });
+  // }
 
   if (action.type === actions.FETCH_PROTECTED_DATA_SUCCESS) {
     return Object.assign({}, state, {
@@ -55,7 +117,7 @@ export const quoteCatcherReducer = (state=initialState, action) => {
 
   if (action.type === actions.ADD_QUOTE_TO_SEARCH_RESULTS) {
     return Object.assign({}, state, {
-      searchedQuotes: [action.quotes]
+      searchedQuotes: action.quotes
     });
   }
   return state;

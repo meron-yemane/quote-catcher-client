@@ -6,7 +6,9 @@ import {API_BASE_URL} from '../config';
 import {addQuoteDisplay} from '../actions/index';
 import {loadAuthToken} from '../local-storage';
 import {fetchQuotes} from '../actions/index';
+import Multiselect from 'react-widgets/lib/Multiselect';
 import './AddQuoteForm.css';
+import 'react-widgets/dist/css/react-widgets.css';
 
 export class AddQuoteForm extends React.Component {
   // componentDidMount() {
@@ -18,6 +20,7 @@ export class AddQuoteForm extends React.Component {
   //     })
   //   } 
   // }
+
   onSubmit(values) {
     return fetch(`${API_BASE_URL}/api/quotes/create`, {
       method: 'POST',
@@ -70,6 +73,17 @@ export class AddQuoteForm extends React.Component {
       });
   }
   render() {
+    const renderMultiselect = ({ input, data, valueField, textField }) => (
+      <Multiselect
+        {...input}
+        onBlur={() => input.onBlur()}
+        value={input.value || []} // requires value to be an array
+        data={data}
+        valueField={valueField}
+        textField={textField}
+        className="themeList"
+      />
+    )
     let successMessage;
     if (this.props.submitSucceeded) {
       successMessage = (
@@ -86,9 +100,7 @@ export class AddQuoteForm extends React.Component {
       );
     }
 
-    const themeList = this.props.themes.map((theme, index) => 
-      <option name="theme" key={index} value={theme}>{theme}</option>
-    );
+    const themeList = ["Relationships", "Finances", "Identity", "Fear", "Career", "Motivation", "Adventure", "Spirituality", "Loss", "Failure", "Happiness", "Discipline"];
     return (
       <form 
         onSubmit={this.props.handleSubmit(values => 
@@ -110,12 +122,11 @@ export class AddQuoteForm extends React.Component {
           label="Author"
         />
         <label>Pick 1 or more themes</label>
-        <div>
-          <Field name="theme" component='select'>           
-            <option />
-            {themeList}         
-          </Field>
-        </div>
+        <Field 
+          name="theme" 
+          component={renderMultiselect}           
+          data={themeList}         
+        />
         <button 
           type="submit"
           disabled={this.props.pristine || this.props.submitting}>

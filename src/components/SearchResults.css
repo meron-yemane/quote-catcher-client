@@ -1,0 +1,10 @@
+.addQuoteButton {
+  float: right;
+  display: block;
+}
+
+.selectBox {
+  float: right;
+  width: 160px;
+  display: block;
+}
