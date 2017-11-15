@@ -33,10 +33,17 @@ export class SearchResults extends React.Component {
     let searchedQuotes = [];
     let themeCounter;
     let themesToDisplay;
+    let addQuoteThemes;
     if (this.props.searchedQuotes.length > 0) {
       this.props.searchedQuotes.map((quote, index) => {
       themeCounter = 0;
       themesToDisplay = [];
+      addQuoteThemes = [];
+      addQuoteThemes = themes.filter(theme => {
+        console.log(theme)
+        return !(quote.theme.includes(theme))
+      });
+      console.log("herer")
       quote.theme.map((theme, index) => {
         if (themeCounter + 1 === quote.theme.length) {
           themesToDisplay.push(<h3 key={index} className="addQuoteDisplayThemes">{theme}</h3>)
@@ -59,7 +66,7 @@ export class SearchResults extends React.Component {
               disabled={!(this.props.isOpen && this.props.AddThemeId === quote._id)}
               className="selectBox"
               open={this.props.isOpen && this.props.AddThemeId === quote._id}
-              data={themes}
+              data={addQuoteThemes}
             />
             <h3>Theme(s): {themesToDisplay}
             </h3>
