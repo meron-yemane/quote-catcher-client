@@ -30,8 +30,22 @@ export class SearchResults extends React.Component {
 
   render() {
     let {open} = this.state || {};
+    let searchedQuotes = [];
+    let themeCounter;
+    let themesToDisplay;
     if (this.props.searchedQuotes.length > 0) {
-      const searchedQuotes = this.props.searchedQuotes.map((quote, index) =>
+      this.props.searchedQuotes.map((quote, index) => {
+      themeCounter = 0;
+      themesToDisplay = [];
+      quote.theme.map((theme, index) => {
+        if (themeCounter + 1 === quote.theme.length) {
+          themesToDisplay.push(<h3 key={index} className="addQuoteDisplayThemes">{theme}</h3>)
+        } else {
+          themesToDisplay.push(<h3 key={index} className="addQuoteDisplayThemes">{theme}<span>,&nbsp;</span></h3>)
+        }
+        themeCounter += 1
+      });
+      searchedQuotes.push( 
         <section key={quote._id} className="quote-expanded">
           <h2 className="quoteText"><span>"</span>{quote.quoteString}<span>"</span></h2>
           <h4 className="searchResultsAuthor"><span>- </span>{quote.author}</h4>
@@ -47,7 +61,8 @@ export class SearchResults extends React.Component {
               open={this.props.isOpen && this.props.AddThemeId === quote._id}
               data={themes}
             />
-            <h3>Theme(s): {quote.theme}</h3>
+            <h3>Theme(s): {themesToDisplay}
+            </h3>
           </div>
           <div>
             <button onClick={() =>
@@ -56,7 +71,8 @@ export class SearchResults extends React.Component {
             </button>
           </div>
         </section>
-      );
+      )
+      });
       return (
         <div>
           {searchedQuotes} 

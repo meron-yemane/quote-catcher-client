@@ -8,7 +8,6 @@ export class AddQuoteDisplay extends React.Component {
       let themeCounter = 0; 
       let themesToDisplay = [];
       const themes = this.props.addQuoteDisplay.theme.map((theme, index) => {
-        console.log(themeCounter)
         if (themeCounter + 1 === this.props.addQuoteDisplay.theme.length) {
           themesToDisplay.push(<h3 key={index} className="addQuoteDisplayThemes">{theme}</h3>)
         } else {
