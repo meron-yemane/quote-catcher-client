@@ -93,6 +93,13 @@ export class SearchByTheme extends React.Component {
           component={Input}
           label="Theme"
         />
+        {// <button 
+        //   className="submitThemesButton" 
+        //   type="submit"
+        //   disabled={this.props.pristine || this.props.submitting}>
+        //   Submit
+        // </button>
+        }
       </form>
     ) 
   }

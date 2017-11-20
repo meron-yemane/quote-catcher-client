@@ -153,6 +153,18 @@ export const fetchQuotes = () => (dispatch) => {
    .catch(error => dispatch(requestQuotesForHomepageError(error)));
 };
 
+export const addTheme = (themes, quoteId) => (getState) => {
+  const authToken = getState().quoteCatcherReducer.authToken;
+  return fetch(`${API_BASE_URL}/api/quotes/addtheme/${quoteId}`, {
+    method: 'POST',
+    body: JSON.stringify(themes),
+    headers: {
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+  .then(res => normalizeResponseErrors(res))
+}
+
 let timer = null;
 export const start = () => (dispatch) => {
   timer = setInterval(() => dispatch(timerTick()), 5000);

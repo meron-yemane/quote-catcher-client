@@ -1,3 +1,7 @@
 .quotesSection {
   padding-top: 70pt;
 }
+
+.homePageQuoteThemes {
+  display: inline-block;
+}

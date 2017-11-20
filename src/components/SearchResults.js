@@ -1,31 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
+import {reduxForm, Field, SubmissionError, focus, reset} from 'redux-form';
 import './SearchResults.css';
 import IndividualQuotes from './IndividualQuotes';
 import {deleteQuote} from '../actions/index';
 import {updateThemeToAddBoxId} from '../actions/index';
 import {deleteQuoteFromSearchedQuotes} from '../actions/index';
+import {addTheme} from '../actions/index';
 import Multiselect from 'react-widgets/lib/Multiselect';
 import 'react-widgets/dist/css/react-widgets.css';
 
 let themes = ["Relationships", "Finances", "Identity", "Fear", "Career", "Motivation", "Adventure", "Spirituality", "Loss", "Failure", "Happiness", "Discipline"];
 export class SearchResults extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {open: false};
-  // }
   handleDeleteClick(quote) {
     return this.props
     .dispatch(deleteQuote(quote._id))
   }
 
-  handleEditClick(quote) {
-  }
-
   handleAddThemeClick(quote) {
     return this.props
     .dispatch(updateThemeToAddBoxId(quote._id))
+  }
+
+  handleThemeSubmit(values) {
+    console.log("inside themsubmnbit")
+    console.log("themesToAdd", values)
+    //return this.props
+    //.dispatch(addTheme(themesToAdd, quote._id))
   }
 
   render() {
@@ -39,11 +41,18 @@ export class SearchResults extends React.Component {
       themeCounter = 0;
       themesToDisplay = [];
       addQuoteThemes = [];
+      // const renderMultiselect = 
+      //   <Multiselect 
+      //     onBlur={() => input.onBlur()}
+      //     value={input.value || []}
+      //     disabled={!(this.props.isOpen && this.props.AddThemeId === quote._id)}
+      //     className="selectBox"
+      //     open={this.props.isOpen && this.props.AddThemeId === quote._id}
+      //     data={themesToDisplay}
+      //   />
       addQuoteThemes = themes.filter(theme => {
-        console.log(theme)
         return !(quote.theme.includes(theme))
       });
-      console.log("herer")
       quote.theme.map((theme, index) => {
         if (themeCounter + 1 === quote.theme.length) {
           themesToDisplay.push(<h3 key={index} className="addQuoteDisplayThemes">{theme}</h3>)
@@ -62,12 +71,29 @@ export class SearchResults extends React.Component {
                   ><i className='fa fa-plus fa-fw' aria-hidden='true'></i> {'Theme'}
               </button>
             </div> 
-            <Multiselect 
-              disabled={!(this.props.isOpen && this.props.AddThemeId === quote._id)}
-              className="selectBox"
-              open={this.props.isOpen && this.props.AddThemeId === quote._id}
-              data={addQuoteThemes}
-            />
+             <form onSubmit={this.props.handleSubmit(values => 
+                this.handleThemeSubmit(values)
+              )}>
+              <Field
+                {...this.props.input}
+                className="selectBox"
+                // name="themesToAdd"
+                valueField={this.props.valueField}
+                textField={this.props.textField}
+                onBlur={() => this.props.onBlur()}
+                component={Multiselect}
+                defaultValue={[]}
+                open={this.props.isOpen && this.props.AddThemeId === quote._id}
+                disabled={!(this.props.isOpen && this.props.AddThemeId === quote._id)}
+                data={addQuoteThemes}
+              />
+              <button 
+                type="submit" 
+                //disabled={this.props.pristine || this.props.submitting}
+                >
+                Submit
+              </button>
+             </form>
             <h3>Theme(s): {themesToDisplay}
             </h3>
           </div>
@@ -99,4 +125,12 @@ const mapStateToProps = state => ({
   searchedQuotes: state.quoteCatcherReducer.searchedQuotes
 });
 
-export default connect(mapStateToProps)(SearchResults);
+const SearchResultsConnect = connect(mapStateToProps)(SearchResults);
+
+export default reduxForm({
+  form: 'searchResults',
+  onSubmitFail: (errors, dispatch) =>
+    dispatch(focus('searchResults', Object.keys(errors)[0]))
+})(SearchResultsConnect);
+
+

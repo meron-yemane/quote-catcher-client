@@ -14,8 +14,4 @@ const store = createStore(
   applyMiddleware(thunk)
 );
 
-//reloading authtoken when application loads
-
-
-
 export default store;
