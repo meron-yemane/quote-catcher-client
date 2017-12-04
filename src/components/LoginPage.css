@@ -1,0 +1,153 @@
+html {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.logoTitleLoginPage {
+  text-align: center;
+  font-family: 'Julius Sans One', sans-serif;
+  font-size: 60px;
+  margin-bottom: 20px;
+  margin-top: 0px;
+  padding-top: 30px;
+  color: white;
+}
+
+.logInNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: transparent;
+}
+
+.LoginBox {
+  margin-bottom: 75px;
+}
+
+.logInAnchorTag {
+  float: right;
+  margin-right: 40px;
+  color: white;  
+}
+
+.logoDescriptionLoginPage {
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  color: white;
+  margin-bottom: 100px;
+}
+
+.home {
+  background-color: #5F88E8;
+}
+
+.loginSection {
+  width: 100%;
+  /*height: 600px;*/
+  padding-top: 40px;
+  background: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.loginTitle {
+  margin-bottom: 30px;
+  font-weight: normal;
+  color: black;
+}
+
+.loginSection {
+  margin-top: 50px;
+  background-color: rgb(204, 224, 255);
+}
+
+.aboutCardImg {
+  display: block;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.aboutCardDescription {
+  color: white;
+  text-align: center;
+  line-height: 24px;
+  font-weight: 100;
+  font-size: 14px;
+}
+
+.shortLine {
+  display: block;
+  border-width: 0;
+  height: 2px;
+  margin: 2em 0;
+  width: 50px;
+  background-color: white;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow:0 0 0 50px rgb(204, 224, 255) inset; /* Change the color to your own background color */
+    -webkit-text-fill-color: black;
+}
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: /*your box-shadow*/,0 0 0 50px white inset;
+    -webkit-text-fill-color: black;
+}
+
+input {
+  margin-bottom: 40px;
+  margin-right: 75px;
+  font-size: 18px;
+}
+
+input::-webkit-input-placeholder {
+  font-size: 18px;
+  font-weight: 200;
+}
+
+input:-ms-input-placeholder {
+  font-size: 18px;
+  font-weight: 200;
+}
+
+input:-moz-placeholder {
+  font-size: 18px;
+  font-weight: 200;
+}
+
+input::-moz-placeholder {
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.aboutCardTitle {
+  font-size: 18px;
+  text-align: center;
+  color: white;
+}
+
+.aboutCardContainer {
+  width: 80%;
+  margin: 0 auto;
+  justify-content: space-around;
+  display: flex;
+}
+
+.aboutCard {
+  background-color: #4062BB;
+  width: 35%;
+  height: 350px;
+  padding: 10px;
+  box-shadow: 3px 3px 1px 1px rgba(0,0,0,.2);
+}

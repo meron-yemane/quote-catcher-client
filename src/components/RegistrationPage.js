@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 
 import RegistrationForm from './RegistrationForm';
+import './RegistrationPage.css';
 
 export function RegistrationPage(props) {
   if (props.loggedIn) {
@@ -10,7 +11,7 @@ export function RegistrationPage(props) {
   }
   return (
     <div className="home">
-      <h2>Register for QuoteCatcher</h2>
+      <h2 className="headerSignUp">Register for QuoteCatcher</h2>
       <RegistrationForm />
       <Link to="/login">Login</Link>
     </div>

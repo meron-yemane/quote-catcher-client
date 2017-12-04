@@ -6,10 +6,9 @@ import {login} from '../actions/index';
 import './LoginForm.css';
 import store from '../store';
 import {loginUserAndUpdateQuotesStore} from '../actions/index';
+import 'bootstrap/dist/css/bootstrap.css';
 
 export class LoginForm extends React.Component {
-
-
   onSubmit(values) {
     return this.props
     .dispatch(loginUserAndUpdateQuotesStore(values))
@@ -19,40 +18,39 @@ export class LoginForm extends React.Component {
     let error;
     if (this.props.error) {
       error = (
-        <div className="form-error" aria-live="polite">
-          {this.props.error}
-        </div>
+          <div className="form-error" aria-live="polite">
+            {this.props.error}
+          </div>
       );
     }
     return (
       <div className="loginSection">
-        <h3 className="loginFormHeader">Login</h3>
         <form 
             className="loginForm" onSubmit={this.props.handleSubmit(values => 
             this.onSubmit(values)
             )}>
             {error}
-            <label htmlFor="username">Username </label>
-            <Field 
+            <Field
+              className="loginFormInput" 
               type="text" 
               name="username" 
-              placeholder="Username" 
               component={Input}
               validate={[required, nonEmpty]} 
+              autocomplete="off"
             />
-            <label htmlFor="password">Password </label>
             <Field 
-              type="password" 
+              className="loginFormInput" 
+              type="password"
               name="password" 
-              placeholder="Password" 
               component={Input} 
               validate={[required, nonEmpty]}
-              />
+              autocomplete="off"
+            />
             <button 
               className="loginFormButton" 
               type="submit"
               disabled={this.props.pristine || this.props.submitting}>
-              Login
+              Submit
             </button>
         </form>
       </div>

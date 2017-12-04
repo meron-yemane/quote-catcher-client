@@ -20,20 +20,16 @@ export class HomePageQuotesDisplay extends React.Component {
         authToken
       })
       this.props.dispatch(fetchQuotes());
-    }  
-    if (!this.props.loggedIn) {
-      return;
     }
-
     if (this.props.quoteCounter === 0) {
       this.props.dispatch(start());
+    }
+    if (!this.props.loggedIn) {
+      return;
     }
     this.props.dispatch(fetchProtectedData());
 
   }
-
-  //window.location = '/login'
-  //rsmith slack name
 
   render() {
     if (!loadAuthToken()) {

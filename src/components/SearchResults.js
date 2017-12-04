@@ -19,13 +19,14 @@ export class SearchResults extends React.Component {
   }
 
   handleAddThemeClick(quote) {
-    return this.props
+    this.props
     .dispatch(updateThemeToAddBoxId(quote._id))
   }
 
-  handleThemeSubmit(values) {
+  handleThemeSubmit(value, quote) {
+    console.log("quote", quote)
     console.log("inside themsubmnbit")
-    console.log("themesToAdd", values)
+    console.log("themesToAdd", value)
     //return this.props
     //.dispatch(addTheme(themesToAdd, quote._id))
   }
@@ -36,20 +37,31 @@ export class SearchResults extends React.Component {
     let themeCounter;
     let themesToDisplay;
     let addQuoteThemes;
+    let inputValue;
     if (this.props.searchedQuotes.length > 0) {
       this.props.searchedQuotes.map((quote, index) => {
       themeCounter = 0;
       themesToDisplay = [];
       addQuoteThemes = [];
-      // const renderMultiselect = 
-      //   <Multiselect 
-      //     onBlur={() => input.onBlur()}
-      //     value={input.value || []}
-      //     disabled={!(this.props.isOpen && this.props.AddThemeId === quote._id)}
-      //     className="selectBox"
-      //     open={this.props.isOpen && this.props.AddThemeId === quote._id}
-      //     data={themesToDisplay}
-      //   />
+      const renderMultiselect = ({input, data}) => {        
+        if (this.props.AddThemeId === quote._id) {
+          inputValue = this.props.value
+        } else {
+          inputValue = []
+        }
+        return (
+          <Multiselect 
+            {...input}
+            onBlur={() => input.onBlur()}
+            value={inputValue}
+            disabled={!(this.props.isOpen && this.props.AddThemeId === quote._id)}
+            className="selectBox"
+            data={data}
+            open={this.props.isOpen && this.props.AddThemeId === quote._id}
+            defaultValue={[]}
+          />
+        )
+      }
       addQuoteThemes = themes.filter(theme => {
         return !(quote.theme.includes(theme))
       });
@@ -68,28 +80,20 @@ export class SearchResults extends React.Component {
           <div>
             <div>
               <button onClick={() => this.handleAddThemeClick(quote)} className='addQuoteButton'>
-                  ><i className='fa fa-plus fa-fw' aria-hidden='true'></i> {'Theme'}
+                  <i className='fa fa-plus fa-fw' aria-hidden='true'></i> {'Theme'}
               </button>
             </div> 
-             <form onSubmit={this.props.handleSubmit(values => 
-                this.handleThemeSubmit(values)
-              )}>
+             <form onSubmit={this.props.handleSubmit(values => {
+                this.handleThemeSubmit(values, quote)
+              })}>
               <Field
-                {...this.props.input}
-                className="selectBox"
-                // name="themesToAdd"
-                valueField={this.props.valueField}
-                textField={this.props.textField}
-                onBlur={() => this.props.onBlur()}
-                component={Multiselect}
-                defaultValue={[]}
-                open={this.props.isOpen && this.props.AddThemeId === quote._id}
-                disabled={!(this.props.isOpen && this.props.AddThemeId === quote._id)}
+                name="themesToAdd"
+                component={renderMultiselect}
                 data={addQuoteThemes}
               />
               <button 
                 type="submit" 
-                //disabled={this.props.pristine || this.props.submitting}
+                disabled={this.props.AddThemeId !== quote._id || this.props.pristine || this.props.submitting}
                 >
                 Submit
               </button>

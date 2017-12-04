@@ -2,25 +2,69 @@
   box-sizing: border-box;
 }
 
- .loginFormButton {
-  background-color: white;
-  border: solid white;
-  border-radius: 3px;
+html {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
-.loginSection {
-  background-color: #bbb;
+ .loginFormButton {
+  width: 280px;
+  height: 55px;
+  padding: 15px;
+  border: none;
+  border-radius: 3px;
+  background-color: #5F88E8;
+  color: white;
+  font-size: 18px;
+  transition-duration: 200ms;
+  cursor: pointer;
+  margin-top: 30px;
+  font-weight: normal;
+  outline: 0;
+}
+
+.loginFormButton:hover {
+  background: #4062BB;
+}
+
+/*.loginSection {
   padding: 1%;
+}*/
+
+input {
+  background-color: transparent;
+  width: 280px;
+  border: 2px solid rgb(153, 153, 153);
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  padding: 2px 0;
+  font-size: 20px;
+  margin-bottom: 20px;
+  margin-top: 15px;
+  text-align: center;
+  outline: none;
+}
+
+.spacer {
+  margin-right: 75px;
 }
 
 .loginFormHeader {
   text-align: center;
 }
 
-.loginForm {
-  padding: 3% 5% 5% 5%;
+.form-error-relative-box {
+  margin-right: 100px;
 }
 
-.loginFormInputs {
-  padding-bottom: 2%;
+.form-error {
+  margin-right: 300px;
+  position: absolute;
+  font-weight: 400;
+}
+
+input:focus {
+  width: 280px;
+  border-bottom: 2px solid #5F88E8;
 }
