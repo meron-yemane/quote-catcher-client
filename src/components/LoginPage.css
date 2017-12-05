@@ -28,7 +28,7 @@ html {
 
 .logInAnchorTag {
   float: right;
-  margin-right: 40px;
+  margin-right: 25px;
   color: white;  
 }
 
@@ -57,7 +57,7 @@ html {
 
 .loginTitle {
   margin-bottom: 30px;
-  font-weight: normal;
+  font-weight: 300;
   color: black;
 }
 
@@ -81,7 +81,7 @@ html {
   text-align: center;
   line-height: 24px;
   font-weight: 100;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .shortLine {
@@ -112,22 +112,22 @@ input {
 }
 
 input::-webkit-input-placeholder {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 200;
 }
 
 input:-ms-input-placeholder {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 200;
 }
 
 input:-moz-placeholder {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 200;
 }
 
 input::-moz-placeholder {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 200;
 }
 
@@ -138,10 +138,14 @@ input::-moz-placeholder {
 }
 
 .aboutCardContainer {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   justify-content: space-around;
   display: flex;
+}
+
+.signUpAnchorTag {
+  margin-right: 15px;
 }
 
 .aboutCard {

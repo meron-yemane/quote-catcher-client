@@ -21,6 +21,7 @@ export function LandingPage(props) {
       <a className="logInAnchorTag" href="#scrollToLogin">
         Login
       </a>
+      <Link to="/register" className="logInAnchorTag signUpAnchorTag">Sign Up</Link>
     </nav>
     <div className="home">
       <h2 className="logoTitleLoginPage">QuoteCatcher</h2>
@@ -50,19 +51,11 @@ export function LandingPage(props) {
       <section>
         <a id="scrollToLogin"></a>
         <div className="loginSection">
-          {//<div className="row">
-            //<div className="col-12">
-          }
               <h2 className="loginTitle">Login</h2>
               <div className="LoginBox">
                 <LoginForm />
                 <Link to="/register">Not a member? Click here to sign-up!</Link>
-
               </div>
-            {//</div>
-            
-          //</div>
-          }
         </div>
       </section>
     </div>

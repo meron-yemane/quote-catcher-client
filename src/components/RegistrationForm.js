@@ -3,6 +3,7 @@ import {Field, reduxForm, focus, SubmissionError} from 'redux-form';
 import {registerUser, login} from '../actions/index';
 import Input from './input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
+import './RegistrationForm.css';
 
 export class RegistrationForm extends React.Component {
   onSubmit(values) {
@@ -18,37 +19,35 @@ export class RegistrationForm extends React.Component {
   render() {
     return (
       <form 
-        className="login-form"
+        className="signUpForm"
         onSubmit={this.props.handleSubmit(values => 
           this.onSubmit(values)
         )}>
-        <label htmlFor="firstName">First name</label>
         <Field
+          className="signUpInputs"
           component={Input}
           type= "text"
           name="firstName"
+          validate={[required, nonEmpty]}
         />
-        <label htmlFor="lastName">Last name</label>
         <Field 
           component={Input}
           type="text"
           name="lastName"
+          validate={[required, nonEmpty]}
         />
-        <label htmlFor="username">Username</label>
         <Field 
           component={Input}
           type="text"
           name="username"
           validate={[required, nonEmpty, isTrimmed]}
         />
-        <label htmlFor="password">Password</label>
         <Field
           component={Input}
           type="password"
           name="password"
-          validate={[required, length({min: 8, max: 72}), isTrimmed]}
+          validate={[required, nonEmpty, length({min: 8, max: 72}), isTrimmed]}
         />
-        <label htmlFor="passwordConfirm">Confirm password</label>
         <Field 
           component={Input}
           type="password"
@@ -56,9 +55,10 @@ export class RegistrationForm extends React.Component {
           validate={[required, nonEmpty, matches('password')]}
         />
         <button 
+          className="signUpFormButton"
           type="submit"
           disabled={this.props.pristine || this.props.submitting}>
-          Register
+          SignUp
         </button>
       </form>
     );

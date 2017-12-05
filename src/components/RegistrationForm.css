@@ -1,0 +1,23 @@
+.signUpInputs {
+  border-bottom-color: black
+}
+
+.spacerDoesNotMatch {
+  margin-right: 120px;
+}
+
+.spacerMinimumChar {
+  margin-right: 230px;
+}
+
+.passwordCon {
+  margin-right: 230px;
+}
+
+.passwordMatch {
+  margin-right: 120px;
+}
+
+.signUpFirstName, .signUpLastName, .signUpUsername {
+  margin-right: 75px;
+}

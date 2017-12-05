@@ -11,9 +11,15 @@ export function RegistrationPage(props) {
   }
   return (
     <div className="home">
-      <h2 className="headerSignUp">Register for QuoteCatcher</h2>
-      <RegistrationForm />
-      <Link to="/login">Login</Link>
+      <h2 className="headerSignUp">QuoteCatcher</h2>
+      <h3 className="logoDescriptionSignUpPage">life's quotes, captured and organized conveniently</h3>
+      <div className="signUpSection">
+        <h2 className="signUpTitle">Register</h2>
+        <div className="signUpBox">
+          <RegistrationForm />
+          <Link to="/login">Login</Link>
+        </div>
+      </div>
     </div>
   );
 }

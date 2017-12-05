@@ -17,11 +17,19 @@ export class LoginForm extends React.Component {
   render() {
     let error;
     if (this.props.error) {
-      error = (
-          <div className="form-error" aria-live="polite">
+      if (this.props.error === "Incorrect username or password") {
+        error = (
+          <div className="form-error-incorrect-credentials" aria-live="polite">
             {this.props.error}
           </div>
-      );
+        )
+      } else {
+        error = (
+            <div className="form-error" aria-live="polite">
+              {this.props.error}
+            </div>
+        );
+      }
     }
     return (
       <div className="loginSection">
@@ -31,7 +39,7 @@ export class LoginForm extends React.Component {
             )}>
             {error}
             <Field
-              className="loginFormInput" 
+              id="loginFormInput" 
               type="text" 
               name="username" 
               component={Input}
@@ -39,7 +47,6 @@ export class LoginForm extends React.Component {
               autocomplete="off"
             />
             <Field 
-              className="loginFormInput" 
               type="password"
               name="password" 
               component={Input} 
