@@ -21,15 +21,18 @@ export class NavBar extends React.Component {
     let logOutButton;
     if (this.props.loggedIn) {
       logOutButton = (
-        <button onClick={() => this.logOut()}>Log out</button>
+        <button className="navigationLinkLogout" onClick={() => this.logOut()}>Logout</button>
       );
     }
     return (
       <nav className="navigationBar">
-        <div className="navigationLinks"><Link to='/'><span className="fa fa-home"></span></Link></div>
-        <div className="navigationLinks"><Link to='/addquote'>Add Quote</Link></div>
-        <div className="navigationLinks"><Link to='/quotes'><span className="fa fa-search"></span>&nbsp;Search</Link></div>
-        <div className="navigationLinks navigationLinkLogout">{logOutButton}</div>
+        <div className="navLinksToBeCentered">  
+          <div className="navigationLinks navigationLogo"><Link to='/'>QuoteCatcher</Link></div>
+          <div className="navigationLinks navHomeLink"><Link to='/'><span className="fa fa-home fa-2x navHomeLink"></span></Link></div>
+          <div className="navigationLinks"><Link to='/addquote'>Add Quote</Link></div>
+          <div className="navigationLinks"><Link to='/quotes'><span className="fa fa-search"></span>&nbsp;Search</Link></div>
+          <div className="navigationLinks navigationLinkLogout">{logOutButton}</div>
+        </div>
       </nav>
     );
   }

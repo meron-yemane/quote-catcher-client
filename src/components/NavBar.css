@@ -3,20 +3,75 @@
 }
 
 .navigationBar {
-  background-color: #aaa;
-  text-align: center;
+  background-color: #5F88E8;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  padding: 2% 0;
+  z-index: 5;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: background-color .5s ease;
 }
 
 .navigationLinks {
-  display: inline-block;
-  padding: 0 2%;
+  overflow: hidden;
+  padding: 15px 30px;
+  font-size: 20px;
+  color: white;
+  transition: background-color .5s ease;
+  display: inline;
+}
+
+.navigationLogo {
+  float: left;
+  font-family: 'Julius Sans One', sans-serif;
 }
 
 .navigationLinkLogout {
-  font-size: .75em;
+  font-size: 20px;
+  color: white;
+  float: right;
+  background-color: transparent;
+  border: none;
+}
+
+.navLinksToBeCentered:active {
+  text-decoration: none;
+}
+
+.navLinksToBeCentered {
+  text-align: center;
+}
+
+.navHomeLink {
+  padding-top: 10px;
+}
+
+a {
+  color: white;
+}
+
+/*.navigationLinkLogout:hover {
+  background: rgb(204, 224, 255);
+}
+
+button:hover {
+  background: rgb(204, 224, 255);
+
+}*/
+
+
+
+.fa-2x {
+  font-size: 1.5em;
+}
+
+.navigationLinks a {
+  color: white;
+  transition: background-color .5s ease;
+}
+
+.navigationLinks a:hover {
+  text-decoration: none;
+  color: rgb(204, 224, 255);
 }
