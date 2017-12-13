@@ -24,9 +24,6 @@ export class SearchResults extends React.Component {
   }
 
   handleThemeSubmit(value, quote) {
-    console.log("quote", quote)
-    console.log("inside themsubmnbit")
-    console.log("themesToAdd", value)
     //return this.props
     //.dispatch(addTheme(themesToAdd, quote._id))
   }
