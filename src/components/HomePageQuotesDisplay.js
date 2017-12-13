@@ -48,10 +48,12 @@ export class HomePageQuotesDisplay extends React.Component {
         themeCounter += 1
       });
       quote = <section className="quotesSection">
-          <h2 className="displayQuotesText"><span>"</span>{this.props.quotesToDisplay[this.props.quoteCounter % (this.props.quotesToDisplay.length)].quoteString}<span>"</span></h2>
-          <h4 className="displayQuotesAuthor"><span>- </span>{this.props.quotesToDisplay[this.props.quoteCounter % (this.props.quotesToDisplay.length)].author}</h4>
-          <div>
-            <h3>Theme(s): {themesToDisplay}</h3>
+          <div className="quotesWrapper elementToFadeInAndOut">
+            <h2 className="displayQuotesText"><span>&ldquo;</span>{this.props.quotesToDisplay[this.props.quoteCounter % (this.props.quotesToDisplay.length)].quoteString}<span>&rdquo;</span></h2>
+            <h4 className="displayQuotesAuthor"><span>- </span>{this.props.quotesToDisplay[this.props.quoteCounter % (this.props.quotesToDisplay.length)].author}</h4>
+            <div>
+              <h3>Theme(s): {themesToDisplay}</h3>
+            </div>
           </div>
         </section>
     }
@@ -59,7 +61,7 @@ export class HomePageQuotesDisplay extends React.Component {
       quote = <h1>Start By Adding Quotes!</h1>
     }
     return (
-      <div>
+      <div className="displayQuotesPage">
         <NavBar />
         {quote}
       </div>

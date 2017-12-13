@@ -11,6 +11,7 @@
   z-index: 5;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   transition: background-color .5s ease;
+  display: block;
 }
 
 .navigationLinks {
@@ -37,6 +38,14 @@
 
 .navLinksToBeCentered:active {
   text-decoration: none;
+}
+
+.navLinksToBeCentered:visited {
+  color: white;
+}
+
+.navigationLinks:visited {
+  color: white;
 }
 
 .navLinksToBeCentered {

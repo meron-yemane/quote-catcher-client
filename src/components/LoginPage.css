@@ -32,6 +32,10 @@ html {
   color: white;  
 }
 
+.logInAnchorTag:hover {
+  text-decoration-line: none;
+}
+
 .logoDescriptionLoginPage {
   text-align: center;
   font-family: 'Raleway', sans-serif;

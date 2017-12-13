@@ -1,5 +1,35 @@
+body, html {
+  height: 100%;
+}
+
+body {
+  background-color: rgb(204, 224, 255);
+}
+
 .quotesSection {
-  padding-top: 70pt;
+  padding-top: 110pt;
+  background-color: rgb(204, 224, 255);
+  height: 100%;
+  display: block;
+  text-align: center;
+}
+
+.displayQuotesPage {
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+  margin-bottom: 100%;
+  position: absolute;
+}
+
+.displayQuotesAuthor {
+  font-style: italic;
+  margin-bottom: 50px;
+}
+
+.quotesWrapper {
+  margin-left: 80px;
+  margin-right: 80px;
 }
 
 .homePageQuoteThemes {
@@ -7,16 +37,17 @@
 }
 
 .elementToFadeInAndOut {
-  animation: fadeinout 5s linear forwards infinite;
+  animation: fadeinout 15s ease forwards infinite;
 }
 
-/*@-webkit-keyframes fadeinout {
+@-webkit-keyframes fadeinout {
   0%,100% { opacity: 0; }
   50% { opacity: 1; }
-}*/
+}
 
 @keyframes fadeinout {
   0%,100% { opacity: 0; }
   50% { opacity: 1; }
 }
+
 

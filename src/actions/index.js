@@ -167,7 +167,7 @@ export const addTheme = (themes, quoteId) => (getState) => {
 
 let timer = null;
 export const start = () => (dispatch) => {
-  timer = setInterval(() => dispatch(timerTick()), 5000);
+  timer = setInterval(() => dispatch(timerTick()), 15000);
   dispatch(timerStart());
   dispatch(timerTick());
 };
