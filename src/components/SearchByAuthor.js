@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {reduxForm, Field, SubmissionError, focus, reset} from 'redux-form';
 import Input from './input';
+import InputQuoteSearch from './InputForAddQuoteAndSearch';
 import {API_BASE_URL} from '../config';
 import SearchResults from './SearchResults';
 import {addQuoteToSearchResults} from '../actions/index';
@@ -90,8 +91,7 @@ export class SearchByAuthor extends React.Component {
         <Field
           name="author"
           type="string"
-          component={Input}
-          label="Author"
+          component={InputQuoteSearch}
         />
       </form>
     )

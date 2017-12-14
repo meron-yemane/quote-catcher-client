@@ -9,7 +9,6 @@ export default class Input extends React.Component {
     if (this.props.meta.touched && this.props.meta.error) {
       error = <div className="form-error">{this.props.meta.error}</div>;
     }
-    console.log(error)
     let warning;
     if (this.props.meta.touched && this.props.meta.warning) {
       warning = (

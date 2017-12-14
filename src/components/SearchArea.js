@@ -23,7 +23,7 @@ export class SearchArea extends React.Component {
       <option key={index} value={theme}>{theme}</option>
     );
     return (
-      <div>
+      <div className="searchAreaBox">
         <SearchByAuthor />
         <SearchByTheme />
         <SearchByQuoteString />

@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-.searchAreaForm {
+/*.searchAreaForm {
   padding: 10%;
   background-color: #bbb;
   left: 0;
@@ -32,4 +32,9 @@
 
 .form-section {
   padding-bottom: 10px;
+}*/
+
+.searchAreaBox {
+  margin-left: 75px;
+  text-align: center;
 }
