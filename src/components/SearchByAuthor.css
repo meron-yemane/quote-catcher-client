@@ -1,0 +1,8 @@
+.searchAuthorForm {
+  display: inline-flex;
+}
+
+.searchAuthorLabel {
+  margin-top: 8px;
+  margin-right: 8px;
+}

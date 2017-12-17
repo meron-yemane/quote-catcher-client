@@ -80,11 +80,13 @@ export class SearchByQuoteString extends React.Component {
 
     return (
       <form 
+        className="quoteStringForm"
         onChange={this.props.handleSubmit(values => 
           this.onSubmit(values)
       )}>
       {successMessage}
       {errorMessage}
+        <label className="quoteStringLabel">Search Quote Passage</label>
         <Field 
           name="quoteString"
           type="text area"

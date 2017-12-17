@@ -1,0 +1,8 @@
+.quoteStringForm {
+  display: inline-flex;
+}
+
+.quoteStringLabel {
+  margin-top: 8px;
+  margin-right: 8px;
+}

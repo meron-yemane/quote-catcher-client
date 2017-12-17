@@ -27,7 +27,7 @@ export default class InputQuoteSearch extends React.Component {
           id={this.props.input.name}
           type={this.props.type}
           ref={input => (this.input = input)}
-          placeholder={"Search Theme"}
+          // placeholder={"Search Theme"}
         />
       </div>
     }
@@ -43,7 +43,7 @@ export default class InputQuoteSearch extends React.Component {
           id={this.props.input.name}
           type={this.props.type}
           ref={input => (this.input = input)}
-          placeholder={"Search Author"}
+          // placeholder={"Search Author"}
         />
       </div>
     }
@@ -59,7 +59,7 @@ export default class InputQuoteSearch extends React.Component {
           id={this.props.input.name}
           type={this.props.type}
           ref={input => (this.input = input)}
-          placeholder={"Search Quote Passage"}
+          // placeholder={"Search Quote Passage"}
         />
       </div>
     }

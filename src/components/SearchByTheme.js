@@ -88,18 +88,33 @@ export class SearchByTheme extends React.Component {
       )}>
       {successMessage}
       {errorMessage}
-        <Field 
-          name="theme"
-          type="string"
-          component={InputQuoteSearch}
-        />
-        {// <button 
-        //   className="submitThemesButton" 
-        //   type="submit"
-        //   disabled={this.props.pristine || this.props.submitting}>
-        //   Submit
-        // </button>
-        }
+        <label>Search Theme</label>
+          <Field 
+            name="theme"
+            component="select"
+            className="themeSearch"
+          >
+          <option />
+          <option>Relationships</option>
+          <option>Finances</option>
+          <option>Identity</option>
+          <option>Fear</option>
+          <option>Career</option>
+          <option>Motivation</option>
+          <option>Adventure</option>
+          <option>Spirituality</option>
+          <option>Loss</option>
+          <option>Failure</option>
+          <option>Happiness</option>
+          <option>Discipline</option>
+          {// <button 
+          //   className="submitThemesButton" 
+          //   type="submit"
+          //   disabled={this.props.pristine || this.props.submitting}>
+          //   Submit
+          // </button>
+          }
+          </Field>
       </form>
     ) 
   }
