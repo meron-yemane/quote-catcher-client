@@ -99,6 +99,7 @@ export class SearchResults extends React.Component {
                 data={addQuoteThemes}
               />
               <button 
+                className="searchSubmitButton"
                 type="submit" 
                 disabled={this.props.AddThemeId !== quote._id || this.props.pristine || this.props.submitting}
                 >

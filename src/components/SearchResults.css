@@ -1,5 +1,6 @@
 .addQuoteButton {
   display: block;
+  border-radius: 3px;
 }
 
 .selectBox {
@@ -25,4 +26,8 @@
 .addThemeAndDeleteBox {
   display: inline-block;
   width: 100%;
+}
+
+.searchSubmitButton {
+  border-radius: 3px;
 }

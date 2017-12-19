@@ -1,6 +1,6 @@
 import React from 'react';
 import {reduxForm, Field, SubmissionError, focus, reset} from 'redux-form';
-import Input from './input';
+import InputQuoteSearch from './InputForAddQuoteAndSearch';
 import {required, nonEmpty} from '../validators';
 import {API_BASE_URL} from '../config';
 import {addQuoteDisplay} from '../actions/index';
@@ -111,14 +111,14 @@ export class AddQuoteForm extends React.Component {
         <Field
           name="quoteString"
           type="textarea"
-          component={Input}
+          component={InputQuoteSearch}
           label="Quote"
           validate={[required, nonEmpty]}
         />
         <Field
           name="author"
           type="text"
-          component={Input}
+          component={InputQuoteSearch}
           label="Author"
         />
         <label>Pick 1 or more themes</label>
