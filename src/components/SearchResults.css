@@ -1,10 +1,8 @@
 .addQuoteButton {
-  float: right;
   display: block;
 }
 
 .selectBox {
-  float: right;
   width: 300px;
   display: block;
 }
@@ -13,4 +11,18 @@
   display: block;
   margin: 0 auto;
   width: 200px;
+}
+
+.searchResultsAuthor {
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
+.deleteButton {
+  float: right;
+}
+
+.addThemeAndDeleteBox {
+  display: inline-block;
+  width: 100%;
 }

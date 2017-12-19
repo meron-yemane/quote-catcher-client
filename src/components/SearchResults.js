@@ -79,15 +79,18 @@ export class SearchResults extends React.Component {
       }
       searchedQuotes.push( 
         <section key={quote._id} className="quote-expanded">
-          <h2 className="quoteText"><span>"</span>{quote.quoteString}<span>"</span></h2>
+          <h2 className="quoteText"><span>&ldquo;</span>{quote.quoteString}<span>&rdquo;</span></h2>
           <h4 className="searchResultsAuthor"><span>- </span>{quote.author}</h4>
-          <div>
+            <h3>Theme(s): {themesToDisplay}
+            </h3> 
             <div>
               <button onClick={() => this.handleAddThemeClick(quote)} className='addQuoteButton'>
                   <i className='fa fa-plus fa-fw' aria-hidden='true'></i> {'Theme'}
               </button>
-            </div> 
-             <form onSubmit={this.props.handleSubmit(values => {
+            </div>
+            <div className="addThemeAndDeleteBox">
+             <form className="addThemeForm" 
+             onSubmit={this.props.handleSubmit(values => {
                 this.handleThemeSubmit(values, quote)
               })}>
               <Field
@@ -102,23 +105,23 @@ export class SearchResults extends React.Component {
                 Submit
               </button>
              </form>
-            <h3>Theme(s): {themesToDisplay}
-            </h3>
-          </div>
           <div>
             {//<button onClick={() =>
               //this.handleDeleteClick(quote)}
               //>
             }
               <a onClick={() => 
-                this.handleDeleteClick(quote)} className="btn btn-danger" href="#">
+                this.handleDeleteClick(quote)} className=" deleteButton btn btn-danger" href="#">
                  <i className="fa fa-trash-o fa-lg"></i> Delete</a>
               {//<i className='fa fa-trash-o' aria-hidden='true'></i>
               }
             {//</button>
             }
           </div>
-          {quoteBreakImg}
+        </div>
+          <div>
+            {quoteBreakImg}
+          </div>
         </section>
       )
       });
