@@ -36,6 +36,7 @@ export class SearchResults extends React.Component {
     let themesToDisplay;
     let addQuoteThemes;
     let inputValue;
+    let quoteBreakImg;
     if (this.props.searchedQuotes.length > 0) {
       this.props.searchedQuotes.map((quote, index) => {
       themeCounter = 0;
@@ -71,6 +72,11 @@ export class SearchResults extends React.Component {
         }
         themeCounter += 1
       });
+      if (index === this.props.searchedQuotes.length - 1) {
+        quoteBreakImg = <div></div>
+      } else {
+        quoteBreakImg =  <img className="breakingImg" src={searchQuotesDivider} />
+      }
       searchedQuotes.push( 
         <section key={quote._id} className="quote-expanded">
           <h2 className="quoteText"><span>"</span>{quote.quoteString}<span>"</span></h2>
@@ -112,7 +118,7 @@ export class SearchResults extends React.Component {
             {//</button>
             }
           </div>
-          <img className="breakingImg" src={searchQuotesDivider} />
+          {quoteBreakImg}
         </section>
       )
       });
