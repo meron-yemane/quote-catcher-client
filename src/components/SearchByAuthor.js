@@ -87,8 +87,10 @@ export class SearchByAuthor extends React.Component {
         onSubmit={this.props.handleSubmit(values => 
           this.onSubmit(values)
       )}>
-      {successMessage}
-      {errorMessage}
+      {//successMessage
+      }
+      {///errorMessage
+      }
         <label className="searchAuthorLabel">Search Author</label>
         <Field
           name="author"

@@ -6,3 +6,8 @@
   margin-top: 8px;
   margin-right: 8px;
 }
+
+.searchAuthorForm:-webkit-autofill {
+    -webkit-box-shadow:0 0 0 50px white inset; /* Change the color to your own background color */
+    -webkit-text-fill-color: black;
+}

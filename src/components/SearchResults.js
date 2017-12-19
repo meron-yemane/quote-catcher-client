@@ -10,6 +10,7 @@ import {deleteQuoteFromSearchedQuotes} from '../actions/index';
 import {addTheme} from '../actions/index';
 import Multiselect from 'react-widgets/lib/Multiselect';
 import 'react-widgets/dist/css/react-widgets.css';
+import searchQuotesDivider from '../images/search-quotes-divider.png';
 
 let themes = ["Relationships", "Finances", "Identity", "Fear", "Career", "Motivation", "Adventure", "Spirituality", "Loss", "Failure", "Happiness", "Discipline"];
 export class SearchResults extends React.Component {
@@ -99,16 +100,24 @@ export class SearchResults extends React.Component {
             </h3>
           </div>
           <div>
-            <button onClick={() =>
-              this.handleDeleteClick(quote)}
-              ><i className='fa fa-trash-o' aria-hidden='true'></i>
-            </button>
+            {//<button onClick={() =>
+              //this.handleDeleteClick(quote)}
+              //>
+            }
+              <a onClick={() => 
+                this.handleDeleteClick(quote)} className="btn btn-danger" href="#">
+                 <i className="fa fa-trash-o fa-lg"></i> Delete</a>
+              {//<i className='fa fa-trash-o' aria-hidden='true'></i>
+              }
+            {//</button>
+            }
           </div>
+          <img className="breakingImg" src={searchQuotesDivider} />
         </section>
       )
       });
       return (
-        <div>
+        <div className="searchedQuotesBox">
           {searchedQuotes} 
         </div>
       );

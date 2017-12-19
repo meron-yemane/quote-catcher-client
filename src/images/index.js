@@ -1,0 +1,1 @@
+export searchQuotesDivider from './search-quotes-divider.png';

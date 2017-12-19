@@ -62,21 +62,21 @@ export class SearchByQuoteString extends React.Component {
   }
 
   render() {
-    let successMessage;
-    if (this.props.submitSucceeded) {
-      successMessage = (
-        <div className="searchByQuoteStringSuccessMessage">
-          Quotes successfully returned.
-        </div>
-      );
-    }
+     let successMessage;
+    // if (this.props.submitSucceeded) {
+    //   successMessage = (
+    //     <div className="searchByQuoteStringSuccessMessage">
+    //       Quotes successfully returned.
+    //     </div>
+    //   );
+    // }
 
-    let errorMessage;
-    if (this.props.error) {
-      errorMessage = (
-        <div className='searchByQuoteStringAuthorErrorMessage'>{this.props.error}</div>
-      );
-    }
+     let errorMessage;
+    // if (this.props.error) {
+    //   errorMessage = (
+    //     <div className='searchByQuoteStringAuthorErrorMessage'>{this.props.error}</div>
+    //   );
+    // }
 
     return (
       <form 
@@ -84,8 +84,10 @@ export class SearchByQuoteString extends React.Component {
         onChange={this.props.handleSubmit(values => 
           this.onSubmit(values)
       )}>
-      {successMessage}
-      {errorMessage}
+      {//successMessage
+      }
+      {//errorMessage
+      }
         <label className="quoteStringLabel">Search Quote Passage</label>
         <Field 
           name="quoteString"

@@ -83,8 +83,10 @@ export class SearchByTheme extends React.Component {
 
     return (
       <form 
+        className="themeSearchForm"
         onSubmit={this.props.handleSubmit(values => 
           this.onSubmit(values)
+
       )}>
       {successMessage}
       {errorMessage}
