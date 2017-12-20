@@ -1,6 +1,6 @@
 import React from 'react';
 import {reduxForm, Field, SubmissionError, focus, reset} from 'redux-form';
-import InputQuoteSearch from './InputForAddQuoteAndSearch';
+import InputAddQuote from './InputForAddQuote';
 import {required, nonEmpty} from '../validators';
 import {API_BASE_URL} from '../config';
 import {addQuoteDisplay} from '../actions/index';
@@ -102,42 +102,48 @@ export class AddQuoteForm extends React.Component {
 
     const themeList = ["Relationships", "Finances", "Identity", "Fear", "Career", "Motivation", "Adventure", "Spirituality", "Loss", "Failure", "Happiness", "Discipline"];
     return (
-      <form 
-        onSubmit={this.props.handleSubmit(values => 
-          this.onSubmit(values)
-        )}> 
-        {successMessage}
-        {errorMessage}
-        <Field
-          className="addQuoteTextArea"
-          name="quoteString"
-          type="textarea"
-          component="textarea"
-          label="Quote"
-          validate={[required, nonEmpty]}
-        />
-        <Field
-          name="author"
-          type="text"
-          component={InputQuoteSearch}
-          label="Author"
-        />
-        <label>Pick 1 or more themes</label>
-        <Field 
-          name="theme" 
-          component={renderMultiselect}           
-          data={themeList}         
-        />
-        <button 
-          type="submit"
-          disabled={this.props.pristine || this.props.submitting}>
-          Submit
-        </button>
-        <button
-          type="reset">
-          Reset
-        </button>
-      </form>
+      <div className="addQuoteFormContainer">
+        <form 
+          onSubmit={this.props.handleSubmit(values => 
+            this.onSubmit(values)
+          )}> 
+          {successMessage}
+          {errorMessage}
+          <Field
+            className="addQuoteTextArea"
+            name="quoteString"
+            type="textarea"
+            component="textarea"
+            label="Quote"
+            validate={[required, nonEmpty]}
+          />
+          <div className="addQuoteNonRequiredSection">
+            <Field
+              className="addQuoteAuthorArea"
+              name="author"
+              type="text"
+              component={InputAddQuote}
+            />
+            <label className="addQuoteThemeLabel">Pick 1 or more themes</label>
+            <Field
+              className="addQuoteThemeArea" 
+              name="theme" 
+              component={renderMultiselect}           
+              data={themeList}         
+            />
+            <button
+              className="addQuoteSubmitButton" 
+              type="submit"
+              disabled={this.props.pristine || this.props.submitting}>
+              Submit
+            </button>
+            <button
+              type="reset">
+              Reset
+            </button>
+          </div>
+        </form>
+       </div> 
     );
   }
 }

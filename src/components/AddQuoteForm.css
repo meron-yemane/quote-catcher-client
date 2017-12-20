@@ -36,17 +36,47 @@
   margin-right: 5%;
 }
 
+.addQuoteAuthorArea {
+  margin-bottom: 150px;
+}
+
+.form-input {
+/*  margin-bottom: 150px;
+*/  margin-left: 50px;
+}
+
+.addQuoteTextArea, .addQuoteNonRequiredSection {
+  display: inline-block;
+}
+
+.addQuoteThemeLabel {
+  margin-left: 50px;
+}
+
 .addQuoteButtons {
   padding-top: 5%;
 }
 
 .themeList {
-  width: 200px;
+  width: 320px;
+  margin-bottom: 150px;
+  margin-left: 50px;
+}
+
+.addQuoteFormContainer {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.addQuoteThemeArea {
+  width: 320px;
 }
 
 .addQuoteTextArea {
   width: 500px;
   height: 300px;
+  margin-left: 25px;
   resize: none;
   font-size: 20px;
+  border-radius: 2px;
 }
