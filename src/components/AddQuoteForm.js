@@ -109,9 +109,10 @@ export class AddQuoteForm extends React.Component {
         {successMessage}
         {errorMessage}
         <Field
+          className="addQuoteTextArea"
           name="quoteString"
           type="textarea"
-          component={InputQuoteSearch}
+          component="textarea"
           label="Quote"
           validate={[required, nonEmpty]}
         />
