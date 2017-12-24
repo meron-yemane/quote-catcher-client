@@ -16,8 +16,8 @@ export class AddQuoteDisplay extends React.Component {
         themeCounter += 1
       });
       return (
-        <section>
-          <h2 className="quoteText"><span>"</span>{this.props.addQuoteDisplay.quoteString}<span>"</span></h2>
+        <section className="addQuoteSuccessSection">
+          <h2 className="quoteText"><span>&ldquo;</span>{this.props.addQuoteDisplay.quoteString}<span>&rdquo;</span></h2>
           <h4 className="searchResultsAuthor"><span>- </span>{this.props.addQuoteDisplay.author}</h4>
           <div>
             <h3>Theme(s): {themesToDisplay}</h3>

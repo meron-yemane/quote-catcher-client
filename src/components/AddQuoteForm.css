@@ -38,29 +38,98 @@
 
 .addQuoteAuthorArea {
   margin-bottom: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 .form-input {
-/*  margin-bottom: 150px;
-*/  margin-left: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.addQuoteButtons {
+  display: block;
+  margin-bottom: 100px;
+}
+
+.addQuoteMessageSuccess, .addQuoteMessageError {
+  text-align: center;
+}
+
+.addQuoteSubmitButton {
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  background-color: #5F88E8;
+  color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 2px;
+}
+
+.addQuoteSubmitButton:hover {
+  background: #4062BB;
+}
+
+.addQuoteResetButton {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.addQuoteResetButton, .addQuoteSubmitButton {
+  display: block;
+}
+
+.addQuoteResetButton {
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #ff7aa4;
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.addQuoteResetButton:hover {
+  color: red;
+}
+
+.addQuoteResetButton:focus {
+  outline: 0;
 }
 
 .addQuoteTextArea, .addQuoteNonRequiredSection {
   display: inline-block;
 }
 
-.addQuoteThemeLabel {
-  margin-left: 50px;
+.inputForCheck {
+/*  margin-right: auto !important;
+  margin-left: auto !important;*/
 }
 
-.addQuoteButtons {
-  padding-top: 5%;
+.addQuoteNonRequiredSection {
+  width: 320px;
+  margin-left: 50px;
+  height: 300px;
+}
+
+.addQuoteThemeLabel {
+}
+
+.addQuoteForm {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.addQuoteNonRequiredSection {
+  overflow-y: hidden; 
+  overflow-x: hidden;
 }
 
 .themeList {
   width: 320px;
-  margin-bottom: 150px;
-  margin-left: 50px;
+  margin-bottom: 50px;
 }
 
 .addQuoteFormContainer {
@@ -70,6 +139,7 @@
 
 .addQuoteThemeArea {
   width: 320px;
+  display: block;
 }
 
 .addQuoteTextArea {

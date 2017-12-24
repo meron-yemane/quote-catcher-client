@@ -32,13 +32,14 @@ export default class InputAddQuote extends React.Component {
       </div>
     }
     if (this.props.input.name === "author") {
-      input = <div className="form-input">
+      input = <div className="theme-input">
         <label htmlFor={this.props.input.name}>
           {this.props.label}
           {error}
           {warning}
         </label>
         <Element
+          className="inputForCheck"
           {...this.props.input}
           id={this.props.input.name}
           type={this.props.type}

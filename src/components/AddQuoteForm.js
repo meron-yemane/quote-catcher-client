@@ -21,6 +21,10 @@ export class AddQuoteForm extends React.Component {
   //   } 
   // }
 
+  resetAddQuote() {
+    this.props.dispatch(reset('addQuote'))
+  }
+
   onSubmit(values) {
     return fetch(`${API_BASE_URL}/api/quotes/create`, {
       method: 'POST',
@@ -87,7 +91,7 @@ export class AddQuoteForm extends React.Component {
     let successMessage;
     if (this.props.submitSucceeded) {
       successMessage = (
-        <div className="adddQuoteMessageSuccess">
+        <div className="addQuoteMessageSuccess">
           Quote created successfully
         </div>
       );
@@ -103,12 +107,10 @@ export class AddQuoteForm extends React.Component {
     const themeList = ["Relationships", "Finances", "Identity", "Fear", "Career", "Motivation", "Adventure", "Spirituality", "Loss", "Failure", "Happiness", "Discipline"];
     return (
       <div className="addQuoteFormContainer">
-        <form 
+        <form className="addQuoteForm"
           onSubmit={this.props.handleSubmit(values => 
             this.onSubmit(values)
           )}> 
-          {successMessage}
-          {errorMessage}
           <Field
             className="addQuoteTextArea"
             name="quoteString"
@@ -131,16 +133,22 @@ export class AddQuoteForm extends React.Component {
               component={renderMultiselect}           
               data={themeList}         
             />
-            <button
-              className="addQuoteSubmitButton" 
-              type="submit"
-              disabled={this.props.pristine || this.props.submitting}>
-              Submit
-            </button>
-            <button
-              type="reset">
-              Reset
-            </button>
+            <div className="addQuoteButtons">
+              {successMessage}
+              {errorMessage}
+              <button
+                className="addQuoteSubmitButton" 
+                type="submit"
+                disabled={this.props.pristine || this.props.submitting}>
+                Submit
+              </button>
+              <button
+                onClick={() => this.resetAddQuote()}
+                className="addQuoteResetButton"
+                type="reset">
+                Reset
+              </button>
+            </div>
           </div>
         </form>
        </div> 
