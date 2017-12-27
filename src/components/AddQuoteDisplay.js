@@ -5,16 +5,23 @@ import './AddQuoteDisplay.css';
 export class AddQuoteDisplay extends React.Component {
   render() { 
     if (this.props.addQuoteDisplay.length !== 0) {
+      console.log("inside addQuoteDisplay")
+      console.log(this.props.addQuoteDisplay.theme)
       let themeCounter = 0; 
-      let themesToDisplay = [];
-      const themes = this.props.addQuoteDisplay.theme.map((theme, index) => {
-        if (themeCounter + 1 === this.props.addQuoteDisplay.theme.length) {
-          themesToDisplay.push(<h3 key={index} className="addQuoteDisplayThemes">{theme}</h3>)
-        } else {
-          themesToDisplay.push(<h3 key={index} className="addQuoteDisplayThemes">{theme}<span>,&nbsp;</span></h3>)
-        }
-        themeCounter += 1
-      });
+      let themesToDisplay;
+      if (this.props.addQuoteDisplay.theme === undefined) {
+          themesToDisplay = "None";
+      } else {
+        themesToDisplay = [];
+        const themes = this.props.addQuoteDisplay.theme.map((theme, index) => {
+          if (themeCounter + 1 === this.props.addQuoteDisplay.theme.length) {
+            themesToDisplay.push(<h3 key={index} className="addQuoteDisplayThemes">{theme}</h3>)
+          } else {
+            themesToDisplay.push(<h3 key={index} className="addQuoteDisplayThemes">{theme}<span>,&nbsp;</span></h3>)
+          }
+          themeCounter += 1
+        });
+      }
       return (
         <section className="addQuoteSuccessSection">
           <h2 className="quoteText"><span>&ldquo;</span>{this.props.addQuoteDisplay.quoteString}<span>&rdquo;</span></h2>

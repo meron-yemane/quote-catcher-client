@@ -11,3 +11,10 @@
     -webkit-box-shadow:0 0 0 50px white inset; /* Change the color to your own background color */
     -webkit-text-fill-color: black;
 }
+
+.submitAuthorButton {
+  background-color: rgb(204, 224, 255);
+  height: 33px;
+  margin-right: 8px;
+  border-radius: 4px;
+}

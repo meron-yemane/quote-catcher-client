@@ -8,3 +8,8 @@
 .themeSearchForm {
   margin-bottom: 50px;
 }
+
+.submitThemesButton {
+  background-color: rgb(204, 224, 255);
+  height: 33px;
+}

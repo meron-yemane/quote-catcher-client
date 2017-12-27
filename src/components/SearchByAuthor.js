@@ -91,7 +91,14 @@ export class SearchByAuthor extends React.Component {
       }
       {///errorMessage
       }
-        <label className="searchAuthorLabel">Search Author</label>
+        <button 
+          className="submitAuthorButton" 
+          type="submit"
+          disabled={this.props.pristine || this.props.submitting}>
+          Search Author
+        </button>
+        {//<label className="searchAuthorLabel">Search Author</label>
+        }
         <Field
           name="author"
           type="string"

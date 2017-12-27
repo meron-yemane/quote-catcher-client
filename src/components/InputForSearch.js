@@ -55,11 +55,12 @@ export default class InputQuoteSearch extends React.Component {
           {warning}
         </label>
         <Element
+          className="quoteStringSearchInput"
           {...this.props.input}
           id={this.props.input.name}
           type={this.props.type}
           ref={input => (this.input = input)}
-          // placeholder={"Search Quote Passage"}
+          placeholder={"Begin Typing Here..."}
         />
       </div>
     }

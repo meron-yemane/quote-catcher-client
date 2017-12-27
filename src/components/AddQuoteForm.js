@@ -125,6 +125,7 @@ export class AddQuoteForm extends React.Component {
               name="author"
               type="text"
               component={InputAddQuote}
+              max="20"
             />
             <label className="addQuoteThemeLabel">Pick 1 or more themes</label>
             <Field

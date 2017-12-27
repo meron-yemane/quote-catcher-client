@@ -88,7 +88,7 @@ export class SearchByQuoteString extends React.Component {
       }
       {//errorMessage
       }
-        <label className="quoteStringLabel">Search Quote Passage</label>
+        <label className="quoteStringLabel">Search Quote Passage</label>        
         <Field 
           name="quoteString"
           type="text area"
