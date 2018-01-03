@@ -1,4 +1,4 @@
-.addQuoteButton {
+.addThemeButton {
   display: block;
   border-radius: 3px;
 }
@@ -26,6 +26,10 @@
 .addThemeAndDeleteBox {
   display: inline-block;
   width: 100%;
+}
+
+.addThemeButton:focus {
+  outline: 0;
 }
 
 .searchSubmitButton {

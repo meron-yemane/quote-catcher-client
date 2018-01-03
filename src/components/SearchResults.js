@@ -20,13 +20,15 @@ export class SearchResults extends React.Component {
   }
 
   handleAddThemeClick(quote) {
-    this.props
+    return this.props
     .dispatch(updateThemeToAddBoxId(quote._id))
   }
 
   handleThemeSubmit(value, quote) {
-    //return this.props
-    //.dispatch(addTheme(themesToAdd, quote._id))
+    console.log("Values to be submitted", value)
+    console.log("quote.id", quote._id)
+    return this.props
+    .dispatch(addTheme(value.themesToAdd, quote._id))
   }
 
   render() {
@@ -38,13 +40,14 @@ export class SearchResults extends React.Component {
     let inputValue;
     let quoteBreakImg;
     if (this.props.searchedQuotes.length > 0) {
+      console.log(this.props.searchedQuotes)
       this.props.searchedQuotes.map((quote, index) => {
       themeCounter = 0;
       themesToDisplay = [];
       addQuoteThemes = [];
-      const renderMultiselect = ({input, data}) => {        
+      const renderMultiselect = ({input, data}) => {
         if (this.props.AddThemeId === quote._id) {
-          inputValue = this.props.value
+          inputValue = input.value
         } else {
           inputValue = []
         }
@@ -61,6 +64,7 @@ export class SearchResults extends React.Component {
           />
         )
       }
+      console.log("quote", quote)
       addQuoteThemes = themes.filter(theme => {
         return !(quote.theme.includes(theme))
       });
@@ -84,7 +88,7 @@ export class SearchResults extends React.Component {
             <h3>Theme(s): {themesToDisplay}
             </h3> 
             <div>
-              <button onClick={() => this.handleAddThemeClick(quote)} className='addQuoteButton'>
+              <button onClick={() => this.handleAddThemeClick(quote)} className='addThemeButton'>
                   <i className='fa fa-plus fa-fw' aria-hidden='true'></i> {'Theme'}
               </button>
             </div>

@@ -153,17 +153,24 @@ export const fetchQuotes = () => (dispatch) => {
    .catch(error => dispatch(requestQuotesForHomepageError(error)));
 };
 
-export const addTheme = (themes, quoteId) => (getState) => {
-  const authToken = getState().quoteCatcherReducer.authToken;
+export const addTheme = (themes, quoteId) => (dispatch, getState) => {
+  const authToken = localStorage.getItem('authToken');
   return fetch(`${API_BASE_URL}/api/quotes/addtheme/${quoteId}`, {
     method: 'POST',
-    body: JSON.stringify(themes),
+    body: JSON.stringify({
+      _id: quoteId,
+      theme: themes
+    }),
     headers: {
-      Authorization: `Bearer ${authToken}`
+      'Authorization': `Bearer ${authToken}`,
+      'Content-Type': 'application/json'
     }
   })
   .then(res => normalizeResponseErrors(res))
-}
+  .then(() => {
+    dispatch(updateThemeForSearchQuotes(themes, quoteId))
+  })
+};
 
 let timer = null;
 export const start = () => (dispatch) => {
@@ -171,6 +178,13 @@ export const start = () => (dispatch) => {
   dispatch(timerStart());
   dispatch(timerTick());
 };
+
+export const UPDATE_THEME_FOR_SEARCHED_QUOTES = 'UPDATE_THEME_FOR_SEARCHED_QUOTES';
+export const updateThemeForSearchQuotes = (themes, quoteId) => ({
+  type: UPDATE_THEME_FOR_SEARCHED_QUOTES,
+  quoteId: quoteId,
+  themes: themes
+});
 
 export const UPDATE_THEME_TO_ADD_BOX_ID = 'UPDATE_THEME_TO_ADD_BOX_ID';
 export const updateThemeToAddBoxId = quoteId => ({

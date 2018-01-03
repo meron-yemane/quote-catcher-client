@@ -5,8 +5,6 @@ import './AddQuoteDisplay.css';
 export class AddQuoteDisplay extends React.Component {
   render() { 
     if (this.props.addQuoteDisplay.length !== 0) {
-      console.log("inside addQuoteDisplay")
-      console.log(this.props.addQuoteDisplay.theme)
       let themeCounter = 0; 
       let themesToDisplay;
       if (this.props.addQuoteDisplay.theme === undefined) {
