@@ -32,15 +32,12 @@ export const quoteCatcherReducer = (state=initialState, action) => {
   }
 
   if (action.type === actions.UPDATE_THEME_FOR_SEARCHED_QUOTES) {
-    console.log("searched QUOTE THEMES", state.searchedQuotes[state.searchedQuotes.findIndex(quote => quote._id === action.quoteId)])
-    console.log("searched Quotes", state.searchedQuotes)
     return {
       ...state,
       searchedQuotes: state.searchedQuotes.map(
         quote => quote._id === action.quoteId ? {...quote, theme: quote.theme.concat(action.themes)}
                                               : quote
       )
-      //searchedQuotes: state.searchedQuotes[state.searchedQuotes.findIndex(quote => quote._id === action.quoteId)].theme = action.themes
     }
   }
 

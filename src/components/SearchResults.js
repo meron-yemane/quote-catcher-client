@@ -25,10 +25,11 @@ export class SearchResults extends React.Component {
   }
 
   handleThemeSubmit(value, quote) {
-    console.log("Values to be submitted", value)
-    console.log("quote.id", quote._id)
     return this.props
     .dispatch(addTheme(value.themesToAdd, quote._id))
+    .then(() => {
+      return this.props.dispatch(reset('searchResults'))
+    })
   }
 
   render() {
@@ -40,7 +41,6 @@ export class SearchResults extends React.Component {
     let inputValue;
     let quoteBreakImg;
     if (this.props.searchedQuotes.length > 0) {
-      console.log(this.props.searchedQuotes)
       this.props.searchedQuotes.map((quote, index) => {
       themeCounter = 0;
       themesToDisplay = [];
@@ -64,7 +64,6 @@ export class SearchResults extends React.Component {
           />
         )
       }
-      console.log("quote", quote)
       addQuoteThemes = themes.filter(theme => {
         return !(quote.theme.includes(theme))
       });
