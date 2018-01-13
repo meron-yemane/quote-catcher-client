@@ -12,7 +12,8 @@ const initialState = {
   data: '',
   isFetching: false,
   isOpen: false,
-  quoteCounter: 0
+  quoteCounter: 0,
+  fadeInOrOut: "fadeOut",
 };
 
 export const quoteCatcherReducer = (state=initialState, action) => {
@@ -28,6 +29,20 @@ export const quoteCatcherReducer = (state=initialState, action) => {
       ...state,
       quotesToDisplayAddThemeId: action.quoteId,
       isOpen: true
+    }
+  }
+
+  if (action.type === actions.FADE_IN_OR_OUT) {
+    return {
+      ...state,
+      fadeInOrOut: action.currTrans
+    }
+  }
+
+  if (action.type === actions.NEXT_QUOTE_TO_BE_DISPLAYED) {
+    return {
+      ...state,
+      quoteCounter: state.quoteCounter + 1
     }
   }
 

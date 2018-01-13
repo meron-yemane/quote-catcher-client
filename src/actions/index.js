@@ -172,12 +172,28 @@ export const addTheme = (themes, quoteId) => (dispatch, getState) => {
   })
 };
 
-let timer = null;
-export const start = () => (dispatch) => {
-  timer = setInterval(() => dispatch(timerTick()), 15000);
-  dispatch(timerStart());
-  dispatch(timerTick());
+export const nextQuoteToBeDisplayedAndFadeIn = (dispatch) => (dispatch) => {
+  dispatch(nextQuoteToBeDisplayed())
+  setTimeout(() => dispatch(fadeInOrOut("fadeIn")), 100)
 };
+
+// let timer = null;
+// export const start = () => (dispatch) => {
+//   timer = setInterval(() => dispatch(timerTick()), 15000);
+//   dispatch(timerStart());
+//   dispatch(timerTick());
+// };
+
+export const FADE_IN_OR_OUT = 'FADE_IN_OR_OUT';
+export const fadeInOrOut = (currTrans) => ({
+  type: FADE_IN_OR_OUT,
+  currTrans
+});
+
+export const NEXT_QUOTE_TO_BE_DISPLAYED = 'NEXT_QUOTE_TO_BE_DISPLAYED';
+export const nextQuoteToBeDisplayed = () => ({
+  type: NEXT_QUOTE_TO_BE_DISPLAYED,
+});
 
 export const UPDATE_THEME_FOR_SEARCHED_QUOTES = 'UPDATE_THEME_FOR_SEARCHED_QUOTES';
 export const updateThemeForSearchQuotes = (themes, quoteId) => ({

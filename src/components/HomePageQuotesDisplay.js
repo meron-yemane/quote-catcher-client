@@ -6,11 +6,25 @@ import './HomePageQuotesDisplay.css';
 import NavBar from './NavBar';
 import store from '../store';
 import {fetchQuotes} from '../actions/index';
-import {start} from '../actions/index';
+// import {start} from '../actions/index';
 import {loadAuthToken} from '../local-storage';
+// import {nextQuoteToBeDisplayed} from '../actions/index';
+import {nextQuoteToBeDisplayedAndFadeIn} from '../actions/index';
+import {fadeInOrOut} from '../actions/index';
 
 
 export class HomePageQuotesDisplay extends React.Component {
+  handleTransitionEnd() {
+    console.log("onTransitionEnd working")
+    if (this.props.fadeInOrOut === "fadeIn") {
+      this.props.dispatch(fadeInOrOut("fadeOut"))
+    }
+    else if (this.props.fadeInOrOut === "fadeOut") {
+      this.props.dispatch(nextQuoteToBeDisplayedAndFadeIn())
+    }
+  }
+
+
 
   componentDidMount() {
     const authToken = loadAuthToken();
@@ -19,11 +33,14 @@ export class HomePageQuotesDisplay extends React.Component {
         type: 'SET_AUTH_TOKEN',
         authToken
       })
-      this.props.dispatch(fetchQuotes());
+      this.props.dispatch(fetchQuotes())
+      .then(() => {
+        setTimeout(() => this.props.dispatch(fadeInOrOut("fadeIn")), 2000)
+      })
     }
-    if (this.props.quoteCounter === 0) {
-      this.props.dispatch(start());
-    }
+    // if (this.props.quoteCounter === 0) {
+    //   this.props.dispatch(start());
+    // }
     if (!this.props.loggedIn) {
       return;
     }
@@ -39,16 +56,19 @@ export class HomePageQuotesDisplay extends React.Component {
     let themeCounter = 0;
     let themesToDisplay = [];
     if (this.props.quotesToDisplay.length > 0) {
+      console.log("Entered HomePageQuotesDisplay")
       const themes = this.props.quotesToDisplay[this.props.quoteCounter % (this.props.quotesToDisplay.length)].theme.map((theme, index) => {
         if (themeCounter + 1 === this.props.quotesToDisplay[this.props.quoteCounter % (this.props.quotesToDisplay.length)].theme.length) {
-          themesToDisplay.push(<h3 key={index} className="homePageQuoteThemes">{theme}</h3>)
+          themesToDisplay.push(<h3 className="homePageQuoteThemes">{theme}</h3>)
         } else {
-          themesToDisplay.push(<h3 key={index} className="homePageQuoteThemes">{theme}<span>,&nbsp;</span></h3>)
+          themesToDisplay.push(<h3 className="homePageQuoteThemes">{theme}<span>,&nbsp;</span></h3>)
         }
         themeCounter += 1
       });
       quote = <section className="quotesSection">
-          <div className="quotesWrapper elementToFadeInAndOut">
+          {//<div className="quotesWrapper elementFadeInAndOut" onTransitionEnd={() =>  this.handleTransitionEnd()}>
+          }
+          <div className={this.props.fadeInOrOut} onTransitionEnd={() =>  this.handleTransitionEnd()}>
             <h2 className="displayQuotesText"><span>&ldquo;</span>{this.props.quotesToDisplay[this.props.quoteCounter % (this.props.quotesToDisplay.length)].quoteString}<span>&rdquo;</span></h2>
             <h4 className="displayQuotesAuthor"><span>- </span>{this.props.quotesToDisplay[this.props.quoteCounter % (this.props.quotesToDisplay.length)].author}</h4>
             <div>
@@ -69,7 +89,8 @@ export class HomePageQuotesDisplay extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ 
+const mapStateToProps = state => ({
+  fadeInOrOut: state.quoteCatcherReducer.fadeInOrOut, 
   quoteCounter: state.quoteCatcherReducer.quoteCounter,
   loggedIn: state.quoteCatcherReducer.authToken,
   quotesToDisplay: state.quoteCatcherReducer.quotesToDisplay
