@@ -17,7 +17,6 @@ body {
 .displayQuotesPage {
   height: 100%;
   width: 100%;
-  margin-bottom: 100%;
   position: absolute;
 }
 
@@ -46,33 +45,4 @@ body {
   opacity: 0;
   transition: visibility 0s 7s, opacity 7s linear;
 }
-
-
-/*.elementToFadeInAndOut {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s 2s, opacity 2s linear;
-  -webkit-transition: opacity 1s ease-in-out;
-  -moz-transition: opacity 1s ease-in-out;
-  -ms-transition: opacity 1s ease-in-out;
-  -o-transition: opacity 1s ease-in-out;
-  transition: opacity 1s ease-in-out;
-  opacity: 1;
-  /*animation: fadeinout 5s ease forwards infinite;*/
-/*}
-
-.elementToFadeInAndOut:hover {
-    opacity: 0.5;
-}
-
-@-webkit-keyframes fadeinout {
-  0%,100% { opacity: 0; }
-  50% { opacity: 1; }
-}
-
-@keyframes fadeinout {
-  0%,100% { opacity: 0; }
-  50% { opacity: 1; }
-}*/
-
 
