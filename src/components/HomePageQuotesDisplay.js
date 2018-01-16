@@ -6,7 +6,6 @@ import './HomePageQuotesDisplay.css';
 import NavBar from './NavBar';
 import store from '../store';
 import {fetchQuotes} from '../actions/index';
-// import {start} from '../actions/index';
 import {loadAuthToken} from '../local-storage';
 // import {nextQuoteToBeDisplayed} from '../actions/index';
 import {nextQuoteToBeDisplayedAndFadeIn} from '../actions/index';
@@ -20,6 +19,7 @@ export class HomePageQuotesDisplay extends React.Component {
       this.props.dispatch(fadeInOrOut("fadeOut"))
     }
     else if (this.props.fadeInOrOut === "fadeOut") {
+      console.log("===fadeOut")
       this.props.dispatch(nextQuoteToBeDisplayedAndFadeIn())
     }
   }
@@ -27,6 +27,7 @@ export class HomePageQuotesDisplay extends React.Component {
 
 
   componentDidMount() {
+    console.log("did mount")
     const authToken = loadAuthToken();
     if (authToken) {
       this.props.dispatch({
@@ -35,6 +36,7 @@ export class HomePageQuotesDisplay extends React.Component {
       })
       this.props.dispatch(fetchQuotes())
       .then(() => {
+        this.props.dispatch(fadeInOrOut("fadeOut"))
         setTimeout(() => this.props.dispatch(fadeInOrOut("fadeIn")), 2000)
       })
     }
@@ -52,6 +54,7 @@ export class HomePageQuotesDisplay extends React.Component {
     if (!loadAuthToken()) {
        return <Redirect to="/login" />;
     }
+    console.log(this.props.quoteCounter, this.props.quotesToDisplay[this.props.quoteCounter % (this.props.quotesToDisplay.length)])
     let quote;
     let themeCounter = 0;
     let themesToDisplay = [];
@@ -66,8 +69,6 @@ export class HomePageQuotesDisplay extends React.Component {
         themeCounter += 1
       });
       quote = <section className="quotesSection">
-          {//<div className="quotesWrapper elementFadeInAndOut" onTransitionEnd={() =>  this.handleTransitionEnd()}>
-          }
           <div className={this.props.fadeInOrOut} onTransitionEnd={() =>  this.handleTransitionEnd()}>
             <h2 className="displayQuotesText"><span>&ldquo;</span>{this.props.quotesToDisplay[this.props.quoteCounter % (this.props.quotesToDisplay.length)].quoteString}<span>&rdquo;</span></h2>
             <h4 className="displayQuotesAuthor"><span>- </span>{this.props.quotesToDisplay[this.props.quoteCounter % (this.props.quotesToDisplay.length)].author}</h4>

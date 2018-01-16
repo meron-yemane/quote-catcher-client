@@ -173,6 +173,7 @@ export const addTheme = (themes, quoteId) => (dispatch, getState) => {
 };
 
 export const nextQuoteToBeDisplayedAndFadeIn = (dispatch) => (dispatch) => {
+  console.log("NEXT QUOTE")
   dispatch(nextQuoteToBeDisplayed())
   setTimeout(() => dispatch(fadeInOrOut("fadeIn")), 100)
 };
