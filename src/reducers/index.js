@@ -66,8 +66,7 @@ export const quoteCatcherReducer = (state=initialState, action) => {
     return {
       ...state,
       searchedQuotes: state.searchedQuotes.map(
-        quote => quote._id === action.quoteId ? {...quote, theme: quote.theme.concat(action.themes)}
-                                              : quote
+        quote => quote._id === action.quoteId ? (quote.theme.includes("None") ? {...quote, theme: [action.themes]} : {...quote, theme: quote.theme.concat(action.themes)}) : quote
       )
     }
   }
