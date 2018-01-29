@@ -23,6 +23,10 @@
   float: right;
 }
 
+.deleteBox {
+  padding-bottom: 60px
+}
+
 .addThemeAndDeleteBox {
   display: inline-block;
   width: 100%;
@@ -34,4 +38,15 @@
 
 .searchSubmitButton {
   border-radius: 3px;
+  margin-left: 5px;
+}
+
+.individualAddThemeForms {
+  width: 150px;
+  height: 25px;
+}
+
+.addThemeLabel {
+  margin-bottom: 0px;
+  margin-left: 3px;
 }

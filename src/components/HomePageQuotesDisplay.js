@@ -14,20 +14,20 @@ import {fadeInOrOut} from '../actions/index';
 
 export class HomePageQuotesDisplay extends React.Component {
   handleTransitionEnd() {
-    console.log("onTransitionEnd working")
     if (this.props.fadeInOrOut === "fadeIn") {
       this.props.dispatch(fadeInOrOut("fadeOut"))
     }
     else if (this.props.fadeInOrOut === "fadeOut") {
-      console.log("===fadeOut")
       this.props.dispatch(nextQuoteToBeDisplayedAndFadeIn())
+      .then(() => {
+        this.props.dispatch(fadeInOrOut("fadeIn"))
+      })
     }
   }
 
 
 
   componentDidMount() {
-    console.log("did mount")
     const authToken = loadAuthToken();
     if (authToken) {
       this.props.dispatch({
@@ -54,12 +54,10 @@ export class HomePageQuotesDisplay extends React.Component {
     if (!loadAuthToken()) {
        return <Redirect to="/login" />;
     }
-    console.log(this.props.quoteCounter, this.props.quotesToDisplay[this.props.quoteCounter % (this.props.quotesToDisplay.length)])
     let quote;
     let themeCounter = 0;
     let themesToDisplay = [];
     if (this.props.quotesToDisplay.length > 0) {
-      console.log("Entered HomePageQuotesDisplay")
       const themes = this.props.quotesToDisplay[this.props.quoteCounter % (this.props.quotesToDisplay.length)].theme.map((theme, index) => {
         if (themeCounter + 1 === this.props.quotesToDisplay[this.props.quoteCounter % (this.props.quotesToDisplay.length)].theme.length) {
           themesToDisplay.push(<h3 className="homePageQuoteThemes">{theme}</h3>)

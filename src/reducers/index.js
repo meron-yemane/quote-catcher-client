@@ -14,6 +14,8 @@ const initialState = {
   isOpen: false,
   quoteCounter: 0,
   fadeInOrOut: "fadeOut",
+  currentAddThemeQuote: null, 
+  previousAddThemeQuotes: []
 };
 
 export const quoteCatcherReducer = (state=initialState, action) => {
@@ -22,13 +24,27 @@ export const quoteCatcherReducer = (state=initialState, action) => {
       return {
         ...state,
         quotesToDisplayAddThemeId: action.quoteId,
-        isOpen: !state.isOpen
+        isOpen: !state.isOpen,
       }
     }
     return {
       ...state,
       quotesToDisplayAddThemeId: action.quoteId,
-      isOpen: true
+      isOpen: true,
+    }
+  }
+
+  if (action.type === actions.PREVIOUS_ADD_THEME_QUOTES) {
+    return {
+      ...state,
+      previousAddThemeQuotes: state.previousAddThemeQuotes.concat([action.quoteId])
+    }
+  }
+
+  if (action.type === actions.CURRENT_ADD_THEME_QUOTE) {
+    return {
+      ...state, 
+      currentAddThemeQuote: action.currentQuote
     }
   }
 

@@ -37,12 +37,12 @@ body {
 .fadeIn {
   visibility: visible;
   opacity: 1;
-  transition: opacity 7s linear;
+  transition: opacity 2s linear;
 }
 
 .fadeOut {
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s 7s, opacity 7s linear;
+  transition: visibility 0s 2s, opacity 2s linear;
 }
 

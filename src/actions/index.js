@@ -173,17 +173,32 @@ export const addTheme = (themes, quoteId) => (dispatch, getState) => {
 };
 
 export const nextQuoteToBeDisplayedAndFadeIn = (dispatch) => (dispatch) => {
-  console.log("NEXT QUOTE")
-  dispatch(nextQuoteToBeDisplayed())
-  setTimeout(() => dispatch(fadeInOrOut("fadeIn")), 100)
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve();
+    }, 10);
+  }).then(() => {
+    dispatch(nextQuoteToBeDisplayed())
+  });
+
+  // return dispatch(nextQuoteToBeDisplayed())
+  // .then(() => {
+  //   dispatch(fadeInOrOut("fadeIn"))
+  // })
+  // setTimeout(() => dispatch(fadeInOrOut("fadeIn")), 100)
 };
 
-// let timer = null;
-// export const start = () => (dispatch) => {
-//   timer = setInterval(() => dispatch(timerTick()), 15000);
-//   dispatch(timerStart());
-//   dispatch(timerTick());
-// };
+export const PREVIOUS_ADD_THEME_QUOTES = 'PREVIOUS_ADD_THEME_QUOTES';
+export const previousAddThemeQuotes = quoteId => ({
+  type: PREVIOUS_ADD_THEME_QUOTES,
+  quoteId
+});
+
+export const CURRENT_ADD_THEME_QUOTE = 'CURRENT_ADD_THEME_QUOTE';
+export const currentAddThemeQuote = (currentQuote) => ({
+  type: CURRENT_ADD_THEME_QUOTE,
+  currentQuote
+});
 
 export const FADE_IN_OR_OUT = 'FADE_IN_OR_OUT';
 export const fadeInOrOut = (currTrans) => ({
