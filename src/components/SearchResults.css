@@ -8,6 +8,10 @@
   display: block;
 }
 
+.noResultsMsg {
+  text-align: center;
+}
+
 .breakingImg {
   display: block;
   margin: 0 auto;
@@ -24,7 +28,7 @@
 }
 
 .deleteBox {
-  padding-bottom: 60px
+  padding-bottom: 60px;
 }
 
 .addThemeAndDeleteBox {

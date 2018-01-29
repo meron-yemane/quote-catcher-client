@@ -12,4 +12,5 @@
 .submitThemesButton {
   background-color: rgb(204, 224, 255);
   height: 33px;
+  border-radius: 4px;
 }

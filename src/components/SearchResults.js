@@ -17,7 +17,8 @@ import searchQuotesDivider from '../images/search-quotes-divider.png';
 
 let themes = ["Relationships", "Finances", "Identity", "Fear", "Career", "Motivation", "Adventure", "Spirituality", "Loss", "Failure", "Happiness", "Discipline"];
 export class SearchResults extends React.Component {
-  handleDeleteClick(quote) {
+  handleDeleteClick(quote, e) {
+    e.preventDefault();
     return this.props
     .dispatch(deleteQuote(quote._id))
   }
@@ -28,7 +29,6 @@ export class SearchResults extends React.Component {
   }
 
   onSubmit(value, quote) {
-    console.log("In This man")
     return this.props
     .dispatch(addTheme(value.themesToAdd, quote._id))
     // .then(() => {
@@ -46,13 +46,21 @@ export class SearchResults extends React.Component {
     let quoteBreakImg;
     let themeOptions;
     // let previousThemeId = ;
+
+    if (this.props.searchedQuotes === "No results found") {
+      return (
+        <div>
+          <h3 className="noResultsMsg">No results found</h3>
+        </div>
+      )
+    }
+
     if (this.props.searchedQuotes.length > 0) {
       this.props.searchedQuotes.map((quote, index) => {
       themeCounter = 0;
       themesToDisplay = [];
       addQuoteThemes = [];
       themeOptions = [];
-      console.log(themeOptions);
       // const renderMultiselect = ({input, data}) => {
       //   // if (this.props.quotesToDisplayAddThemeId === quote._id) {
       //   //   previousThemeId = this.props.quotesToDisplayAddThemeId
@@ -190,8 +198,8 @@ export class SearchResults extends React.Component {
               //this.handleDeleteClick(quote)}
               //>
             }
-              <a onClick={() => 
-                this.handleDeleteClick(quote)} className=" deleteButton btn btn-danger" href="#">
+              <a onClick={(e) => 
+                this.handleDeleteClick(quote, e)} className=" deleteButton btn btn-danger" href="#">
                  <i className="fa fa-trash-o fa-lg"></i> Delete</a>
           </div>
             {quoteBreakImg}
@@ -204,6 +212,7 @@ export class SearchResults extends React.Component {
         </div>
       );
     }
+
     return (
      <div> 
      </div>
