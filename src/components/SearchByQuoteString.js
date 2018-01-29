@@ -46,7 +46,11 @@ export class SearchByQuoteString extends React.Component {
         return responses
       })
       .then(res => {
-        return this.addQuoteToSearchResults(res)
+        if (res.length === 0) {
+          return this.addQuoteToSearchResults("No results found")
+        } else {
+          return this.addQuoteToSearchResults(res)
+        }
       })
       .then(() => console.log('Submitted with values', values)) 
       .catch(err => {
