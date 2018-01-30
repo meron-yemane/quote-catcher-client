@@ -34,18 +34,21 @@
   float: right;
   background-color: transparent;
   border: none;
+  padding-left: 58px;
 }
 
 .navLinksToBeCentered:active {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .navLinksToBeCentered:visited {
   color: white;
+  text-decoration: none !important ;
 }
 
 .navigationLinks:visited {
   color: white;
+  text-decoration: none !important;
 }
 
 .navLinksToBeCentered {
@@ -68,6 +71,9 @@ button:hover {
   background: rgb(204, 224, 255);
 
 }*/
+a, a:hover, a:active, a:visited, a:focus {
+    text-decoration: none !important;
+}
 
 
 
@@ -77,10 +83,10 @@ button:hover {
 
 .navigationLinks a {
   color: white;
-  transition: background-color .5s ease;
+  text-decoration: none !important;
 }
 
 .navigationLinks a:hover {
-  text-decoration: none;
+  text-decoration: none !important;
   color: rgb(204, 224, 255);
 }
