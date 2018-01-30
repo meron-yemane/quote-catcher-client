@@ -16,7 +16,7 @@
 
 .navigationLinks {
   overflow: hidden;
-  padding: 15px 30px;
+  padding: 15px 15px;
   font-size: 20px;
   color: white;
   transition: background-color .5s ease;
@@ -30,11 +30,15 @@
 
 .navigationLinkLogout {
   font-size: 20px;
-  color: white;
+  color: white !important;
   float: right;
   background-color: transparent;
   border: none;
-  padding-left: 58px;
+  padding-left: 50px;
+}
+
+.navigationLinkLogout:active,  .navigationLinkLogout:focus{
+  outline: 0;
 }
 
 .navLinksToBeCentered:active {
@@ -59,34 +63,16 @@
   padding-top: 10px;
 }
 
-a {
-  color: white;
-}
-
-/*.navigationLinkLogout:hover {
-  background: rgb(204, 224, 255);
-}
-
-button:hover {
-  background: rgb(204, 224, 255);
-
-}*/
-a, a:hover, a:active, a:visited, a:focus {
-    text-decoration: none !important;
-}
-
-
-
 .fa-2x {
   font-size: 1.5em;
 }
 
 .navigationLinks a {
-  color: white;
+  color: white !important;
   text-decoration: none !important;
 }
 
 .navigationLinks a:hover {
   text-decoration: none !important;
-  color: rgb(204, 224, 255);
+  color: rgb(204, 224, 255) !important;
 }
