@@ -12,6 +12,15 @@ import {loadAuthToken} from '../local-storage';
 import './SearchArea.css';
 
 export class SearchArea extends React.Component {
+  componentDidMount() {
+    const authToken = loadAuthToken();
+    if (authToken) {
+      this.props.dispatch({
+        type: 'SET_AUTH_TOKEN',
+        authToken
+      })
+    } 
+  }
   onSubmit(values) {
     return fetch(`${API_BASE_URL}/api/quotes/`)
   }
@@ -33,7 +42,7 @@ export class SearchArea extends React.Component {
 }
 
 const mapStateToProps = state => ({ 
-  loggedIn: state.quoteCatcherReducer.currentUser !== null
+  loggedIn: state.quoteCatcherReducer.authToken
 });
 
 export default connect(mapStateToProps)(SearchArea);

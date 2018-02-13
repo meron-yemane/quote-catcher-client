@@ -231,7 +231,7 @@ const mapStateToProps = state => ({
 const SearchResultsConnect = connect(mapStateToProps)(SearchResults);
 
 export default reduxForm({
-  // form: 'searchResults',
+  form: 'searchResults',
   onSubmitFail: (errors, dispatch) =>
     dispatch(focus('searchResults', Object.keys(errors)[0]))
 })(SearchResultsConnect);

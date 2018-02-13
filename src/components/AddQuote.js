@@ -6,9 +6,7 @@ import AddQuoteForm from './AddQuoteForm';
 import AddQuoteDisplay from './AddQuoteDisplay';
 import {loadAuthToken} from '../local-storage';
 
-
 import './AddQuote.css';
-
 
 export class AddQuote extends React.Component {
   componentDidMount() {

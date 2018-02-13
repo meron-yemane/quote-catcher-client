@@ -9,6 +9,15 @@ import {loadAuthToken} from '../local-storage';
 import './Quotes.css';
 
 export class Quotes extends React.Component {
+  componentDidMount() {
+    const authToken = loadAuthToken();
+    if (authToken) {
+      this.props.dispatch({
+        type: 'SET_AUTH_TOKEN',
+        authToken
+      })
+    } 
+  }
   render() {
     if (!loadAuthToken()) {
       return <Redirect to="/login" />;
@@ -25,7 +34,7 @@ export class Quotes extends React.Component {
 }
 
 const mapStateToProps = state => ({ 
-  loggedIn: state.quoteCatcherReducer.currentUser !== null
+  loggedIn: state.quoteCatcherReducer.authToken
 });
 
 export default connect(mapStateToProps)(Quotes);
