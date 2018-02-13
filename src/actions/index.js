@@ -172,7 +172,7 @@ export const addTheme = (themes, quoteId) => (dispatch, getState) => {
   })
 };
 
-export const nextQuoteToBeDisplayedAndFadeIn = (dispatch) => (dispatch) => {
+export const nextQuoteToBeDisplayedAndFadeIn = () => (dispatch) => {
   return new Promise(resolve => {
     setTimeout(() => {
       resolve();

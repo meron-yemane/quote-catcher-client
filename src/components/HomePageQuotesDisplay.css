@@ -46,3 +46,7 @@ body {
   transition: visibility 0s 2s, opacity 2s linear;
 }
 
+.noQuotesToDisplayMsg {
+  padding-top: 100px;
+  text-align: center;
+}

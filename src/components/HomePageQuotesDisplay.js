@@ -15,11 +15,14 @@ import {fadeInOrOut} from '../actions/index';
 export class HomePageQuotesDisplay extends React.Component {
   handleTransitionEnd() {
     if (this.props.fadeInOrOut === "fadeIn") {
+      console.log("FADE OUT inside handleTransitionEnd")
       this.props.dispatch(fadeInOrOut("fadeOut"))
     }
     else if (this.props.fadeInOrOut === "fadeOut") {
+      console.log("FADE IN inside handleTransitionEnd")
       this.props.dispatch(nextQuoteToBeDisplayedAndFadeIn())
       .then(() => {
+        console.log("fading in")
         this.props.dispatch(fadeInOrOut("fadeIn"))
       })
     }
@@ -77,7 +80,7 @@ export class HomePageQuotesDisplay extends React.Component {
         </section>
     }
     if (this.props.quotesToDisplay.length === 0) {
-      quote = <h1>Start By Adding Quotes!</h1>
+      quote = <h1 className="noQuotesToDisplayMsg">Begin By Adding Quotes!</h1>
     }
     return (
       <div className="displayQuotesPage">

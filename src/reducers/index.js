@@ -58,7 +58,7 @@ export const quoteCatcherReducer = (state=initialState, action) => {
   if (action.type === actions.NEXT_QUOTE_TO_BE_DISPLAYED) {
     return {
       ...state,
-      quoteCounter: state.quoteCounter + 1
+      quoteCounter: Math.floor(Math.random() * state.quotesToDisplay.length)
     }
   }
 
