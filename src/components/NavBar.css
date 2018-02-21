@@ -95,6 +95,10 @@
   margin-right: auto !important;
 }
 
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: white !important;
+}
+
 .navHomeLink {
   bottom: 7px;
 }
@@ -115,8 +119,7 @@
 
 @media screen and (max-width: 767px) {
   .navigationLinkLogout {
-/*    float: unset !important;
-*/    padding-right: inherit;
+    padding-right: inherit;
   }
 
   .navbar .navbar-nav {

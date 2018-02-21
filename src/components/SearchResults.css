@@ -54,3 +54,20 @@
   margin-bottom: 0px;
   margin-left: 3px;
 }
+
+@media screen and (max-width: 414px) {
+  .btn-danger {
+    float: left;
+    margin-top: 16px;
+  }
+
+  .addThemeAndDeleteBox {
+    margin-bottom: 30px;
+  }
+
+  h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 0px;
+  }
+}
+
+

@@ -20,9 +20,14 @@ body {
   position: absolute;
 }
 
+.displayQuotesText {
+  word-wrap: break-word;
+}
+
 .displayQuotesAuthor {
   font-style: italic;
   margin-bottom: 50px;
+  word-wrap: break-word;
 }
 
 .quotesWrapper {
@@ -50,3 +55,18 @@ body {
   padding-top: 100px;
   text-align: center;
 }
+
+@media screen and (max-width: 1025px) {
+  .displayQuotesText, .displayQuotesAuthor {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+
+  .quotesSection {
+    padding-top: 70px;
+  }
+}
+
+
+
+

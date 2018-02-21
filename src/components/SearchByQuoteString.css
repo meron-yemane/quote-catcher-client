@@ -6,3 +6,11 @@
   margin-top: 8px;
   margin-right: 8px;
 }
+
+
+
+@media screen and (max-width: 414px) {
+  .quoteStringLabel {
+    font-size: 11px;
+  }
+}

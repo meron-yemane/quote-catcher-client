@@ -2,39 +2,29 @@
   box-sizing: border-box;
 }
 
-/*.searchAreaForm {
-  padding: 10%;
-  background-color: #bbb;
-  left: 0;
-  right: 0;
-}
-
-.searchAreaThemes {
-  width: 75%;
-  max-width: 350px;
-}
-
-.searchAreaInputs {
-  width: 100%;
-  max-width: 500px;
-}
-
-.searchAreaIndividualButtons {
-  background-color: white;
-  border: solid white;
-  border-radius: 3px;
-  margin-right: 5%;
-}
-
-.searchAreaButtons {
-  padding-top: 5px;
-}
-
-.form-section {
-  padding-bottom: 10px;
-}*/
-
 .searchAreaBox {
   margin-left: 75px;
   text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .searchAreaBox {
+    text-align: unset;
+    float: left;
+    margin-left: unset;
+    background-color: white;
+    padding-left: 60px;
+    padding-top: 20px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .searchAreaBox {
+    padding-left: 10px;
+    padding-top: 20px;
+  }
+
+  input {
+    width: 200px !important;
+  }
 }
