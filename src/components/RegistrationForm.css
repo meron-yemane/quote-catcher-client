@@ -21,3 +21,28 @@
 .signUpFirstName, .signUpLastName, .signUpUsername {
   margin-right: 75px;
 }
+
+@media screen and (max-width: 780px) {
+  input {
+    width: 300px !important;
+    margin-right: unset !important;
+  }
+
+  .form-error {
+    margin-right: 0px !important;
+    position: unset !important;
+  }
+
+  label {
+    display: block !important;
+  }
+
+  .signUpFirstName, .signUpLastName, .signUpUsername {
+    margin-right: unset;
+  }
+
+  .passwordCon {
+    margin-right: unset;
+  }
+
+}
