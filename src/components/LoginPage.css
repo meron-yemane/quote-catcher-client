@@ -164,4 +164,35 @@ input::-moz-placeholder {
   .aboutCardDescription {
     font-size: 14px;
   }
+  .logoTitleLoginPage {
+    font-size: 40px !important;
+  }
 }
+
+@media screen and (max-width: 661px) {
+  .aboutCardContainer {
+    display: block;
+  }
+
+  .aboutCard {
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 40px;
+    width: 50%;
+  }
+
+  .logoTitleLoginPage {
+    font-size: 30px !important;
+  }
+}
+
+@media screen and (max-width: 461px) {
+  .aboutCard {
+    width: 90%;
+  }
+}
+
+
+
+
+
