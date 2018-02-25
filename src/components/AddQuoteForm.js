@@ -11,16 +11,6 @@ import './AddQuoteForm.css';
 import 'react-widgets/dist/css/react-widgets.css';
 
 export class AddQuoteForm extends React.Component {
-  // componentDidMount() {
-  //   const authToken = loadAuthToken();
-  //   if (authToken) {
-  //     this.props.dispatch({
-  //       type: 'SET_AUTH_TOKEN',
-  //       authToken
-  //     })
-  //   } 
-  // }
-
   resetAddQuote() {
     this.props.dispatch(reset('addQuote'))
   }

@@ -6,15 +6,8 @@ import {addTheme} from '../actions/index';
 
 export class AddThemeFormComponent extends React.Component {
   onSubmit(value, quote) {
-    console.log("In This man")
-    console.log("value", value)
-    console.log("quote", quote)
-    console.log("quote._id", quote._id)
     return this.props
     .dispatch(addTheme(value.themesToAdd, quote._id))
-    // .then(() => {
-    //   return this.props.dispatch(reset('searchResults'))
-    // })
   }
 
   render() {
@@ -44,7 +37,6 @@ export class AddThemeFormComponent extends React.Component {
 }
 
 export default reduxForm({
-  // form: 'searchResults',
   fields: ["text"],
   onSubmitFail: (errors, dispatch) =>
     dispatch(focus('searchResults', Object.keys(errors)[0]))

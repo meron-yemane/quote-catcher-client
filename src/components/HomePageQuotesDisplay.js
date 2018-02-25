@@ -7,7 +7,6 @@ import NavBar from './NavBar';
 import store from '../store';
 import {fetchQuotes} from '../actions/index';
 import {loadAuthToken} from '../local-storage';
-// import {nextQuoteToBeDisplayed} from '../actions/index';
 import {nextQuoteToBeDisplayedAndFadeIn} from '../actions/index';
 import {fadeInOrOut} from '../actions/index';
 
@@ -43,9 +42,6 @@ export class HomePageQuotesDisplay extends React.Component {
         setTimeout(() => this.props.dispatch(fadeInOrOut("fadeIn")), 2000)
       })
     }
-    // if (this.props.quoteCounter === 0) {
-    //   this.props.dispatch(start());
-    // }
     if (!this.props.loggedIn) {
       return;
     }
