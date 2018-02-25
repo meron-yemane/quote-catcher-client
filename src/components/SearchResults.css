@@ -43,11 +43,19 @@
 .searchSubmitButton {
   border-radius: 3px;
   margin-left: 5px;
+  background-color: white;
+}
+
+.individualAddThemeForms:focus {
+  outline: none;
+  border: 1px solid #5F88E8;
+  box-shadow: 0 0 10px #5F88E8;
 }
 
 .individualAddThemeForms {
   width: 150px;
   height: 25px;
+  border-color: rgb(153, 153, 153);
 }
 
 .addThemeLabel {
