@@ -16,13 +16,25 @@
   border-radius: 4px;
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 571px) {
   .submitThemesButton {
     font-size: 11px;
   }
 
   .themeSearch {
-    width: 200px;
+    width: 250px;
     margin-right: 0px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .themeSearch {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 308px) {
+  .themeSearch {
+    width: 150px;
   }
 }

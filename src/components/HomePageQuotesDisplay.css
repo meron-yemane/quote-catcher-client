@@ -37,18 +37,19 @@ body {
 
 .homePageQuoteThemes {
   display: inline-block;
+  margin-top: unset;
 }
 
 .fadeIn {
   visibility: visible;
   opacity: 1;
-  transition: opacity 2s linear;
+  transition: opacity 7s linear;
 }
 
 .fadeOut {
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s 2s, opacity 2s linear;
+  transition: visibility 0s 7s, opacity 7s linear;
 }
 
 .noQuotesToDisplayMsg {
