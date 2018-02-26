@@ -1,10 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
-import Input from './input';
 import InputQuoteSearch from './InputForSearch';
 import {API_BASE_URL} from '../config';
-import SearchResults from './SearchResults';
 import {addQuoteToSearchResults} from '../actions/index';
 import './SearchByQuoteString.css';
 
@@ -66,32 +64,12 @@ export class SearchByQuoteString extends React.Component {
   }
 
   render() {
-     let successMessage;
-    // if (this.props.submitSucceeded) {
-    //   successMessage = (
-    //     <div className="searchByQuoteStringSuccessMessage">
-    //       Quotes successfully returned.
-    //     </div>
-    //   );
-    // }
-
-     let errorMessage;
-    // if (this.props.error) {
-    //   errorMessage = (
-    //     <div className='searchByQuoteStringAuthorErrorMessage'>{this.props.error}</div>
-    //   );
-    // }
-
     return (
       <form 
         className="quoteStringForm"
         onChange={this.props.handleSubmit(values => 
           this.onSubmit(values)
       )}>
-      {//successMessage
-      }
-      {//errorMessage
-      }
         <label className="quoteStringLabel">Search Quote Passage</label>        
         <Field 
           name="quoteString"

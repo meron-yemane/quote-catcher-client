@@ -3,7 +3,6 @@ import React from 'react';
 export default class Input extends React.Component {
   render() {
     const Element = this.props.element || 'input';
-    let placeHolder;
     let error;
     let input;
     if (this.props.meta.touched && this.props.meta.error) {

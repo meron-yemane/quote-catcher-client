@@ -2,8 +2,6 @@ import jwtDecode from 'jwt-decode';
 import {SubmissionError} from 'redux-form';
 import {API_BASE_URL} from '../config';
 import {saveAuthToken, clearAuthToken} from '../local-storage';
-import store from '../store';
-
 
 const normalizeResponseErrors = res => {
   if (!res.ok) {
@@ -180,12 +178,6 @@ export const nextQuoteToBeDisplayedAndFadeIn = () => (dispatch) => {
   }).then(() => {
     dispatch(nextQuoteToBeDisplayed())
   });
-
-  // return dispatch(nextQuoteToBeDisplayed())
-  // .then(() => {
-  //   dispatch(fadeInOrOut("fadeIn"))
-  // })
-  // setTimeout(() => dispatch(fadeInOrOut("fadeIn")), 100)
 };
 
 export const PREVIOUS_ADD_THEME_QUOTES = 'PREVIOUS_ADD_THEME_QUOTES';

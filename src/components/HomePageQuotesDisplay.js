@@ -4,7 +4,6 @@ import {Redirect} from 'react-router-dom';
 import {fetchProtectedData} from '../actions/index';
 import './HomePageQuotesDisplay.css';
 import NavBar from './NavBar';
-import store from '../store';
 import {fetchQuotes} from '../actions/index';
 import {loadAuthToken} from '../local-storage';
 import {nextQuoteToBeDisplayedAndFadeIn} from '../actions/index';
@@ -14,14 +13,11 @@ import {fadeInOrOut} from '../actions/index';
 export class HomePageQuotesDisplay extends React.Component {
   handleTransitionEnd() {
     if (this.props.fadeInOrOut === "fadeIn") {
-      console.log("FADE OUT inside handleTransitionEnd")
       this.props.dispatch(fadeInOrOut("fadeOut"))
     }
     else if (this.props.fadeInOrOut === "fadeOut") {
-      console.log("FADE IN inside handleTransitionEnd")
       this.props.dispatch(nextQuoteToBeDisplayedAndFadeIn())
       .then(() => {
-        console.log("fading in")
         this.props.dispatch(fadeInOrOut("fadeIn"))
       })
     }

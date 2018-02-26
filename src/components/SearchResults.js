@@ -1,17 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
-import {reduxForm, Field, FieldArray, SubmissionError, focus, reset} from 'redux-form';
+import {reduxForm, focus} from 'redux-form';
 import './SearchResults.css';
-import IndividualQuotes from './IndividualQuotes';
 import AddThemeFormComponent from './AddThemeForm';
 import {deleteQuote} from '../actions/index';
 import {updateThemeToAddBoxId} from '../actions/index';
-import {deleteQuoteFromSearchedQuotes} from '../actions/index';
 import {addTheme} from '../actions/index';
-import {currentAddThemeQuote} from '../actions/index';
 import {previousAddThemeQuotes} from '../actions/index';
-import Multiselect from 'react-widgets/lib/Multiselect';
 import 'react-widgets/dist/css/react-widgets.css';
 import searchQuotesDivider from '../images/search-quotes-divider.png';
 
@@ -37,15 +32,12 @@ export class SearchResults extends React.Component {
   }
 
   render() {
-    let {open} = this.state || {};
     let searchedQuotes = [];
     let themeCounter;
     let themesToDisplay;
     let addQuoteThemes;
-    let inputValue;
     let quoteBreakImg;
     let themeOptions;
-    // let previousThemeId = ;
 
     if (this.props.searchedQuotes === "No results found") {
       return (

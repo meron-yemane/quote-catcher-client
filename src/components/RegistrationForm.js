@@ -1,5 +1,5 @@
 import React from 'react';
-import {Field, reduxForm, focus, SubmissionError} from 'redux-form';
+import {Field, reduxForm, focus} from 'redux-form';
 import {registerUser, login} from '../actions/index';
 import Input from './input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';

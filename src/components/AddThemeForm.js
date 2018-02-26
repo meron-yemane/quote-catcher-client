@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {reduxForm, Field, FieldArray, SubmissionError, focus, reset} from 'redux-form';
+import {reduxForm, Field, focus} from 'redux-form';
 import {addTheme} from '../actions/index';
 
 

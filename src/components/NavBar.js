@@ -2,14 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {setCurrentUser, setAuthToken} from '../actions/index';
 import {clearAuthToken} from '../local-storage';
-import {Link, Redirect} from 'react-router-dom';
 import './NavBar.css';
-import {displayLandingPage} from '../actions/index';
 import {addQuoteDisplay} from '../actions/index';
-import {API_BASE_URL} from '../config';
-import {Navbar, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
+import {Navbar, Nav, NavItem} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
-import store from '../store';
 
 export class NavBar extends React.Component {
   logOut() {

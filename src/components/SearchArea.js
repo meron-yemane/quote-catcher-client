@@ -1,9 +1,6 @@
 import React from 'react';
-import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
-import Input from './input';
 import {connect} from 'react-redux';
 import {Redirect} from "react-router-dom";
-import {required, nonEmpty} from '../validators';
 import {API_BASE_URL} from '../config';
 import SearchByAuthor from './SearchByAuthor';
 import SearchByTheme from './SearchByTheme';

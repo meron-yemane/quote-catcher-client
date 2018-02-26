@@ -2,9 +2,7 @@ import React from 'react';
 import {reduxForm, Field, focus} from 'redux-form';
 import {required, nonEmpty} from '../validators';
 import Input from './input';
-import {login} from '../actions/index';
 import './LoginForm.css';
-import store from '../store';
 import {loginUserAndUpdateQuotesStore} from '../actions/index';
 import 'bootstrap/dist/css/bootstrap.css';
 

@@ -1,13 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link, Redirect} from "react-router-dom"
-import NavBar from './NavBar';
-import WelcomeMessage from './WelcomeMessage';
+import {Link, Redirect} from "react-router-dom";
 import LoginForm from './LoginForm';
-import {addQuotesToLandingPage} from '../actions/index';
-import {API_BASE_URL} from '../config';
-import HomePageQuotesDisplay from './HomePageQuotesDisplay';
-import './LoginPage.css'
+import './LoginPage.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 export function LandingPage(props) {

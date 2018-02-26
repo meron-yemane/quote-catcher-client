@@ -1,10 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {reduxForm, Field, SubmissionError, focus, reset} from 'redux-form';
-import Input from './input';
-import InputQuoteSearch from './InputForSearch';
 import {API_BASE_URL} from '../config';
-import SearchResults from './SearchResults';
 import {addQuoteToSearchResults} from '../actions/index';
 import './SearchByTheme.css';
 
@@ -69,34 +66,13 @@ export class SearchByTheme extends React.Component {
   }
 
   render() {
-    let successMessage;
-    if (this.props.submitSucceeded) {
-      successMessage = (
-        <div className="searchByThemeSuccessMessage">
-          Quotes successfully sorted by theme.
-        </div>
-      );
-    }
-
-    let errorMessage;
-    if (this.props.error) {
-      errorMessage = (
-        <div className='searchByThemeErrorMessage'>{this.props.error}</div>
-      );
-    }
-
     return (
       <form 
         className="themeSearchForm"
         onSubmit={this.props.handleSubmit(values => 
           this.onSubmit(values)
 
-      )}>
-      {//successMessage
-      }
-        {//errorMessage
-        }
-        
+      )}>        
         <button 
           className="submitThemesButton" 
           type="submit"
