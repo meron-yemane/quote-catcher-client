@@ -1,3 +1,21 @@
+.addQuoteDisplayThemes {
+  font-size: 20px;
+}
+
+.quoteText {
+  text-align: center;
+}
+
+.quote-expanded {
+  padding-top: 10px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.searchedQuotesBox {
+  background-color: rgb(204, 224, 255);
+}
+
 .addThemeButton {
   display: block;
   border-radius: 3px;
@@ -21,6 +39,7 @@
 .searchResultsAuthor {
   padding-top: 30px;
   padding-bottom: 20px;
+  font-style: italic;
 }
 
 .deleteButton {

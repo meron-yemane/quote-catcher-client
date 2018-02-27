@@ -53,13 +53,14 @@ export class HomePageQuotesDisplay extends React.Component {
     let themeCounter = 0;
     let themesToDisplay = [];
     if (this.props.quotesToDisplay.length > 0) {
-      const themes = this.props.quotesToDisplay[this.props.quoteCounter % (this.props.quotesToDisplay.length)].theme.map((theme, index) => {
+      // const themes = 
+      this.props.quotesToDisplay[this.props.quoteCounter % (this.props.quotesToDisplay.length)].theme.map((theme, index) => {
         if (themeCounter + 1 === this.props.quotesToDisplay[this.props.quoteCounter % (this.props.quotesToDisplay.length)].theme.length) {
           themesToDisplay.push(<h3 className="homePageQuoteThemes">{theme}</h3>)
         } else {
           themesToDisplay.push(<h3 className="homePageQuoteThemes">{theme}<span>,&nbsp;</span></h3>)
         }
-        themeCounter += 1
+        return themeCounter += 1
       });
       quote = <section className="quotesSection">
           <div className={this.props.fadeInOrOut} onTransitionEnd={() =>  this.handleTransitionEnd()}>

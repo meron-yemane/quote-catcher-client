@@ -11,13 +11,13 @@ export class AddQuoteDisplay extends React.Component {
           themesToDisplay = "None";
       } else {
         themesToDisplay = [];
-        const themes = this.props.addQuoteDisplay.theme.map((theme, index) => {
+        this.props.addQuoteDisplay.theme.map((theme, index) => {
           if (themeCounter + 1 === this.props.addQuoteDisplay.theme.length) {
             themesToDisplay.push(<h3 key={index} className="addQuoteDisplayThemes">{theme}</h3>)
           } else {
             themesToDisplay.push(<h3 key={index} className="addQuoteDisplayThemes">{theme}<span>,&nbsp;</span></h3>)
           }
-          themeCounter += 1
+          return themeCounter += 1
         });
       }
       return (

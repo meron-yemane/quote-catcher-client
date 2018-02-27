@@ -44,7 +44,7 @@ export function LandingPage(props) {
         </div>
       </section>
       <section>
-        <a id="scrollToLogin"></a>
+        <a id="scrollToLogin"><span className="anchorToHide">War and Peace </span></a>
         <div className="loginSection">
               <h2 className="loginTitle">Login</h2>
               <div className="LoginBox">

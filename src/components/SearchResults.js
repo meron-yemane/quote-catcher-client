@@ -140,14 +140,14 @@ export class SearchResults extends React.Component {
         } else {
           themesToDisplay.push(<h3 key={index} className="addQuoteDisplayThemes">{theme}<span>,&nbsp;</span></h3>)
         }
-        themeCounter += 1
+        return themeCounter += 1
       });
       if (index === this.props.searchedQuotes.length - 1) {
         quoteBreakImg = <div></div>
       } else {
-        quoteBreakImg =  <img className="breakingImg" src={searchQuotesDivider} />
+        quoteBreakImg =  <img alt="" className="breakingImg" src={searchQuotesDivider} />
       }
-      searchedQuotes.push( 
+      return searchedQuotes.push( 
         <section key={quote._id} className="quote-expanded">
           <h2 className="quoteText"><span>&ldquo;</span>{quote.quoteString}<span>&rdquo;</span></h2>
           <h4 className="searchResultsAuthor"><span>- </span>{quote.author}</h4>
@@ -190,9 +190,9 @@ export class SearchResults extends React.Component {
               //this.handleDeleteClick(quote)}
               //>
             }
-              <a onClick={(e) => 
-                this.handleDeleteClick(quote, e)} className=" deleteButton btn btn-danger" href="#">
-                 <i className="fa fa-trash-o fa-lg"></i> Delete</a>
+              <button onClick={(e) => 
+                this.handleDeleteClick(quote, e)} className=" deleteButton btn btn-danger">
+                 <i className="fa fa-trash-o fa-lg"></i> Delete</button>
           </div>
             {quoteBreakImg}
         </section>

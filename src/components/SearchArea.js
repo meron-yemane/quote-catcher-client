@@ -25,7 +25,7 @@ export class SearchArea extends React.Component {
     if (!loadAuthToken()) {
       return <Redirect to="/login" />;
     }
-    const themeList = this.props.themes.map((theme, index) => 
+    this.props.themes.map((theme, index) => 
       <option key={index} value={theme}>{theme}</option>
     );
     return (
