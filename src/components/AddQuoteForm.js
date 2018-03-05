@@ -151,5 +151,3 @@ export default reduxForm({
   onSubmitFail: (errors, dispatch) =>
     dispatch(focus('addQuote', Object.keys(errors)[0]))
 })(AddQuoteForm);
-
-

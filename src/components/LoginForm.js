@@ -68,9 +68,3 @@ export default reduxForm({
   onSubmitFail: (errors, dispatch) => 
     dispatch(focus('login', Object.keys(errors)[0]))
 })(LoginForm);
-
-
-
-
-
-

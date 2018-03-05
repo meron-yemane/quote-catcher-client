@@ -57,9 +57,6 @@ export class App extends React.Component {
   }
 
   render() {
-    // if (!loadAuthToken()) {
-    //   return <Redirect to="/login" />;
-    // }
     return (
       <div>
         <Route exact path='/' component={HomePageQuotesDisplay} />
