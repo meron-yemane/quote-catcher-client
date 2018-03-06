@@ -72,7 +72,7 @@ export class HomePageQuotesDisplay extends React.Component {
         </section>
     }
     if (this.props.quotesToDisplay.length === 0) {
-      quote = <h1 className="noQuotesToDisplayMsg"></h1>
+      quote = <div className="noQuotesToDisplayMsg"></div>
     }
     return (
       <div className="displayQuotesPage">
