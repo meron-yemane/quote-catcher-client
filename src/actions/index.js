@@ -131,8 +131,6 @@ export const deleteQuote = (quoteId) => (dispatch, getState) => {
   .then(() => {
     dispatch(deleteQuoteFromSearchedQuotes(quoteId))
   })
-  // .then(res => res.json())
-  // .then
 };
 
 export const fetchQuotes = () => (dispatch) => {
