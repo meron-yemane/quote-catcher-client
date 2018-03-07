@@ -1,13 +1,15 @@
-##Quote Catcher
+# Quote Catcher
 
 [Quote Catcher](https://quote-catcher.herokuapp.com) is a responsive, full-stack app that allows users to organize quotes by theme and author. 
 
-#Introduction
+## Introduction
 
 The main purpose of Quote Catcher is to allow users the capability to easily save quotes they come by in life. These quotes can then be attributed one or multiple themes for convenient retrieval. For instance, imagine someone is dealing with difficulties staying consistent with going to the gym. Someone like this can easily search quotes that have been given a "discipline" theme for some quick motivation.   
 
+## Screen Shots of App
 
-
+[alt-text](https://github.com/meron93/quote-catcher-client/blob/master/screenshots/add-quote-screenshot.png)
+[alt-text](https://github.com/meron93/quote-catcher-client/blob/master/screenshots/search-quotes-screenshot.png)
 
 <!-- This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
