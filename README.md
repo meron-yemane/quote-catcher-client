@@ -8,8 +8,8 @@ The main purpose of Quote Catcher is to allow users the capability to easily sav
 
 ## Screen Shots of App
 
-[alt-text](https://github.com/meron93/quote-catcher-client/blob/master/screenshots/add-quote-screenshot.png)
-[alt-text](https://github.com/meron93/quote-catcher-client/blob/master/screenshots/search-quotes-screenshot.png)
+![alt-text](https://github.com/meron93/quote-catcher-client/blob/master/screenshots/add-quote-screenshot.png?raw=true "Add Quote Page")
+![alt-text](https://github.com/meron93/quote-catcher-client/blob/master/screenshots/search-quotes-screenshot.png?raw=true "Search Quote Page")
 
 <!-- This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
