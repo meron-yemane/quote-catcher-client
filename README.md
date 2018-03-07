@@ -1,4 +1,15 @@
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+##Quote Catcher
+
+[Quote Catcher](https://quote-catcher.herokuapp.com) is a responsive, full-stack app that allows users to organize quotes by theme and author. 
+
+#Introduction
+
+The main purpose of Quote Catcher is to allow users the capability to easily save quotes they come by in life. These quotes can then be attributed one or multiple themes for convenient retrieval. For instance, imagine someone is dealing with difficulties staying consistent with going to the gym. Someone like this can easily search quotes that have been given a "discipline" theme for some quick motivation.   
+
+
+
+
+<!-- This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
@@ -1997,8 +2008,8 @@ With this setup Netlify will build and deploy when you push to git or open a pul
 1. [Start a new netlify project](https://app.netlify.com/signup)
 2. Pick your Git hosting service and select your repository
 3. Click `Build your site`
-
-**Support for client-side routing:**
+ -->
+<!-- **Support for client-side routing:**
 
 To support `pushState`, make sure to create a `public/_redirects` file with the following rewrite rules:
 
@@ -2152,3 +2163,4 @@ To resolve this:
 ## Something Missing?
 
 If you have ideas for more “How To” recipes that should be on this page, [let us know](https://github.com/facebookincubator/create-react-app/issues) or [contribute some!](https://github.com/facebookincubator/create-react-app/edit/master/packages/react-scripts/template/README.md)
+ -->
