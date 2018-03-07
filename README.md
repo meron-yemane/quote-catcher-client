@@ -8,11 +8,12 @@ The main purpose of Quote Catcher is to allow users the capability to easily sav
 
 ## Screen Shots of App
 
+### Add Quote Page
 ![alt-text](https://github.com/meron93/quote-catcher-client/blob/master/screenshots/add-quote-screenshot.png?raw=true "Add Quote Page")  
 
 
 
-
+### Search Quote Page
 
 ![alt-text](https://github.com/meron93/quote-catcher-client/blob/master/screenshots/search-quotes-screenshot.png?raw=true "Search Quote Page")
 
