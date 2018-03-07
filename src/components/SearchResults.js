@@ -51,7 +51,7 @@ export class SearchResults extends React.Component {
       addQuoteThemes = [];
       themeOptions = [];
       addQuoteThemes = themes.filter(theme => {
-        return !(quote.theme.includes(theme))
+        return quote.theme.indexOf(theme) === -1
       });
       addQuoteThemes.forEach(theme => {
         themeOptions.push(<option value={theme}>{theme}</option>)
