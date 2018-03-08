@@ -174,7 +174,7 @@ input::-moz-placeholder {
   }
 }
 
-@media screen and (max-width: 661px) {
+@media screen and (max-width: 730px) {
   .aboutCardContainer {
     display: block;
   }
@@ -191,7 +191,7 @@ input::-moz-placeholder {
   }
 }
 
-@media screen and (max-width: 461px) {
+@media screen and (max-width: 530px) {
   .aboutCard {
     width: 90%;
   }
