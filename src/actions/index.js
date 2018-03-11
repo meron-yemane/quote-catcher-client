@@ -178,6 +178,12 @@ export const nextQuoteToBeDisplayedAndFadeIn = () => (dispatch) => {
   });
 };
 
+export const IS_FETCHING = 'IS_FETCHING';
+export const isFetching = isFetching => ({
+  type: IS_FETCHING,
+  isFetching
+});
+
 export const PREVIOUS_ADD_THEME_QUOTES = 'PREVIOUS_ADD_THEME_QUOTES';
 export const previousAddThemeQuotes = quoteId => ({
   type: PREVIOUS_ADD_THEME_QUOTES,

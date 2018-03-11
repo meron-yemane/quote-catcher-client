@@ -34,6 +34,13 @@ export const quoteCatcherReducer = (state=initialState, action) => {
     }
   }
 
+  if (action.type === actions.IS_FETCHING) {
+    return {
+      ...state,
+      isFetching: action.isFetching
+    }
+  }
+
   if (action.type === actions.PREVIOUS_ADD_THEME_QUOTES) {
     return {
       ...state,

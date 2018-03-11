@@ -82,6 +82,10 @@
   margin-left: 3px;
 }
 
+.searchResultsSpinner {
+  text-align: center;
+}
+
 @media screen and (max-width: 414px) {
   .btn-danger {
     float: left;

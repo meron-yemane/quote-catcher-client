@@ -9,6 +9,7 @@ import {addTheme} from '../actions/index';
 import {previousAddThemeQuotes} from '../actions/index';
 import 'react-widgets/dist/css/react-widgets.css';
 import searchQuotesDivider from '../images/search-quotes-divider.png';
+import Loader from 'react-loader-spinner';
 
 let themes = ["Relationships", "Finances", "Identity", "Fear", "Career", "Motivation", "Adventure", "Spirituality", "Loss", "Failure", "Happiness", "Discipline"];
 export class SearchResults extends React.Component {
@@ -35,6 +36,14 @@ export class SearchResults extends React.Component {
     let addQuoteThemes;
     let quoteBreakImg;
     let themeOptions;
+
+    if (this.props.isFetching) {
+      return (
+        <div className="searchResultsSpinner">
+          <Loader className="searchResultsSpinner" type="TailSpin" height={100} width={100}/>
+        </div>
+      )
+    }
 
     if (this.props.searchedQuotes === "No results found") {
       return (
@@ -100,6 +109,7 @@ export class SearchResults extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  isFetching: state.quoteCatcherReducer.isFetching,
   previousAddThemeQuotes: state.quoteCatcherReducer.previousAddThemeQuotes,
   quotesToDisplayAddThemeId: state.quoteCatcherReducer.quotesToDisplayAddThemeId,
   isOpen: state.quoteCatcherReducer.isOpen,
