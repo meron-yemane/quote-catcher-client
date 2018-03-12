@@ -9,7 +9,6 @@ import {loadAuthToken} from '../local-storage';
 import {nextQuoteToBeDisplayedAndFadeIn} from '../actions/index';
 import {fadeInOrOut} from '../actions/index';
 
-
 export class HomePageQuotesDisplay extends React.Component {
   handleTransitionEnd() {
     if (this.props.fadeInOrOut === "fadeIn") {
@@ -22,8 +21,6 @@ export class HomePageQuotesDisplay extends React.Component {
       })
     }
   }
-
-
 
   componentDidMount() {
     const authToken = loadAuthToken();

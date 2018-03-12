@@ -5,6 +5,7 @@ import {required, nonEmpty} from '../validators';
 import {API_BASE_URL} from '../config';
 import {addQuoteDisplay} from '../actions/index';
 import {fetchQuotes} from '../actions/index';
+import {isFetching} from '../actions/index';
 import Multiselect from 'react-widgets/lib/Multiselect';
 import './AddQuoteForm.css';
 import 'react-widgets/dist/css/react-widgets.css';
@@ -15,6 +16,7 @@ export class AddQuoteForm extends React.Component {
   }
 
   onSubmit(values) {
+    this.props.dispatch(isFetching(true))
     return fetch(`${API_BASE_URL}/api/quotes/create`, {
       method: 'POST',
       body: JSON.stringify(values),
@@ -44,6 +46,7 @@ export class AddQuoteForm extends React.Component {
         this.props.dispatch(fetchQuotes())
       })
       .then(() => {
+        this.props.dispatch(isFetching(false))
         this.props.dispatch(addQuoteDisplay(values))
       })
       .then(() => {

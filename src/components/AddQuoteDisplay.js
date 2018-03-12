@@ -1,9 +1,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import './AddQuoteDisplay.css';
+import Loader from 'react-loader-spinner';
 
 export class AddQuoteDisplay extends React.Component {
-  render() { 
+  render() {
+    if (this.props.isFetching) {
+      return (
+        <div className="addQuoteSpinner">
+          <Loader className="addQuoteSpinner" type="TailSpin" height={100} width={100}/>
+        </div>
+      )
+    } 
     if (this.props.addQuoteDisplay.length !== 0) {
       let themeCounter = 0; 
       let themesToDisplay;
@@ -38,6 +46,7 @@ export class AddQuoteDisplay extends React.Component {
 };
 
 const mapStateToProps = state => ({
+  isFetching: state.quoteCatcherReducer.isFetching,
   addQuoteDisplay: state.quoteCatcherReducer.addQuoteDisplay
 });
 
