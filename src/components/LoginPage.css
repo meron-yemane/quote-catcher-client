@@ -3,6 +3,10 @@ html {
     overflow-x: hidden;
 }
 
+.demoUserHeader {
+  margin-top: 25px;
+}
+
 .anchorToHide {
   visibility: hidden;
   display: none;

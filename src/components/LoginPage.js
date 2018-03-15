@@ -50,6 +50,8 @@ export function LandingPage(props) {
               <div className="LoginBox">
                 <LoginForm />
                 <Link to="/register">Not a member? Click here to sign-up!</Link>
+                <h4 className="demoUserHeader">Demo User Account</h4>
+                <p className="demoUserAccountLogin">Username: abc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Password: demouser</p>
               </div>
         </div>
       </section>

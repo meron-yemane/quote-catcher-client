@@ -1,4 +1,4 @@
-import {compose, createStore, combineReducers, applyMiddleware} from 'redux';
+import {compose, createStore, applyMiddleware} from 'redux';
 import {reducer as formReducer} from 'redux-form';
 import {quoteCatcherReducer} from './reducers/index';
 import {persistCombineReducers, persistStore} from 'redux-persist';
@@ -28,13 +28,3 @@ const configureStore = () => {
 };
 
 export default configureStore;
-
-// export const store = createStore(
-//   persistCombineReducers({
-//     quoteCatcherReducer,
-//     form: formReducer
-//   }), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-//   applyMiddleware(thunk)
-// );
-
-// export const persistor = persistStore(store);
