@@ -55,8 +55,20 @@ export const login = (username, password) => dispatch => {
 export const loginUserAndUpdateQuotesStore = (values) => dispatch => {
   return dispatch(login(values.username, values.password))
   .then(() => {
+    if (values.username === "abc") {
+      dispatch(demoUserStoreReset())
+    }
     return dispatch(fetchQuotes())
   }) 
+};
+
+export const logoutDemoUserAndResetAccount = () => () => {
+  return fetch(`${API_BASE_URL}/api/auth/logoutdemouser`, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json'
+    }
+  });
 };
 
 export const registerUser = user => dispatch => {
@@ -177,6 +189,11 @@ export const nextQuoteToBeDisplayedAndFadeIn = () => (dispatch) => {
     dispatch(nextQuoteToBeDisplayed())
   });
 };
+
+export const DEMO_USER_STORE_RESET = 'DEMO_USER_STORE_RESET';
+export const demoUserStoreReset = () => ({
+  type: DEMO_USER_STORE_RESET
+});
 
 export const IS_FETCHING = 'IS_FETCHING';
 export const isFetching = isFetching => ({

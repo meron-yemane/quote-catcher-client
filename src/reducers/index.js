@@ -34,6 +34,14 @@ export const quoteCatcherReducer = (state=initialState, action) => {
     }
   }
 
+  if (action.type === actions.DEMO_USER_STORE_RESET) {
+    return {
+      ...state,
+      searchedQuotes: [],
+      addQuoteDisplay: []
+    }
+  }
+
   if (action.type === actions.IS_FETCHING) {
     return {
       ...state,

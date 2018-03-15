@@ -3,12 +3,15 @@ import {connect} from 'react-redux';
 import {setCurrentUser, setAuthToken} from '../actions/index';
 import {clearAuthToken} from '../local-storage';
 import './NavBar.css';
-import {addQuoteDisplay} from '../actions/index';
+import {addQuoteDisplay, logoutDemoUserAndResetAccount} from '../actions/index';
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 
 export class NavBar extends React.Component {
   logOut() {
+    if (this.props.currentUser === "abc") {
+      this.props.dispatch(logoutDemoUserAndResetAccount())
+    }
     this.props.dispatch(setCurrentUser(null));
     this.props.dispatch(setAuthToken(null));
     this.props.dispatch(addQuoteDisplay([]));
@@ -45,6 +48,7 @@ export class NavBar extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  currentUser: state.quoteCatcherReducer.currentUser.username,
   loggedIn: state.quoteCatcherReducer.authToken
 });
 
