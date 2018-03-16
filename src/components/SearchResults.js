@@ -10,6 +10,7 @@ import {previousAddThemeQuotes} from '../actions/index';
 import 'react-widgets/dist/css/react-widgets.css';
 import searchQuotesDivider from '../images/search-quotes-divider.png';
 import Loader from 'react-loader-spinner';
+import {v4} from 'node-uuid';
 
 let themes = ["Relationships", "Finances", "Identity", "Fear", "Career", "Motivation", "Adventure", "Spirituality", "Loss", "Failure", "Happiness", "Discipline"];
 export class SearchResults extends React.Component {
@@ -63,13 +64,13 @@ export class SearchResults extends React.Component {
         return quote.theme.indexOf(theme) === -1
       });
       addQuoteThemes.forEach(theme => {
-        themeOptions.push(<option value={theme}>{theme}</option>)
+        themeOptions.push(<option key={v4()} value={theme}>{theme}</option>)
       })
       quote.theme.map((theme, index) => {
         if (themeCounter + 1 === quote.theme.length) {
-          themesToDisplay.push(<h3 key={index} className="addQuoteDisplayThemes">{theme}</h3>)
+          themesToDisplay.push(<div key={index} className="addQuoteDisplayThemes">{theme}</div>)
         } else {
-          themesToDisplay.push(<h3 key={index} className="addQuoteDisplayThemes">{theme}<span>,&nbsp;</span></h3>)
+          themesToDisplay.push(<div key={index} className="addQuoteDisplayThemes">{theme}<span>,&nbsp;</span></div>)
         }
         return themeCounter += 1
       });

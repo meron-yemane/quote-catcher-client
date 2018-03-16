@@ -21,9 +21,9 @@ export class AddQuoteDisplay extends React.Component {
         themesToDisplay = [];
         this.props.addQuoteDisplay.theme.map((theme, index) => {
           if (themeCounter + 1 === this.props.addQuoteDisplay.theme.length) {
-            themesToDisplay.push(<h3 key={index} className="addQuoteDisplayThemes">{theme}</h3>)
+            themesToDisplay.push(<div key={index} className="addQuoteDisplayThemes">{theme}</div>)
           } else {
-            themesToDisplay.push(<h3 key={index} className="addQuoteDisplayThemes">{theme}<span>,&nbsp;</span></h3>)
+            themesToDisplay.push(<div key={index} className="addQuoteDisplayThemes">{theme}<span>,&nbsp;</span></div>)
           }
           return themeCounter += 1
         });

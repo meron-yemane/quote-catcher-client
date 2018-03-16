@@ -39,6 +39,7 @@ body {
 .homePageQuoteThemes {
   display: inline-block;
   margin-top: unset;
+  font-size: 22px;
 }
 
 .fadeIn {
@@ -56,6 +57,12 @@ body {
 .noQuotesToDisplayMsg {
   padding-top: 100px;
   text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .homePageQuoteThemes {
+    font-size: 16px; 
+  }
 }
 
 @media screen and (max-width: 1025px) {

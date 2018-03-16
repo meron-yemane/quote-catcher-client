@@ -8,6 +8,7 @@ import {fetchQuotes} from '../actions/index';
 import {loadAuthToken} from '../local-storage';
 import {nextQuoteToBeDisplayedAndFadeIn} from '../actions/index';
 import {fadeInOrOut} from '../actions/index';
+import {v4} from 'node-uuid';
 
 export class HomePageQuotesDisplay extends React.Component {
   handleTransitionEnd() {
@@ -39,7 +40,6 @@ export class HomePageQuotesDisplay extends React.Component {
       return;
     }
     this.props.dispatch(fetchProtectedData());
-
   }
 
   render() {
@@ -52,9 +52,9 @@ export class HomePageQuotesDisplay extends React.Component {
     if (this.props.quotesToDisplay.length > 0) {
       this.props.quotesToDisplay[this.props.quoteCounter % (this.props.quotesToDisplay.length)].theme.map((theme, index) => {
         if (themeCounter + 1 === this.props.quotesToDisplay[this.props.quoteCounter % (this.props.quotesToDisplay.length)].theme.length) {
-          themesToDisplay.push(<h3 className="homePageQuoteThemes">{theme}</h3>)
+          themesToDisplay.push(<div key={v4()} className="homePageQuoteThemes">{theme}</div>)
         } else {
-          themesToDisplay.push(<h3 className="homePageQuoteThemes">{theme}<span>,&nbsp;</span></h3>)
+          themesToDisplay.push(<div key={v4()} className="homePageQuoteThemes">{theme}<span>,&nbsp;</span></div>)
         }
         return themeCounter += 1
       });

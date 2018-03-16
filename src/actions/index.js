@@ -57,9 +57,11 @@ export const loginUserAndUpdateQuotesStore = (values) => dispatch => {
   .then(() => {
     if (values.username === "abc") {
       dispatch(demoUserStoreReset())
+      dispatch(demoUserLoginFetchQuotes()) 
+    } else {
+      return dispatch(fetchQuotes())
     }
-    return dispatch(fetchQuotes())
-  }) 
+  }); 
 };
 
 export const logoutDemoUserAndResetAccount = () => () => {
@@ -143,6 +145,22 @@ export const deleteQuote = (quoteId) => (dispatch, getState) => {
   .then(() => {
     dispatch(deleteQuoteFromSearchedQuotes(quoteId))
   })
+};
+
+const demoUserLoginFetchQuotes = () => (dispatch) => {
+  const authToken = localStorage.getItem('authToken');
+  dispatch(requestQuotesForHomepage());
+  return fetch(`${API_BASE_URL}/api/quotes/demoquotes`, {
+    method: 'PUT', 
+    headers: {
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+  .then(res => res.json())
+  .then(quotes => {
+    dispatch(requestQuotesForHomepageSuccess(quotes))
+  })
+  .catch(error => dispatch(requestQuotesForHomepageError(error)));
 };
 
 export const fetchQuotes = () => (dispatch) => {
