@@ -5,7 +5,7 @@ import './SearchResults.css';
 import AddThemeFormComponent from './AddThemeForm';
 import {deleteQuote} from '../actions/index';
 import {updateThemeToAddBoxId} from '../actions/index';
-import {addTheme} from '../actions/index';
+import {addTheme, demoFetchQuotes, fetchQuotes} from '../actions/index';
 import {previousAddThemeQuotes} from '../actions/index';
 import 'react-widgets/dist/css/react-widgets.css';
 import searchQuotesDivider from '../images/search-quotes-divider.png';
@@ -18,6 +18,13 @@ export class SearchResults extends React.Component {
     e.preventDefault();
     return this.props
     .dispatch(deleteQuote(quote._id))
+    .then(() => {
+      if (this.props.currentUser === 'abc') {
+          this.props.dispatch(demoFetchQuotes())
+      } else {
+          this.props.dispatch(fetchQuotes())
+      }
+    })
   }
 
   handleAddThemeClick(quote) {
@@ -26,8 +33,7 @@ export class SearchResults extends React.Component {
   }
 
   onSubmit(value, quote) {
-    return this.props
-    .dispatch(addTheme(value.themesToAdd, quote._id))
+    return this.props.dispatch(addTheme(value.themesToAdd, quote._id))
   }
 
   render() {
@@ -110,6 +116,7 @@ export class SearchResults extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  currentUser: state.quoteCatcherReducer.currentUser.username,
   isFetching: state.quoteCatcherReducer.isFetching,
   previousAddThemeQuotes: state.quoteCatcherReducer.previousAddThemeQuotes,
   quotesToDisplayAddThemeId: state.quoteCatcherReducer.quotesToDisplayAddThemeId,

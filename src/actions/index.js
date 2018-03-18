@@ -163,6 +163,22 @@ const demoUserLoginFetchQuotes = () => (dispatch) => {
   .catch(error => dispatch(requestQuotesForHomepageError(error)));
 };
 
+export const demoFetchQuotes = () => (dispatch) => {
+  const authToken = localStorage.getItem('authToken');
+  dispatch(requestQuotesForHomepage());
+  return fetch(`${API_BASE_URL}/api/quotes/alldemoquotes`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${authToken}`
+    }
+   })
+   .then(res => res.json())
+   .then(quotes => {
+    dispatch(requestQuotesForHomepageSuccess(quotes))
+    })
+   .catch(error => dispatch(requestQuotesForHomepageError(error)));
+};
+
 export const fetchQuotes = () => (dispatch) => {
   const authToken = localStorage.getItem('authToken');
   dispatch(requestQuotesForHomepage());

@@ -1,10 +1,11 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {reduxForm, Field, SubmissionError, focus, reset} from 'redux-form';
 import InputAddQuote from './InputForAddQuote';
 import {required, nonEmpty} from '../validators';
 import {API_BASE_URL} from '../config';
 import {addQuoteDisplay} from '../actions/index';
-import {fetchQuotes} from '../actions/index';
+import {fetchQuotes, demoFetchQuotes} from '../actions/index';
 import {isFetching} from '../actions/index';
 import Multiselect from 'react-widgets/lib/Multiselect';
 import './AddQuoteForm.css';
@@ -43,7 +44,11 @@ export class AddQuoteForm extends React.Component {
         return
       })
       .then(() => {
-        this.props.dispatch(fetchQuotes())
+        if (this.props.currentUser === 'abc') {
+          this.props.dispatch(demoFetchQuotes())
+        } else {
+          this.props.dispatch(fetchQuotes())
+        }
       })
       .then(() => {
         this.props.dispatch(isFetching(false))
@@ -149,8 +154,14 @@ export class AddQuoteForm extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  currentUser: state.quoteCatcherReducer.currentUser.username
+});
+
+const AddQuoteFormConnect = connect(mapStateToProps)(AddQuoteForm);
+
 export default reduxForm({
   form: 'addQuote',
   onSubmitFail: (errors, dispatch) =>
     dispatch(focus('addQuote', Object.keys(errors)[0]))
-})(AddQuoteForm);
+})(AddQuoteFormConnect);

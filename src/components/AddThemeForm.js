@@ -1,12 +1,19 @@
 import React from 'react';
 import {reduxForm, Field, focus} from 'redux-form';
-import {addTheme} from '../actions/index';
+import {addTheme, demoFetchQuotes, fetchQuotes} from '../actions/index';
 
 
 export class AddThemeFormComponent extends React.Component {
   onSubmit(value, quote) {
     return this.props
     .dispatch(addTheme(value.themesToAdd, quote._id))
+    .then(() => {
+      if (this.props.currentUser === 'abc') {
+          this.props.dispatch(demoFetchQuotes())
+      } else {
+          this.props.dispatch(fetchQuotes())
+      }
+    })
   }
 
   render() {

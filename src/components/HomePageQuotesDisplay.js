@@ -4,7 +4,6 @@ import {Redirect} from 'react-router-dom';
 import {fetchProtectedData} from '../actions/index';
 import './HomePageQuotesDisplay.css';
 import NavBar from './NavBar';
-import {fetchQuotes} from '../actions/index';
 import {loadAuthToken} from '../local-storage';
 import {nextQuoteToBeDisplayedAndFadeIn} from '../actions/index';
 import {fadeInOrOut} from '../actions/index';
@@ -30,11 +29,8 @@ export class HomePageQuotesDisplay extends React.Component {
         type: 'SET_AUTH_TOKEN',
         authToken
       })
-      this.props.dispatch(fetchQuotes())
-      .then(() => {
-        this.props.dispatch(fadeInOrOut("fadeOut"))
-        setTimeout(() => this.props.dispatch(fadeInOrOut("fadeIn")), 2000)
-      })
+      this.props.dispatch(fadeInOrOut("fadeOut"))
+      setTimeout(() => this.props.dispatch(fadeInOrOut("fadeIn")), 2000)
     }
     if (!this.props.loggedIn) {
       return;
