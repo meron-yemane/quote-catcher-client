@@ -19,9 +19,6 @@ export class SearchResults extends React.Component {
     return this.props
     .dispatch(deleteQuote(quote._id))
     .then(() => {
-      // if (this.props.currentUser === 'abc') {
-      //     this.props.dispatch(demoFetchQuotes())
-      // } else {
       this.props.dispatch(fetchQuotes())
     })
   }
@@ -115,7 +112,6 @@ export class SearchResults extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  //currentUser: state.quoteCatcherReducer.currentUser.username,
   isFetching: state.quoteCatcherReducer.isFetching,
   previousAddThemeQuotes: state.quoteCatcherReducer.previousAddThemeQuotes,
   quotesToDisplayAddThemeId: state.quoteCatcherReducer.quotesToDisplayAddThemeId,

@@ -9,9 +9,6 @@ import {LinkContainer} from 'react-router-bootstrap';
 
 export class NavBar extends React.Component {
   logOut() {
-    // if (this.props.currentUser === "abc") {
-    //   this.props.dispatch(logoutDemoUserAndResetAccount())
-    // }
     this.props.dispatch(setCurrentUser(null));
     this.props.dispatch(setAuthToken(null));
     this.props.dispatch(addQuoteDisplay([]));
@@ -48,7 +45,6 @@ export class NavBar extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  //currentUser: state.quoteCatcherReducer.currentUser.username,
   loggedIn: state.quoteCatcherReducer.authToken
 });
 

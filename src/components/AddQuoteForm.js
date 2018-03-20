@@ -1,5 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import {reduxForm, Field, SubmissionError, focus, reset} from 'redux-form';
 import InputAddQuote from './InputForAddQuote';
 import {required, nonEmpty} from '../validators';
@@ -44,9 +43,6 @@ export class AddQuoteForm extends React.Component {
         return
       })
       .then(() => {
-        // if (this.props.currentUser === 'abc') {
-        //   this.props.dispatch(demoFetchQuotes())
-        // } else {
         this.props.dispatch(fetchQuotes())
       })
       .then(() => {
@@ -153,14 +149,8 @@ export class AddQuoteForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  //currentUser: state.quoteCatcherReducer.currentUser.username
-});
-
-const AddQuoteFormConnect = connect(mapStateToProps)(AddQuoteForm);
-
 export default reduxForm({
   form: 'addQuote',
   onSubmitFail: (errors, dispatch) =>
     dispatch(focus('addQuote', Object.keys(errors)[0]))
-})(AddQuoteFormConnect);
+})(AddQuoteForm);
