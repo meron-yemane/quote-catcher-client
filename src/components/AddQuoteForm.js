@@ -44,11 +44,10 @@ export class AddQuoteForm extends React.Component {
         return
       })
       .then(() => {
-        if (this.props.currentUser === 'abc') {
-          this.props.dispatch(demoFetchQuotes())
-        } else {
-          this.props.dispatch(fetchQuotes())
-        }
+        // if (this.props.currentUser === 'abc') {
+        //   this.props.dispatch(demoFetchQuotes())
+        // } else {
+        this.props.dispatch(fetchQuotes())
       })
       .then(() => {
         this.props.dispatch(isFetching(false))
@@ -155,7 +154,7 @@ export class AddQuoteForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  currentUser: state.quoteCatcherReducer.currentUser.username
+  //currentUser: state.quoteCatcherReducer.currentUser.username
 });
 
 const AddQuoteFormConnect = connect(mapStateToProps)(AddQuoteForm);
