@@ -4,7 +4,6 @@ import {reduxForm, Field, SubmissionError, focus, reset} from 'redux-form';
 import InputQuoteSearch from './InputForSearch';
 import {API_BASE_URL} from '../config';
 import {addQuoteToSearchResults} from '../actions/index';
-import {isFetching} from '../actions/index';
 import './SearchByAuthor.css';
 
 export class SearchByAuthor extends React.Component {
@@ -13,7 +12,6 @@ export class SearchByAuthor extends React.Component {
   }
 
   onSubmit(values) {
-    this.props.dispatch(isFetching(true))
     return fetch(`${API_BASE_URL}/api/quotes/searchbyauthor`, {
       method: 'POST',
       body: JSON.stringify(values),
@@ -46,7 +44,6 @@ export class SearchByAuthor extends React.Component {
         return responses
       })
       .then(res => {
-        this.props.dispatch(isFetching(false))
         if (res.length === 0) {
           return this.addQuoteToSearchResults("No results found")
         } else {

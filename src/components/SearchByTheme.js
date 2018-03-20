@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {reduxForm, Field, SubmissionError, focus, reset} from 'redux-form';
 import {API_BASE_URL} from '../config';
-import {isFetching} from '../actions/index';
 import {addQuoteToSearchResults} from '../actions/index';
 import './SearchByTheme.css';
 
@@ -12,7 +11,6 @@ export class SearchByTheme extends React.Component {
   }
 
   onSubmit(values) {
-    this.props.dispatch(isFetching(true))
     return fetch(`${API_BASE_URL}/api/quotes/searchbytheme`, {
       method: 'POST',
       body: JSON.stringify(values),
@@ -45,7 +43,6 @@ export class SearchByTheme extends React.Component {
         return responses
       })
       .then(res => {
-        this.props.dispatch(isFetching(false))
         if (res.length === 0) {
           return this.addQuoteToSearchResults("No results found")
         } else {
