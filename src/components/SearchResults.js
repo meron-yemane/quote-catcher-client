@@ -5,7 +5,7 @@ import './SearchResults.css';
 import AddThemeFormComponent from './AddThemeForm';
 import {deleteQuote} from '../actions/index';
 import {updateThemeToAddBoxId} from '../actions/index';
-import {addTheme, demoFetchQuotes, fetchQuotes} from '../actions/index';
+import {addTheme, fetchQuotes} from '../actions/index';
 import {previousAddThemeQuotes} from '../actions/index';
 import 'react-widgets/dist/css/react-widgets.css';
 import searchQuotesDivider from '../images/search-quotes-divider.png';

@@ -5,7 +5,7 @@ import InputAddQuote from './InputForAddQuote';
 import {required, nonEmpty} from '../validators';
 import {API_BASE_URL} from '../config';
 import {addQuoteDisplay} from '../actions/index';
-import {fetchQuotes, demoFetchQuotes} from '../actions/index';
+import {fetchQuotes} from '../actions/index';
 import {isFetching} from '../actions/index';
 import Multiselect from 'react-widgets/lib/Multiselect';
 import './AddQuoteForm.css';

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {setCurrentUser, setAuthToken} from '../actions/index';
 import {clearAuthToken} from '../local-storage';
 import './NavBar.css';
-import {addQuoteDisplay, logoutDemoUserAndResetAccount} from '../actions/index';
+import {addQuoteDisplay} from '../actions/index';
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 
