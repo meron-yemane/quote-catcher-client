@@ -55,6 +55,9 @@ export const login = (username, password) => dispatch => {
 export const loginUserAndUpdateQuotesStore = (values) => dispatch => {
   return dispatch(login(values.username, values.password))
   .then(() => {
+    dispatch(isFetching(false))
+  })
+  .then(() => {
     if (values.username === "abc") {
       dispatch(demoUserStoreReset())
       dispatch(demoUserLoginFetchQuotes()) 

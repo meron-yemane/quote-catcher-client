@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {Link, Redirect} from "react-router-dom";
 import LoginForm from './LoginForm';
 import FormLoader from './FormLoader';
-import Loader from 'react-loader-spinner';
 import './LoginPage.css';
 import 'bootstrap/dist/css/bootstrap.css';
 

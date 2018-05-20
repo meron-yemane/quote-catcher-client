@@ -4,10 +4,12 @@ import {required, nonEmpty} from '../validators';
 import Input from './input';
 import './LoginForm.css';
 import {loginUserAndUpdateQuotesStore} from '../actions/index';
+import {isFetching} from '../actions/index';
 import 'bootstrap/dist/css/bootstrap.css';
 
 export class LoginForm extends React.Component {
   onSubmit(values) {
+    this.props.dispatch(isFetching(true))
     return this.props
     .dispatch(loginUserAndUpdateQuotesStore(values))
   };
@@ -15,6 +17,7 @@ export class LoginForm extends React.Component {
   render() {
     let error;
     if (this.props.error) {
+      this.props.dispatch(isFetching(false))
       if (this.props.error === "Incorrect username or password") {
         error = (
           <div className="form-error-incorrect-credentials" aria-live="polite">
@@ -22,6 +25,7 @@ export class LoginForm extends React.Component {
           </div>
         )
       } else {
+        this.props.dispatch(isFetching(false))
         error = (
             <div className="form-error" aria-live="polite">
               {this.props.error}

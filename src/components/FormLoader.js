@@ -12,8 +12,12 @@ export class FormLoader extends React.Component {
         </div>
       )
     }
+    return (
+      <div>
+      </div>
+    )
   }
-}
+};
 
 const mapStateToProps = state => ({
   isFetching: state.quoteCatcherReducer.isFetching
