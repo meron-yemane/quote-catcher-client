@@ -65,7 +65,7 @@ export class LoginForm extends React.Component {
       </div>
     );
   }
-}
+};
 
 export default reduxForm({
   form: 'login',
