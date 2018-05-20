@@ -1,6 +1,6 @@
 import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
-import {registerUser, login} from '../actions/index';
+import {registerUser, login, isFetching} from '../actions/index';
 import Input from './input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
 import './RegistrationForm.css';
@@ -9,6 +9,7 @@ export class RegistrationForm extends React.Component {
   onSubmit(values) {
     const {username, password, firstName, lastName} = values;
     const user = {username, password, firstName, lastName};
+    this.props.dispatch(isFetching(true))
     return this.props
       .dispatch(registerUser(user))
       .then(() => {

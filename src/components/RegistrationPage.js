@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
-
+import FormLoader from './FormLoader';
 import RegistrationForm from './RegistrationForm';
 import './RegistrationPage.css';
 
@@ -17,6 +17,7 @@ export function RegistrationPage(props) {
         <h2 className="signUpTitle">Register</h2>
         <div className="signUpBox">
           <RegistrationForm />
+          <FormLoader />
           <Link to="/login" className="registrationFormLoginLink">Login</Link>
         </div>
       </div>

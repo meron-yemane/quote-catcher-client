@@ -39,6 +39,9 @@ export const login = (username, password) => dispatch => {
     .then(({authToken}) => {
       return storeAuthInfo(authToken, dispatch)
     })
+    .then(() => {
+      dispatch(isFetching(false))
+    })
     .catch(err => {
       const {code} = err;
       if (code === 401) {
