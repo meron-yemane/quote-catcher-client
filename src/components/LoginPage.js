@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link, Redirect} from "react-router-dom";
 import LoginForm from './LoginForm';
+import FormLoader from './FormLoader';
+import Loader from 'react-loader-spinner';
 import './LoginPage.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -49,6 +51,7 @@ export function LandingPage(props) {
               <h2 className="loginTitle">Login</h2>
               <div className="LoginBox">
                 <LoginForm />
+                <FormLoader />
                 <Link to="/register">Not a member? Click here to sign-up!</Link>
                 <h4 className="demoUserHeader">Demo User Account</h4>
                 <p className="demoUserAccountLogin">Username: abc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Password: demouser</p>
@@ -61,6 +64,7 @@ export function LandingPage(props) {
 }
 
 const mapStateToProps = state => ({
+  isFetching: state.quoteCatcherReducer.isFetching,
   loggedIn: state.quoteCatcherReducer.currentUser !== null
 });
 
