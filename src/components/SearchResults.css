@@ -10,6 +10,7 @@
   padding-top: 10px;
   margin-left: 40px;
   margin-right: 40px;
+  text-shadow: .5px .5px 10px darkgrey;
 }
 
 .searchedQuotesBox {

@@ -57,9 +57,9 @@ export class HomePageQuotesDisplay extends React.Component {
       quote = <section className="quotesSection">
           <div className={this.props.fadeInOrOut} onTransitionEnd={() =>  this.handleTransitionEnd()}>
             <h2 className="displayQuotesText"><span>&ldquo;</span>{this.props.quotesToDisplay[this.props.quoteCounter % (this.props.quotesToDisplay.length)].quoteString}<span>&rdquo;</span></h2>
-            <h4 className="displayQuotesAuthor"><span>- </span>{this.props.quotesToDisplay[this.props.quoteCounter % (this.props.quotesToDisplay.length)].author}</h4>
+            <h4 className="displayQuotesAuthor"><span>~ </span>{this.props.quotesToDisplay[this.props.quoteCounter % (this.props.quotesToDisplay.length)].author}</h4>
             <div>
-              <h3>Theme(s): {themesToDisplay}</h3>
+              <h3 className="themeWord">Theme(s): {themesToDisplay}</h3>
             </div>
           </div>
         </section>

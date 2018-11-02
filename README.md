@@ -1,6 +1,6 @@
 # Quote Catcher
 
-[Quote Catcher](https://quote-catcher.herokuapp.com) is a responsive, full-stack app that allows users to organize quotes by theme and author. 
+[Quote Catcher](https://quote-catcher.herokuapp.com) is a responsive, full-stack application that allows users to organize quotes by theme and author. 
 
 ## Introduction
 
