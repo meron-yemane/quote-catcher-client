@@ -13,7 +13,7 @@ before_deploy:
 deploy:
   provider: heroku
   api_key:
-    secure: 09a68100-fc7d-422c-a928-05054aeb0a8d
+    secure: f10e1e4c-a977-48b9-8264-6aaeb7f28fba
   app: quote-catcher
   on:
     repo: meron93/quote-catcher-client
